@@ -125,3 +125,5 @@ var ItemSense = exports.ItemSense = function () {
 
   return ItemSense;
 }();
+
+module.exports = ItemSense;

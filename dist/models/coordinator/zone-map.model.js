@@ -25,7 +25,7 @@ var ZoneMap = exports.ZoneMap = function (_ItemSenseEndpoint) {
   function ZoneMap() {
     _classCallCheck(this, ZoneMap);
 
-    var path = '/configuration/v1/facilities';
+    var path = '/configuration/v1/zoneMaps';
     var endpointInfo = { path: path };
     return _possibleConstructorReturn(this, Object.getPrototypeOf(ZoneMap).call(this, endpointInfo));
   }
