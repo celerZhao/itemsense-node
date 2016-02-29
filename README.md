@@ -9,7 +9,7 @@ $ npm i itemsense-node --save
 
 ## Usage
 
-  Each itemsense-node API request returns a promise. that will resolve when the operation has been completed for more information about promises, check out the npm package [request-promise](https://www.npmjs.com/package/request-promise)
+  Each itemsense-node API request returns a promise. that will resolve when the operation has been completed for more information about promises, check out the npm package [request-promise](https://www.npmjs.com/package/request-promise ).
 
 
 
