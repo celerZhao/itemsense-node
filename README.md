@@ -9,7 +9,7 @@ $ npm i itemsense-node --save
 
 ## Usage
 
-Each of the itemsense-node API requests return a promise, allowing each request to be appended with a '.then()' 
+  Each of the itemsense-node API requests return a promise, allowing each request to be appended with a '.then()'
 
 
 ### Basic Usage
