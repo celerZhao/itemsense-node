@@ -9,6 +9,26 @@ $ npm i itemsense-node --save
 
 ## Usage
 
+Each of the itemsense-node API requests return a promise, allowing each request to be appended with a '.then()' 
+
+
+### Basic Usage
+```javascript
+var ItemSense = require('itemsense-node');	 //Require itemsense-node package to get started
+
+var itemsenseConfig = {};  //Create itemsense config json object, or read one in
+itemsenseConfig.username = 'admin';
+itemsenseConfig.password = 'admindefault';
+itemsenseConfig.itemsenseUrl = 'http://192.168.0.113/itemsense';
+
+var itemsense = new ItemSense(itemsenseConfig); //Instantiate new ItemSense instance
+
+//Run a sample request
+itemsense.items.get().then(function(response){
+  console.log(response);
+});
+```
+
 ### Table of Contents
 1. [ItemSense Configuration] (#itemsenseConfig)
 2. [Authorization Tokens] (#authToken)
@@ -21,20 +41,7 @@ $ npm i itemsense-node --save
 9. [Message Queue] (#messageQueue)
 10. [Items] (#items)
 
-```javascript
-var ItemSense = require('itemsense-node');	
 
-var itemsenseConfig = {};
-itemsenseConfig.username = 'admin';
-itemsenseConfig.password = 'admindefault';
-itemsenseConfig.itemsenseUrl = 'http://192.168.0.113/itemsense';
-
-var itemsense = new ItemSense(itemsenseConfig);
-
-itemsense.items.get().then(function(response){
-  console.log(response);
-});
-```
 
 ### ItemSense Configuration 
 <div id="itemsenseConfig" />
