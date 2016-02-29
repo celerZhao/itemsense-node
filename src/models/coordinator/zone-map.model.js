@@ -13,7 +13,7 @@ export class ZoneMap extends ItemSenseEndpoint{
 
 
   constructor(){
-    let path = '/configuration/v1/facilities';
+    let path = '/configuration/v1/zoneMaps';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
