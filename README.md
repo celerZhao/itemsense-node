@@ -118,3 +118,84 @@ itemsense.facilities.create(facility) // creates a facility
 itemsense.facilities.update(facility) //updates a faciity
 ```
 
+
+### Zone Maps
+For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#zone-maps
+```javascript
+itemsense.zoneMaps.get(zoneMapName) // returns a zone map object based on the name
+
+itemsense.zoneMaps.getAll() // returns all of the zone maps for an itemsense instance
+
+itemsense.zoneMaps.create(zoneMap) // creates a zone map
+
+itemsense.zoneMaps.update(zoneMap) //updates a zone map
+```
+
+### Current Zone Map
+
+```javascript
+itemsense.currentZoneMap.get(facilityName) // returns the current zonemap for a specific facility
+
+itemsense.currentZoneMap.update(zoneMapName) // updates/sets the current zone map
+
+itemsense.zoneMaps.clear(facilityName) // clears the current zone map value
+```
+
+### Reader Definitions
+For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
+```javascript
+itemsense.readerDefinitions.get(readerDefinitionName) // returns a reader definition object based on the name
+
+itemsense.readerDefinitions.getAll() // returns all of the reader definitions for an itemsense instance
+
+itemsense.readerDefinitions.create(readerDefinition) // creates a reader definition
+
+itemsense.readerDefinitions.update(readerDefinition) //updates a reader definition
+
+itemsense.readerDefinitions.update(readerDefinitionName) //deletes a reader definition based on the name
+```
+
+### Reader Configurations
+For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
+```javascript
+itemsense.readerConfigurations.get(readerConfigurationName) // returns a reader configuration object based on the name
+
+itemsense.readerConfigurations.getAll() // returns all of the reader configurations for an itemsense instance
+
+itemsense.readerConfigurations.create(readerConfiguration) // creates a reader configuration
+
+itemsense.readerConfigurations.update(readerConfiguration) //updates a reader configuration
+
+itemsense.readerConfigurations.delete(readerConfigurationName) //deletes a reader configuration based on the name
+```
+
+
+### Jobs
+For information about jobs, visit http://developer.impinj.com/itemsense/docs/api/#jobs
+```javascript
+itemsense.jobs.get(jobId) // returns a job object based on the id
+
+itemsense.jobs.getAll() // returns all of the jobs for an itemsense instance
+
+itemsense.jobs.start(job) // starts a job
+
+itemsense.jobs.stop(jobId) //stops a job based on the id
+
+itemsense.jobs.stats(jobId) // retrieves the job stats for a specific job
+
+```
+
+### Message Queue
+For information about message queues, visit http://developer.impinj.com/itemsense/docs/api/#message-queues
+```javascript
+itemsense.messageQueue.configure(messageQueue) // configures the message queue
+
+```
+
+### Items
+For information about items, visit http://developer.impinj.com/itemsense/docs/api/#items
+```javascript
+itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query param object
+
+itemsense.items.getHistory(queryParams) // Retrieves item history records from ItemSense, takes in an optional query param object
+```
