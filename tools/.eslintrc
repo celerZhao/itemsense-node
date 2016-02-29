@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "no-console": 0
+  },
+  "parser": "babel-eslint",
+  "ecmaFeatures": { "modules": true }
+
+}

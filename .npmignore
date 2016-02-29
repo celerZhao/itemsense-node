@@ -1,0 +1,13 @@
+.idea
+.babelrc
+.editorconfig
+.eslintrc
+.gitattributes
+.gitignore
+.npmignore
+.DS_Store
+.travis.xml
+build
+docs
+test
+tools
