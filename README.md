@@ -31,16 +31,16 @@ itemsense.items.get().then(function(response){
 ```
 
 ### Table of Contents
-1. [ItemSense Configuration] (#itemsenseConfig)
-2. [Authorization Tokens] (#authToken)
-3. [Users] (#users)
-4. [Zone Maps] (#zoneMaps)
-5. [Current Zone Map] (#currentZoneMap)
-6. [Reader Definitions] (#readerDefinitions)
-7. [Reader Configurations] (#readerConfigurations)
-8. [Jobs] (#jobs)
-9. [Message Queue] (#messageQueue)
-10. [Items] (#items)
+1. <a href="#itemsenseConfig">ItemSense Configuration</a>
+2. <a href="authToken">Authorization Tokens</a>
+3. <a href="#users">Users</a>
+4. <a href="#zoneMaps">Zone Maps </a>
+5. <a href= "#currentZoneMap"> Current Zone Map </a>
+6. <a href= "#readerDefinitions" >Reader Definitions </a>
+7. <a href ="#readerConfigurations"> Reader Configurations </a>
+8. <a href= "#jobs" >Jobs </a>
+9. <a href= "#messageQueue">Message Queue </a>
+10. <a href= "#items">Items </a>
 
 
 
