@@ -11,6 +11,15 @@ $ npm i itemsense-node --save
 
 ### Table of Contents
 1. [ItemSense Configuration] (#itemsenseConfig)
+2. [Authorization Tokens] (#authToken)
+3. [Users] (#users)
+4. [Zone Maps] (#zoneMaps)
+5. [Current Zone Map] (#currentZoneMap)
+6. [Reader Definitions] (#readerDefinitions)
+7. [Reader Configurations] (#readerConfigurations)
+8. [Jobs] (#jobs)
+9. [Message Queue] (#messageQueue)
+10. [Items] (#items)
 
 ```javascript
 var ItemSense = require('itemsense-node');	
@@ -78,6 +87,7 @@ itemsense.items.get().then(function(response){
 </table>
 
 ### Authorization Tokens
+<div id="authToken" />
 For information about token authentication, visit http://developer.impinj.com/itemsense/docs/api/#authentication
 
 ```javascript
@@ -95,6 +105,7 @@ itemsense.authorization.revokeAllTokens(username) // revokes all tokens availabl
 ```
 
 ### Users
+<div id="users" />
 For information about users, visit http://developer.impinj.com/itemsense/docs/api/#users
 ```javascript
 itemsense.users.get(username) // returns a user object based on username
@@ -107,6 +118,7 @@ itemsense.users.update(user) //updates a user
 
 ```
 ### Facilities
+<div id="facilities" />
 For information about facilities, visit http://developer.impinj.com/itemsense/docs/api/#facilities
 ```javascript
 itemsense.facilities.get(facilityName) // returns a facility object based on the name
@@ -120,6 +132,7 @@ itemsense.facilities.update(facility) //updates a faciity
 
 
 ### Zone Maps
+<div id="zoneMaps" />
 For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#zone-maps
 ```javascript
 itemsense.zoneMaps.get(zoneMapName) // returns a zone map object based on the name
@@ -132,7 +145,7 @@ itemsense.zoneMaps.update(zoneMap) //updates a zone map
 ```
 
 ### Current Zone Map
-
+<div id="currentZoneMap" />
 ```javascript
 itemsense.currentZoneMap.get(facilityName) // returns the current zonemap for a specific facility
 
@@ -142,6 +155,7 @@ itemsense.zoneMaps.clear(facilityName) // clears the current zone map value
 ```
 
 ### Reader Definitions
+<div id="readerDefintions" />
 For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
 ```javascript
 itemsense.readerDefinitions.get(readerDefinitionName) // returns a reader definition object based on the name
@@ -152,10 +166,11 @@ itemsense.readerDefinitions.create(readerDefinition) // creates a reader definit
 
 itemsense.readerDefinitions.update(readerDefinition) //updates a reader definition
 
-itemsense.readerDefinitions.update(readerDefinitionName) //deletes a reader definition based on the name
+itemsense.readerDefinitions.delete(readerDefinitionName) //deletes a reader definition based on the name
 ```
 
 ### Reader Configurations
+<div id="readerConfigurations" />
 For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
 ```javascript
 itemsense.readerConfigurations.get(readerConfigurationName) // returns a reader configuration object based on the name
@@ -171,6 +186,7 @@ itemsense.readerConfigurations.delete(readerConfigurationName) //deletes a reade
 
 
 ### Jobs
+<div id="jobs" />
 For information about jobs, visit http://developer.impinj.com/itemsense/docs/api/#jobs
 ```javascript
 itemsense.jobs.get(jobId) // returns a job object based on the id
@@ -186,6 +202,7 @@ itemsense.jobs.stats(jobId) // retrieves the job stats for a specific job
 ```
 
 ### Message Queue
+<div id="messageQueue" />
 For information about message queues, visit http://developer.impinj.com/itemsense/docs/api/#message-queues
 ```javascript
 itemsense.messageQueue.configure(messageQueue) // configures the message queue
@@ -193,6 +210,7 @@ itemsense.messageQueue.configure(messageQueue) // configures the message queue
 ```
 
 ### Items
+<div id="items" />
 For information about items, visit http://developer.impinj.com/itemsense/docs/api/#items
 ```javascript
 itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query param object
