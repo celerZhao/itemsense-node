@@ -40,7 +40,7 @@ var Item = exports.Item = function (_ItemSenseEndpoint) {
         },
         HISTORY: {
           endpoint: 'show/history',
-          method: 'POST'
+          method: 'GET'
         }
       };
     }

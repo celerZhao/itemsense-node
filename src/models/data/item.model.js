@@ -24,7 +24,7 @@ export class Item extends ItemSenseEndpoint{
       },
       HISTORY:{
         endpoint: 'show/history',
-        method: 'POST'
+        method: 'GET'
       }
     };
   }
