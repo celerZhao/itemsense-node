@@ -42,11 +42,11 @@ var CurrentZoneMap = exports.CurrentZoneMap = function (_ItemSenseEndpoint) {
           method: 'GET'
         },
         UPDATE: {
-          endpoint: 'clear',
-          method: 'PUT'
+          endpoint: 'select',
+          method: 'POST'
         },
         DELETE: {
-          endpoint: 'destroy',
+          endpoint: 'clear',
           method: 'DELETE'
         }
       };
