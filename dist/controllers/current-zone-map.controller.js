@@ -28,17 +28,17 @@ var CurrentZoneMapController = exports.CurrentZoneMapController = function () {
   _createClass(CurrentZoneMapController, [{
     key: 'get',
     value: function get(facilityName) {
-      return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET, null, facilityName);
+      return this.itemsenseService.makeRequest(this.model, _currentZoneMapModel.CurrentZoneMap.requestTypes.GET, null, facilityName);
     }
   }, {
     key: 'update',
     value: function update(zoneMapName) {
-      return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.UPDATE, null, zoneMapName);
+      return this.itemsenseService.makeRequest(this.model, _currentZoneMapModel.CurrentZoneMap.requestTypes.UPDATE, null, zoneMapName);
     }
   }, {
     key: 'clear',
     value: function clear(facilityName) {
-      return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.DELETE, null, facilityName);
+      return this.itemsenseService.makeRequest(this.model, _currentZoneMapModel.CurrentZoneMap.requestTypes.DELETE, null, facilityName);
     }
   }]);
 

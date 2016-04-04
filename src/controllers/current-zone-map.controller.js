@@ -17,15 +17,15 @@ export class CurrentZoneMapController {
     this.itemsenseService = itemsenseService;
   }
   get(facilityName){
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET, null, facilityName );
+    return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.GET, null, facilityName );
   }
 
   update(zoneMapName){
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.UPDATE,null, zoneMapName );
+    return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.UPDATE,null, zoneMapName );
   }
 
   clear(facilityName){
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.DELETE, null, facilityName );
+    return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.DELETE, null, facilityName );
   }
 
 

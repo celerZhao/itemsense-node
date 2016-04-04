@@ -26,12 +26,12 @@ export class CurrentZoneMap extends ItemSenseEndpoint{
         endpoint:'show',
         method: 'GET'
       },
-      UPDATE:{
-        endpoint: 'clear',
-        method: 'PUT'
+      UPDATE: {
+        endpoint: 'select',
+        method: 'POST'
       },
-      DELETE:{
-        endpoint: 'destroy',
+      DELETE: {
+        endpoint: 'clear',
         method: 'DELETE'
       }
     };
