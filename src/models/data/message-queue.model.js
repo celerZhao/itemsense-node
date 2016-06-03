@@ -9,7 +9,7 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 export class MessageQueue extends ItemSenseEndpoint{
 
   constructor(){
-    let path = '/data/v1/messageQueues/zoneTransition';
+    let path = '/data/v1/items';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
@@ -18,8 +18,8 @@ export class MessageQueue extends ItemSenseEndpoint{
   static get requestTypes(){
     return {
       CONFIGURE:{
-        endpoint:'configure',
-        method: 'POST'
+        endpoint:'queues',
+        method: 'PUT'
       }
     };
   }
