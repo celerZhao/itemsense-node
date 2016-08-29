@@ -2,6 +2,7 @@
 
 const gulp       = require('gulp');
 const babel      = require('gulp-babel');
+const mocha      = require('gulp-mocha');
 const scriptSrc  = 'src/**/*.js';
 const scriptDest = 'dist';
 const testSrc    = './test/*.js';
@@ -43,7 +44,6 @@ gulp.task('watchAllAndRunTests', function() {
 // Only way to ensure both build tasks complete before running tests
 // is to add them as a dependency.
 gulp.task('runTests', ['buildSource', 'buildTests'], function() {
-  var mocha = require('gulp-mocha');
   gulp.src(testDest + '/test.js', {read: false})
       .pipe(mocha());
 });
