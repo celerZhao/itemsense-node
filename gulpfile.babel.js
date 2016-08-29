@@ -1,9 +1,19 @@
-var gulp = require('gulp');
-var babel = require('gulp-babel');
+'use strict';
 
-gulp.task('default', function () {
-  return gulp.src(['src/**/*.js'])
+const gulp       = require('gulp');
+const babel      = require('gulp-babel');
+const scriptSrc  = 'src/**/*.js';
+const scriptDest = 'dist';
+
+
+gulp.task('babel', function () {
+  return gulp.src([scriptSrc])
       .pipe(babel())
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest(scriptDest));
 });
 
+gulp.task('watch', function() {
+  gulp.watch([scriptSrc], ['test']);
+});
+
+gulp.task('default', ['babel', 'watch']);
