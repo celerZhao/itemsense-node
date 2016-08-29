@@ -20,18 +20,20 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['babel', 'watch']);
 
-gulp.task('buildTests', ['default'], function() {
+gulp.task('buildTests', ['babel'], function() {
   return gulp.src([testSrc])
       .pipe(babel())
       .pipe(gulp.dest(testDest));
 });
 
 gulp.task('watchTests', function() {
-  gulp.watch([testSrc], ['test']);
+  gulp.watch([testSrc, scriptSrc], ['runTests']);
 });
 
-gulp.task('test', ['buildTests', 'watchTests'], function() {
+gulp.task('runTests', ['buildTests'], function() {
   var mocha = require('gulp-mocha');
   gulp.src(testDest + '/test.js', {read: false})
       .pipe(mocha());
-})
+});
+
+gulp.task('test', ['runTests', 'watchTests']);
