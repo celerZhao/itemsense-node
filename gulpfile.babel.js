@@ -8,32 +8,46 @@ const testSrc    = './test/*.js';
 const testDest   = 'built-tests';
 
 
-gulp.task('babel', function () {
+gulp.task('default', [
+                      'buildSource',
+                      'watchSourceAndRebuild'
+                    ]);
+
+
+gulp.task('test', [
+                    'runTests',
+                    'watchAllAndRunTests',
+                  ]);
+
+
+gulp.task('buildSource', function() {
   return gulp.src([scriptSrc])
-      .pipe(babel())
-      .pipe(gulp.dest(scriptDest));
+    .pipe(babel())
+    .pipe(gulp.dest(scriptDest));
 });
 
-gulp.task('watch', function() {
-  gulp.watch([scriptSrc], ['babel']);
-});
-
-gulp.task('default', ['babel', 'watch']);
-
-gulp.task('buildTests', ['babel'], function() {
+gulp.task('buildTests', function() {
   return gulp.src([testSrc])
       .pipe(babel())
       .pipe(gulp.dest(testDest));
 });
 
-gulp.task('watchTests', function() {
-  gulp.watch([testSrc, scriptSrc], ['runTests']);
+gulp.task('watchSourceAndRebuild', function() {
+  gulp.watch([scriptSrc], ['buildSource']);
 });
 
-gulp.task('runTests', ['buildTests'], function() {
+gulp.task('watchAllAndRunTests', function() {
+  gulp.watch([scriptSrc, testSrc], ['runTests']);
+});
+
+// Only way to ensure both build tasks complete before running tests
+// is to add them as a dependency.
+gulp.task('runTests', ['buildSource', 'buildTests'], function() {
   var mocha = require('gulp-mocha');
   gulp.src(testDest + '/test.js', {read: false})
       .pipe(mocha());
 });
 
-gulp.task('test', ['runTests', 'watchTests']);
+
+
+
