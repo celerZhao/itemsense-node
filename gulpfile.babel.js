@@ -13,7 +13,7 @@ gulp.task('babel', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch([scriptSrc], ['test']);
+  gulp.watch([scriptSrc], ['babel']);
 });
 
 gulp.task('default', ['babel', 'watch']);
