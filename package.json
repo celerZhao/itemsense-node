@@ -9,6 +9,7 @@
   "license": "MIT",
   "main": "dist/itemsense.js",
   "dependencies": {
+    "gulp-mocha": "^3.0.1",
     "querystring": "^0.2.0",
     "request": "^2.69.0",
     "request-promise": "^2.0.1"

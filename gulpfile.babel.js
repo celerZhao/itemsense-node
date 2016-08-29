@@ -4,6 +4,8 @@ const gulp       = require('gulp');
 const babel      = require('gulp-babel');
 const scriptSrc  = 'src/**/*.js';
 const scriptDest = 'dist';
+const testSrc    = './test/*.js';
+const testDest   = 'built-tests';
 
 
 gulp.task('babel', function () {
@@ -17,3 +19,19 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['babel', 'watch']);
+
+gulp.task('buildTests', ['default'], function() {
+  return gulp.src([testSrc])
+      .pipe(babel())
+      .pipe(gulp.dest(testDest));
+});
+
+gulp.task('watchTests', function() {
+  gulp.watch([testSrc], ['test']);
+});
+
+gulp.task('test', ['buildTests', 'watchTests'], function() {
+  var mocha = require('gulp-mocha');
+  gulp.src(testDest + '/test.js', {read: false})
+      .pipe(mocha());
+})
