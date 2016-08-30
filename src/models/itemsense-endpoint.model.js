@@ -28,7 +28,6 @@ export class ItemSenseEndpoint{
     if(queryParams){
       url += "?" + querystring.stringify(queryParams);
     }
-    console.log(url);
     return url;
   }
 

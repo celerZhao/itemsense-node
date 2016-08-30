@@ -44,7 +44,7 @@ itemsense.items.get().then(function(response){
 
 
 
-### ItemSense Configuration 
+### ItemSense Configuration
 <div id="itemsenseConfig" />
 <table>
 <thead>
@@ -101,15 +101,15 @@ itemsense.items.get().then(function(response){
 For information about token authentication, visit http://developer.impinj.com/itemsense/docs/api/#authentication
 
 ```javascript
-itemsense.authorization.getToken() //creates a token based on basic auth credentials
+itemsense.authentication.getToken( username ) //creates a token for given user
 
-itemsense.authorization.validateToken(id) //validates a specific token id
+itemsense.authentication.validateToken(id) //validates a specific token id
 
-itemsense.authorization.getAllTokens(username) // retrieves all tokens available for a specific user
+itemsense.authentication.getAllTokens(username) // retrieves all tokens available for a specific user
 
-itemsense.authorization.revokeToken(token) // revokes a token 
+itemsense.authentication.revokeToken(token) // revokes a token
 
-itemsense.authorization.revokeAllTokens(username) // revokes all tokens available for a specific user
+itemsense.authentication.revokeAllTokens(username) // revokes all tokens available for a specific user
 
 
 ```

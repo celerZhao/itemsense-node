@@ -15,7 +15,6 @@ import {ZoneMapController} from './controllers/zone-map.controller.js';
 import {ItemController} from './controllers/item.controller.js';
 import {MessageQueueController} from './controllers/message-queue.controller.js';
 
-
 export class ItemSense {
 
   constructor(itemSenseConfig) {

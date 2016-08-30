@@ -14,8 +14,8 @@ export class AuthenticationController {
     this.itemsenseService = itemsenseService;
   }
 
-  getToken() {
-    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.GET, null);
+  getToken(username) {
+    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.CREATE, null, username);
   }
 
   validateToken(id) {

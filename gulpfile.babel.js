@@ -2,18 +2,52 @@
 
 const gulp       = require('gulp');
 const babel      = require('gulp-babel');
+const mocha      = require('gulp-mocha');
 const scriptSrc  = 'src/**/*.js';
 const scriptDest = 'dist';
+const testSrc    = './test/*.js';
+const testDest   = 'built-tests';
 
 
-gulp.task('babel', function () {
+gulp.task('default', [
+                      'buildSource',
+                      'watchSourceAndRebuild'
+                    ]);
+
+
+gulp.task('test', [
+                    'runTests',
+                    'watchAllAndRunTests',
+                  ]);
+
+
+gulp.task('buildSource', function() {
   return gulp.src([scriptSrc])
+    .pipe(babel())
+    .pipe(gulp.dest(scriptDest));
+});
+
+gulp.task('buildTests', function() {
+  return gulp.src([testSrc])
       .pipe(babel())
-      .pipe(gulp.dest(scriptDest));
+      .pipe(gulp.dest(testDest));
 });
 
-gulp.task('watch', function() {
-  gulp.watch([scriptSrc], ['babel']);
+gulp.task('watchSourceAndRebuild', function() {
+  gulp.watch([scriptSrc], ['buildSource']);
 });
 
-gulp.task('default', ['babel', 'watch']);
+gulp.task('watchAllAndRunTests', function() {
+  gulp.watch([scriptSrc, testSrc], ['runTests']);
+});
+
+// Only way to ensure both build tasks complete before running tests
+// is to add them as a dependency.
+gulp.task('runTests', ['buildSource', 'buildTests'], function() {
+  gulp.src(testDest + '/test.js', {read: false})
+      .pipe(mocha());
+});
+
+
+
+
