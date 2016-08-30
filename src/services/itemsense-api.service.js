@@ -19,8 +19,7 @@ export class ItemsenseApiService{
 
   makeRequest(itemsenseModel, requestType, body, id, queryParams){
     let options = {};
-    console.log(this._itemsenseConfig.itemsenseUrl);
-    options.url =   itemsenseModel.getRequestUrl(requestType, id, queryParams);
+    options.url = itemsenseModel.getRequestUrl(requestType, id, queryParams);
     options.method = requestType.method;
     if(body){
       options.body = body;

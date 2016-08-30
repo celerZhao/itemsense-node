@@ -10,7 +10,7 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 export class Authentication extends ItemSenseEndpoint{
 
   constructor(){
-    let path = '/configuration/v1/tokens';
+    let path = '/authentication/v1';
     let endpointInfo = {path: path};
     super(endpointInfo);
   }
@@ -18,9 +18,9 @@ export class Authentication extends ItemSenseEndpoint{
 
   static get requestTypes(){
     return {
-      GET:{
-        endpoint:'',
-        method: 'GET'
+      CREATE: {
+        endpoint: 'token',
+        method: 'PUT'
       },
       VALIDATE:{
         endpoint: 'validateToken',
