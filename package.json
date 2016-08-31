@@ -1,6 +1,6 @@
 {
   "name": "itemsense-node",
-  "version": "1.0.9",
+  "version": "1.0.9a",
   "description": "An API wrapper for Impinj's ItemSense",
   "homepage": "http://developer.impinj.com",
   "repository": "https://github.com/impinj/itemsense-node",
