@@ -14,6 +14,7 @@ import {UserController} from './controllers/user.controller.js';
 import {ZoneMapController} from './controllers/zone-map.controller.js';
 import {ItemController} from './controllers/item.controller.js';
 import {MessageQueueController} from './controllers/message-queue.controller.js';
+import {HealthController} from './controllers/health.controller.js';
 
 export class ItemSense {
 
@@ -33,6 +34,7 @@ export class ItemSense {
     this._wm.set('zoneMapController', new ZoneMapController(this._itemsenseService));
     this._wm.set('itemController', new ItemController(this._itemsenseService));
     this._wm.set('messageQueueController', new MessageQueueController(this._itemsenseService));
+    this._wm.set('healthController', new HealthController(this._itemsenseService));
   }
   get itemsenseUrl() {
     return this._itemsenseConfig.itemsenseUrl;
@@ -74,6 +76,9 @@ export class ItemSense {
   }
   get messageQueue(){
     return this._wm.get('messageQueueController');
+  }
+  get health(){
+    return this._wm.get('healthController');
   }
 
 }

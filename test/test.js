@@ -67,4 +67,21 @@ describe('ItemSense', function() {
       });
     });
   });
+
+  describe('.health', function() {
+    describe('.events( queryObject )', function() {
+      it('POSTs to /health/v1/events and resolves to API response', function() {
+        let stub, queryObject, eventsObject;
+
+        queryObject = {fromTime: "2016-08-31T16:51:51.280Z", toTime: "2016-08-31T16:51:51.280Z", pageSize: 0};
+        eventsObject = {events: [], nextPageMarker: null};
+
+        stub = nock(host)
+          .post('/itemsense/health/v1/events', queryObject)
+          .reply(200, eventsObject);
+
+        expect( itemsense.health.events(queryObject) ).to.become(eventsObject);
+      });
+    });
+  });
 });
