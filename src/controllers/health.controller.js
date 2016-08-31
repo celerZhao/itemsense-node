@@ -17,4 +17,8 @@ export class HealthController {
 	readers() {
 		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.READERS);
 	}
+
+	reader(readerId) {
+		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.READERS, null, readerId);
+	}
 }

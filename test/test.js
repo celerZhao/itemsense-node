@@ -111,5 +111,19 @@ describe('ItemSense', function() {
         expect( itemsense.health.readers() ).to.become(response);
       });
     });
+
+    describe('.reader( readerId )', function() {
+      it('GETs to /health/v1/readers/readerId', function() {
+        let stub, response, readerId;
+        readerId = "127.0.0.1"
+        response = { readerId };
+
+        stub = nock(host)
+          .get('/itemsense/health/v1/readers/' + readerId)
+          .reply(200, response);
+
+        expect( itemsense.health.reader( readerId ) ).to.become(response);
+      });
+    });
   });
 });
