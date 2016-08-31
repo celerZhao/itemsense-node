@@ -7,6 +7,7 @@ export class HealthController {
 	}
 
 	events(queryObject) {
+		queryObject = queryObject || {};
 		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.EVENTS, queryObject);
 	}
 

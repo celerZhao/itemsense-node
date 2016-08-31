@@ -70,7 +70,7 @@ describe('ItemSense', function() {
 
   describe('.health', function() {
     describe('.events( queryObject )', function() {
-      it('POSTs to /health/v1/events and resolves to API response', function() {
+      it('POSTs to /health/v1/events with queryObject and resolves to API response', function() {
         let stub, queryObject, eventsObject;
 
         queryObject  = {fromTime: "2016-08-31T16:51:51.280Z", toTime: "2016-08-31T16:51:51.280Z", pageSize: 0};
@@ -81,6 +81,17 @@ describe('ItemSense', function() {
           .reply(200, eventsObject);
 
         expect( itemsense.health.events(queryObject) ).to.become(eventsObject);
+      });
+
+      it('POSTs to /health/v1/events without queryObject and resolves to API response', function() {
+        let stub, queryObject, eventsObject;
+        eventsObject = {events: [], nextPageMarker: null};
+
+        stub = nock(host)
+          .post('/itemsense/health/v1/events', {})
+          .reply(200, eventsObject);
+
+        expect( itemsense.health.events() ).to.become(eventsObject);
       });
     });
 
