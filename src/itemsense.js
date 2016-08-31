@@ -41,7 +41,13 @@ export class ItemSense {
   }
 
   get authorizationHeader() {
-    return "Basic " + new Buffer(this._itemsenseConfig.username + ":" + this._itemsenseConfig.password, "utf8").toString("base64");
+    let { username, password, authToken } = this._itemsenseConfig;
+
+    if (authToken) {
+      return `Token {"token": "${authToken}"}`;
+    } else {
+      return "Basic " + new Buffer(username + ":" + password, "utf8").toString("base64");
+    }
   }
 
   get authentication(){

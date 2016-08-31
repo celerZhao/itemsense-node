@@ -6,13 +6,14 @@ import ItemSense from '../dist/itemsense';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
-let host, itemsense, itemsenseConfig;
+let host, itemsense, itemsenseConfig, itemsenseUrl;
 host = 'http://localhost:8080';
+itemsenseUrl = host + "/itemsense/";
 
 describe('ItemSense', function() {
   before(function() {
     itemsenseConfig = {
-      itemsenseUrl: host + "/itemsense/",
+      itemsenseUrl,
       username: "sean",
       password: "password"
     };
@@ -32,6 +33,22 @@ describe('ItemSense', function() {
         .reply(200, users);
 
       expect( itemsense.users.getAll() ).to.eventually.become(users);
+    });
+
+    it('accepts configuration object with itemsenseURL and auth token and uses host and token auth in subsequent calls.', function() {
+      let users, authToken, itemsense2, stub;
+      users = [{
+            name: "Admin",
+            roles: [ "Admin" ]
+          }];
+      authToken = "6f81f0a4-a4c2-404f-8ea5-da93f90eff91";
+      itemsense2 = new ItemSense({ itemsenseUrl, authToken });
+      stub = nock(host)
+        .get('/itemsense/configuration/v1/users/show')
+        .matchHeader('Authorization', `Token {"token": "${authToken}"}`)
+        .reply(200, users);
+
+      expect( itemsense2.users.getAll() ).to.eventually.become(users);
     });
   });
 
