@@ -57,7 +57,7 @@ describe('ItemSense', function() {
       it('PUTs to authentication/v1/token/:username and resolves to API response', function() {
         let username, token, stub;
         username = 'nonAdminUser';
-        token = "f635b10b-6afb-4387-a0fe-95497b3ed5bd"
+        token = "f635b10b-6afb-4387-a0fe-95497b3ed5bd";
         stub = nock(host)
           .put('/itemsense/authentication/v1/token/' + username)
           .matchHeader('Authorization', 'Basic c2VhbjpwYXNzd29yZA==')
