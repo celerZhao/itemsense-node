@@ -9,4 +9,8 @@ export class HealthController {
 	events(queryObject) {
 		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.EVENTS, queryObject);
 	}
+
+	configureQueue(queueObject) {
+		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.QUEUE, queueObject);
+	}
 }

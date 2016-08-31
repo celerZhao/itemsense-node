@@ -13,7 +13,11 @@ export class Health extends ItemSenseEndpoint {
 			EVENTS: {
 				endpoint: 'events',
 				method: 'POST'
+			},
+			QUEUE: {
+				endpoint: 'events/queues',
+				method: 'PUT'
 			}
-		}
+		};
 	}
 }
