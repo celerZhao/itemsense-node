@@ -1,5 +1,9 @@
 # ItemSense Node Library Changelog
 
+## 1.1.0
+Adds reader health behaviour.
+- All health endpoints added: ( `events`, `configureQueue`, `readers`, and `reader` )
+
 ## 1.0.9
 Fixes token behavior.
 - All authentication methods should now work (`getToken`, `validateToken`, `getAllTokens`, `revokeToken`, `revokeAllTokens`)

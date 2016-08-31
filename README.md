@@ -1,8 +1,9 @@
 # itemsense-node
-> A simple Node.js API-wrapper library for Impinj's ItemSense. <br/>
+> A simple Node.js API-wrapper library for Impinj's ItemSense. <br></div>
 For more information about ItemSense, check out http://developer.impinj.com.
 
 ## Install
+
 ```bash
 $ npm i itemsense-node --save
 ```
@@ -14,6 +15,7 @@ $ npm i itemsense-node --save
 
 
 ### Basic Usage
+
 ```javascript
 var ItemSense = require('itemsense-node');	 //Require itemsense-node package to get started
 
@@ -36,71 +38,72 @@ itemsense.items.get().then(function(response){
 3. <a href="#users">Users</a>
 4. <a href="#zoneMaps">Zone Maps </a>
 5. <a href= "#currentZoneMap"> Current Zone Map </a>
-6. <a href= "#readerDefinitions" >Reader Definitions </a>
+6. <a href= "#readerDefinitions">Reader Definitions </a>
 7. <a href ="#readerConfigurations"> Reader Configurations </a>
-8. <a href= "#jobs" >Jobs </a>
+8. <a href= "#jobs">Jobs </a>
 9. <a href= "#messageQueue">Message Queue </a>
 10. <a href= "#items">Items </a>
+11. <a href= "#health">Health </a>
 
 
 
 ### ItemSense Configuration
-<div id="itemsenseConfig" />
-<table>
-<thead>
-<tr>
-<td>
-<b>Property</b>
-</td>
-<td>
-<b>Description</b>
-</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>
-  itemsenseUrl
-  </td>
-  <td>
-  The base URL for your itemsense instance. e.g. http://office.impinj.com/itemsense
-  </td>
-</tr>
-<tr>
-  <td>
-  authToken
-  </td>
-  <td>
-  The authorization token for your itemsense instance. Users have the option of either providing an auth token or username and password for itemsense credentials
-  </td>
-</tr>
-<tr>
-  <td>
-  username
-  </td>
-  <td>
-  The username for your itemsense credentials. This will be used to encode your requests with a basic auth header. This is optional if you are instead providing an authToken.
-  </td>
-</tr>
-<tr>
-  <td>
-  password
-</td>
-  <td>
-  The password for your itemsense credentials. This will be used to encode your requests with a basic auth header. This is optional if you are instead providing an authToken.
-  </td>
-</tr>
-</tbody>
 
+<div id="itemsenseConfig"></div>
+<table>
+  <thead>
+    <tr>
+      <td>
+        <b>Property</b>
+      </td>
+      <td>
+        <b>Description</b>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        itemsenseUrl
+      </td>
+      <td>
+        The base URL for your itemsense instance. e.g. http://office.impinj.com/itemsense
+      </td>
+    </tr>
+    <tr>
+      <td>
+        authToken
+      </td>
+      <td>
+        The authorization token for your itemsense instance. Users have the option of either providing an auth token or username and password for itemsense credentials
+      </td>
+    </tr>
+    <tr>
+      <td>
+        username
+      </td>
+      <td>
+        The username for your itemsense credentials. This will be used to encode your requests with a basic auth header. This is optional if you are instead providing an authToken.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        password
+      </td>
+      <td>
+        The password for your itemsense credentials. This will be used to encode your requests with a basic auth header. This is optional if you are instead providing an authToken.
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 ### Authorization Tokens
 
-<div id="authToken" />
+<div id="authToken"></div>
 
 For information about token authentication, visit http://developer.impinj.com/itemsense/docs/api/#authentication
 
-```javascript
+```js
 itemsense.authentication.getToken( username ) //creates a token for given user
 
 itemsense.authentication.validateToken(id) //validates a specific token id
@@ -110,13 +113,11 @@ itemsense.authentication.getAllTokens(username) // retrieves all tokens availabl
 itemsense.authentication.revokeToken(token) // revokes a token
 
 itemsense.authentication.revokeAllTokens(username) // revokes all tokens available for a specific user
-
-
 ```
 
 ### Users
 
-<div id="users" />
+<div id="users"></div>
 
 For information about users, visit http://developer.impinj.com/itemsense/docs/api/#users
 
@@ -133,7 +134,7 @@ itemsense.users.update(user) //updates a user
 ```
 ### Facilities
 
-<div id="facilities" />
+<div id="facilities"></div>
 
 For information about facilities, visit http://developer.impinj.com/itemsense/docs/api/#facilities
 
@@ -150,7 +151,7 @@ itemsense.facilities.update(facility) //updates a faciity
 
 ### Zone Maps
 
-<div id="zoneMaps" />
+<div id="zoneMaps"></div>
 
 For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#zone-maps
 
@@ -166,7 +167,7 @@ itemsense.zoneMaps.update(zoneMap) //updates a zone map
 
 ### Current Zone Map
 
-<div id="currentZoneMap" />
+<div id="currentZoneMap"></div>
 
 ```javascript
 itemsense.currentZoneMap.get(facilityName) // returns the current zonemap for a specific facility
@@ -178,7 +179,7 @@ itemsense.zoneMaps.clear(facilityName) // clears the current zone map value
 
 ### Reader Definitions
 
-<div id="readerDefintions" />
+<div id="readerDefintions"></div>
 
 For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
 
@@ -196,7 +197,7 @@ itemsense.readerDefinitions.delete(readerDefinitionName) //deletes a reader defi
 
 ### Reader Configurations
 
-<div id="readerConfigurations" />
+<div id="readerConfigurations"></div>
 
 For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
 
@@ -215,7 +216,7 @@ itemsense.readerConfigurations.delete(readerConfigurationName) //deletes a reade
 
 ### Jobs
 
-<div id="jobs" />
+<div id="jobs"></div>
 
 For information about jobs, visit http://developer.impinj.com/itemsense/docs/api/#jobs
 
@@ -234,7 +235,7 @@ itemsense.jobs.stats(jobId) // retrieves the job stats for a specific job
 
 ### Message Queue
 
-<div id="messageQueue" />
+<div id="messageQueue"></div>
 
 For information about message queues, visit http://developer.impinj.com/itemsense/docs/api/#message-queues
 
@@ -245,7 +246,7 @@ itemsense.messageQueue.configure(messageQueue) // configures the message queue
 
 ### Items
 
-<div id="items" />
+<div id="items"></div>
 
 For information about items, visit http://developer.impinj.com/itemsense/docs/api/#items
 
@@ -253,4 +254,20 @@ For information about items, visit http://developer.impinj.com/itemsense/docs/ap
 itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query param object
 
 itemsense.items.getHistory(queryParams) // Retrieves item history records from ItemSense, takes in an optional query param object
+```
+
+### Health
+
+<div id="health"></div>
+
+For information about Reader Health, visit http://developer.impinj.com/itemsense/docs/api/#health
+
+```javascript
+itemsense.health.events(queryParams) // Retrieves health events from ItemSense, accepts an optional query object
+
+itemsense.health.configureQueue(queueObject) // Configure a queue to receive health event messages with the given filter
+
+itemsense.health.readers() // Get status for all current readers
+
+itemsense.health.reader( readerId ) // Get status for a given reader. Accepts string readerID.
 ```
