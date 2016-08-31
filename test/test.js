@@ -98,5 +98,18 @@ describe('ItemSense', function() {
         expect( itemsense.health.configureQueue(queueObject) ).to.become(response);
       });
     });
+
+    describe('.readers()', function() {
+      it('GETs to /health/v1/readers', function() {
+        let stub, response;
+        response = [{readerId: ""}];
+
+        stub = nock(host)
+          .get('/itemsense/health/v1/readers')
+          .reply(200, response);
+
+        expect( itemsense.health.readers() ).to.become(response);
+      });
+    });
   });
 });

@@ -13,4 +13,8 @@ export class HealthController {
 	configureQueue(queueObject) {
 		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.QUEUE, queueObject);
 	}
+
+	readers() {
+		return this.itemsenseService.makeRequest(this.model, Health.requestTypes.READERS);
+	}
 }
