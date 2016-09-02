@@ -45,8 +45,13 @@ gulp.task('watchAllAndRunTests', function() {
 // is to add them as a dependency.
 gulp.task('runTests', ['buildSource', 'buildTests'], function() {
   gulp.src(testDest + '/test.js', {read: false})
-      .pipe(mocha());
+      .pipe(mocha().on("error", handleError));
 });
+
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
 
 
 

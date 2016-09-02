@@ -6,10 +6,13 @@ exports.examples = function(expect) {
         let username, token;
         username = 'nonAdminUser';
         token = "f635b10b-6afb-4387-a0fe-95497b3ed5bd";
-        this.stub.put('/itemsense/authentication/v1/token/' + username)
-            .matchHeader('Authorization', 'Basic c2VhbjpwYXNzd29yZA==')
-            .reply(200, { token });
-        expect(this.subject.authentication.getToken(username) ).to.become({ token });
+
+        return expect( this.subject.authentication.getToken(username) ).to.become({token}).and.haveSentRequest({
+          method: 'put',
+          path: '/itemsense/authentication/v1/token/' + username,
+          header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA=='],
+          responseBody: {token}
+        });
       });
     });
   });

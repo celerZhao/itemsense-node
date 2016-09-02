@@ -3,11 +3,15 @@ exports.examples = function(expect) {
     describe('.create()', function() {
       it('POSTs to /configuration/v1/users/create with given user object and resolves to API response', function() {
         let user = { name: 'test1', roles: [ 'Admin' ] };
-        let userOptions = {name: 'test1', password: 'password', roles: ['admin'] };
-        this.stub.post('/itemsense/configuration/v1/users/create', userOptions)
-            .matchHeader('Authorization', 'Basic c2VhbjpwYXNzd29yZA==')
-            .reply(200, user);
-        expect(this.subject.users.create(userOptions) ).to.become(user);
+        let userParams = {name: 'test1', password: 'password', roles: ['admin'] };
+
+        return expect( this.subject.users.create(userParams) ).to.become(user).and.haveSentRequest({
+          method: 'post',
+          path: '/itemsense/configuration/v1/users/create',
+          body: userParams,
+          header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA=='],
+          responseBody: user
+        });
       });
     });
   });

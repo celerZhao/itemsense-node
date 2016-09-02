@@ -20,6 +20,19 @@ describe('ItemSense', function() {
       password: "password"
     };
 
+    chai.Assertion.addMethod('haveSentRequest', function(request) {
+      let obj, scope, stub;
+      let { method, path, body, header, status, responseBody } = request;
+      obj = this._obj;
+
+      scope = nock(host);
+      stub = scope[method](path, body);
+      if (header) stub.matchHeader(header[0], header[1]);
+      stub.reply(status || 200, responseBody);
+
+      return this._obj.then(x => scope.done())
+    });
+
     this.describedClass = ItemSense;
     this.subject = new ItemSense(itemsenseConfig);
     this.stub = nock(host);
