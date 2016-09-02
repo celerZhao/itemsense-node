@@ -16,6 +16,7 @@ import {ItemController} from './controllers/item.controller.js';
 import {MessageQueueController} from './controllers/message-queue.controller.js';
 import {SoftwareImageController} from './controllers/software-image.controller.js';
 import {SoftwareUpgradeController} from './controllers/software-upgrade.controller.js';
+import {SoftwareVersionController} from './controllers/software-version.controller.js';
 
 export class ItemSense {
 
@@ -37,6 +38,7 @@ export class ItemSense {
     this._wm.set('messageQueueController', new MessageQueueController(this._itemsenseService));
     this._wm.set('softwareImageController', new SoftwareImageController(this._itemsenseService));
     this._wm.set('softwareUpgradeController', new SoftwareUpgradeController(this._itemsenseService));
+    this._wm.set('softwareVersionController', new SoftwareVersionController(this._itemsenseService));
 
   }
   get itemsenseUrl() {
@@ -91,6 +93,9 @@ export class ItemSense {
   }
   get softwareUpgrades(){
     return this._wm.get('softwareUpgradeController');
+  }
+  get softwareVersions(){
+    return this._wm.get('softwareVersionController');
   }
 
 }
