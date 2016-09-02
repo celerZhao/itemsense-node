@@ -5,7 +5,7 @@ exports.examples = function(expect) {
         let user = { name: 'test1', roles: [ 'Admin' ] };
         let userParams = {name: 'test1', password: 'password', roles: ['admin'] };
 
-        return expect( this.subject.users.create(userParams) ).to.become(user).and.haveSentRequest({
+        return expect( this.subject.users.create(userParams) ).to.haveSent.and.resolveTo.request({
           method: 'post',
           path: '/itemsense/configuration/v1/users/create',
           body: userParams,

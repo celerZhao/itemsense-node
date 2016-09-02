@@ -21,10 +21,15 @@ export class ItemSenseEndpoint{
   }
 
   getRequestUrl( requestType, id, queryParams){
-    let url = this._path + "/" + requestType.endpoint;
+    let url = this._path
+    if(requestType.endpoint) {
+      url += "/" + requestType.endpoint;
+    }
+
     if(id){
       url += "/" + id;
     }
+
     if(queryParams){
       url += "?" + querystring.stringify(queryParams);
     }
