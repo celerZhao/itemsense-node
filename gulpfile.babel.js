@@ -5,7 +5,7 @@ const babel      = require('gulp-babel');
 const mocha      = require('gulp-mocha');
 const scriptSrc  = 'src/**/*.js';
 const scriptDest = 'dist';
-const testSrc    = './test/*.js';
+const testSrc    = './test/**/*.js';
 const testDest   = 'built-tests';
 
 
