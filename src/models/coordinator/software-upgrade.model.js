@@ -22,6 +22,18 @@ export class SoftwareUpgrade extends ItemSenseEndpoint{
       GET:{
         endpoint:'show',
         method: 'GET'
+      },
+      START:{
+        endpoint:'start',
+        method: 'POST'
+      },
+      STOP:{
+        endpoint:'stop',
+        method: 'POST'
+      },
+      TRIGGER:{
+        endpoint: 'trigger/direct/devices',
+        method: 'POST'
       }
     };
   }

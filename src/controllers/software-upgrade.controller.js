@@ -17,4 +17,17 @@ export class SoftwareUpgradeController {
   getAll(){
     return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET );
   }
+  get(upgradeInstanceId) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET, null, upgradeInstanceId );
+  }
+
+  start(upgradeInstanceId) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.START, {upgradeInstanceId});
+  }
+  stop(upgradeInstanceId) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.STOP, null, upgradeInstanceId);
+  }
+  trigger(dataForUpgrade) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.TRIGGER, dataForUpgrade);
+  }
 }
