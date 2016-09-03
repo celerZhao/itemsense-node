@@ -17,13 +17,13 @@ export function addRequestHelper(host) {
 
       obj = this._obj;
       scope = stubRequest(host)(request);
-
+      let assert = this.assert;
       let promises = []
       if (utils.flag(this, 'assertSend')) {
         promises.push( this._obj.then(x => scope.done()) );
       }
       if (utils.flag(this, 'resolveTo')) {
-        promises.push( this._obj.then(x => new Assertion(x).to.deepEqual(responseBody)) );
+        promises.push( this._obj.then(x => assert.deepEqual(x, request.responseBody)) );
       }
 
       return Promise.all(promises);

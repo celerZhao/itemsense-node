@@ -34,5 +34,17 @@ exports.examples = function(expect) {
 				});
 			});
 		});
+
+		describe('.get( imageType, softwareVersionId )', function() {
+			it('GETs to /configuration/v1/softwareVersions/show/:imageType/:softwareVersionId', function() {
+				let imageType = 'firmware_speedway';
+				let softwareVersionId = 'sampleVersionId';
+				return expect( this.subject.softwareVersions.get(imageType, softwareVersionId) ).to.haveSent.and.resolveTo.request({
+					method: 'get',
+					path: `/itemsense/configuration/v1/softwareVersions/show/${imageType}/${softwareVersionId}`,
+					header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA==']
+				});
+			});
+		});
 	});
 }

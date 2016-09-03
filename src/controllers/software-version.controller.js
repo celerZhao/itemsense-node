@@ -24,4 +24,7 @@ export class SoftwareVersionController {
   list( imageType ) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.LIST, null, imageType)
   }
+  get( imageType, softwareVersionId ) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${imageType}/${softwareVersionId}`)
+  }
 }

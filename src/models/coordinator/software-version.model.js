@@ -30,6 +30,10 @@ export class SoftwareVersion extends ItemSenseEndpoint{
       LIST: {
         endpoint: 'list',
         method: 'GET'
+      },
+      SHOW: {
+        endpoint: 'show',
+        method: 'GET'
       }
 
     };
