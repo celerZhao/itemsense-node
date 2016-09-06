@@ -21,12 +21,12 @@ export class FacilityController {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET);
   }
 
-  create(facility) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.CREATE, facility);
+  create(name) {
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.CREATE, { name });
   }
 
-  update(facility) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, facility);
+  createOrReplace(name) {
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, {name});
   }
 
   delete(facilityName) {
