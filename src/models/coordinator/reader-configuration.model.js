@@ -9,7 +9,7 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 
 export class ReaderConfiguration extends ItemSenseEndpoint {
 
-  constructor(){
+  constructor() {
     let path = '/configuration/v1/readerConfigurations';
     let endpointInfo = { path: path};
 
@@ -17,7 +17,7 @@ export class ReaderConfiguration extends ItemSenseEndpoint {
 
   }
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       GET:{
         endpoint:'show',
@@ -38,7 +38,7 @@ export class ReaderConfiguration extends ItemSenseEndpoint {
     };
   }
 
-  static get readerModes(){
+  static get readerModes() {
     return {
       MAX_THROUGHPUT: 'MAX_THROUGHPUT',
       HYBRID: 'HYBRID',
@@ -51,7 +51,7 @@ export class ReaderConfiguration extends ItemSenseEndpoint {
     };
   }
 
-  static get searchModes(){
+  static get searchModes() {
     return {
       READER_SELECTED: 'READER_SELECTED',
       SINGLE_TARGET: 'SINGLE_TARGET',
@@ -60,7 +60,7 @@ export class ReaderConfiguration extends ItemSenseEndpoint {
     };
   }
 
-  static get operations(){
+  static get operations() {
    return {
      NORMAL: 'NORMAL',
      DO_NOTHING: 'DO_NOTHING'

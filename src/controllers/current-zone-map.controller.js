@@ -12,23 +12,21 @@ import {CurrentZoneMap} from '../models/coordinator/current-zone-map.model.js';
 
 export class CurrentZoneMapController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new CurrentZoneMap();
     this.itemsenseService = itemsenseService;
   }
-  get(facilityName){
+
+  get(facilityName) {
     return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.GET, null, facilityName );
   }
 
-  update(zoneMapName){
+  update(zoneMapName) {
     return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.UPDATE,null, zoneMapName );
   }
 
-  clear(facilityName){
+  clear(facilityName) {
     return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.DELETE, null, facilityName );
   }
-
-
-
 
 }

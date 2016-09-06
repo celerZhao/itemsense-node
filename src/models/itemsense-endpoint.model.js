@@ -8,29 +8,30 @@ import querystring from 'querystring';
 
 export class ItemSenseEndpoint{
 
-  constructor(entityInfo){
+  constructor(entityInfo) {
     this._path = entityInfo.path;
 
   }
 
-  get path(){
+  get path() {
     return this._path;
   }
-  get requestTypes(){
+
+  get requestTypes() {
     return this._requestTypes;
   }
 
-  getRequestUrl( requestType, id, queryParams){
+  getRequestUrl( requestType, id, queryParams) {
     let url = this._path
     if(requestType.endpoint) {
       url += "/" + requestType.endpoint;
     }
 
-    if(id){
+    if(id) {
       url += "/" + id;
     }
 
-    if(queryParams){
+    if(queryParams) {
       url += "?" + querystring.stringify(queryParams);
     }
     return url;

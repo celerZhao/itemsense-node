@@ -9,27 +9,29 @@ import {ReaderConfiguration} from '../models/coordinator/reader-configuration.mo
 
 export class ReaderConfigurationController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new ReaderConfiguration();
     this.itemsenseService = itemsenseService;
   }
-  get(readerConfigurationName){
+
+  get(readerConfigurationName) {
     return this.itemsenseService.makeRequest(this.model, ReaderConfiguration.requestTypes.GET, null, readerConfigurationName );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, ReaderConfiguration.requestTypes.GET );
   }
-  create(readerConfiguration){
+
+  create(readerConfiguration) {
     return this.itemsenseService.makeRequest(this.model, ReaderConfiguration.requestTypes.CREATE, readerConfiguration );
   }
-  update(readerConfiguration){
+
+  update(readerConfiguration) {
     return this.itemsenseService.makeRequest(this.model, ReaderConfiguration.requestTypes.UPDATE, readerConfiguration );
   }
-  delete(readerConfigurationName){
+
+  delete(readerConfigurationName) {
     return this.itemsenseService.makeRequest(this.model, ReaderConfiguration.requestTypes.DELETE, null, readerConfigurationName );
   }
-
-
-
 
 }

@@ -9,14 +9,14 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 
 export class Authentication extends ItemSenseEndpoint{
 
-  constructor(){
+  constructor() {
     let path = '/authentication/v1';
     let endpointInfo = {path: path};
     super(endpointInfo);
   }
 
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       CREATE: {
         endpoint: 'token',

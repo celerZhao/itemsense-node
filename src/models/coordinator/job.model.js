@@ -12,14 +12,14 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 
 export class Job extends ItemSenseEndpoint{
 
-  constructor(){
+  constructor() {
     let path = '/control/v1/jobs';
     let endpointInfo = {path: path };
     super( endpointInfo);
   }
 
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       START:{
         endpoint:'start',

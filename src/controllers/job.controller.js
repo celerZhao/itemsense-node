@@ -22,23 +22,25 @@ export class JobController {
     this.model = new Job();
     this.itemsenseService = itemsenseService;
   }
-  get(id){
+
+  get(id) {
     return this.itemsenseService.makeRequest(this.model, Job.requestTypes.GET, null, id );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, Job.requestTypes.GET );
   }
-  start(job){
+
+  start(job) {
     return this.itemsenseService.makeRequest(this.model, Job.requestTypes.START, job );
   }
-  stop(id){
+
+  stop(id) {
     return this.itemsenseService.makeRequest(this.model, Job.requestTypes.STOP, null, id );
   }
-  stats(id){
+
+  stats(id) {
     return this.itemsenseService.makeRequest(this.model, Job.requestTypes.STATS, null, id );
   }
-
-
-
 
 }

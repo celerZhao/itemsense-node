@@ -8,27 +8,29 @@ import {Facility} from '../models/coordinator/facility.model.js';
 
 export class FacilityController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new Facility();
     this.itemsenseService = itemsenseService;
   }
-  get(facilityName){
+
+  get(facilityName) {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET, null, facilityName );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET );
   }
-  create(facility){
+
+  create(facility) {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.CREATE, facility );
   }
-  update(facility){
+
+  update(facility) {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, facility );
   }
-  delete(facilityName){
+
+  delete(facilityName) {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.DELETE, null, facilityName );
   }
-
-
-
 
 }

@@ -12,12 +12,12 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 export class SoftwareImage extends ItemSenseEndpoint{
 
 
-  constructor(){
+  constructor() {
     let path = '/configuration/v1/images';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       GET:{
         endpoint:'',

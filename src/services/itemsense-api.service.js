@@ -8,7 +8,7 @@ import ItemsenseEndpoint from '../models/itemsense-endpoint.model.js';
 
 export class ItemsenseApiService{
 
-  constructor(itemsenseConfig){
+  constructor(itemsenseConfig) {
     this._itemsenseConfig = itemsenseConfig;
     this.itemsenseRequest =  request.defaults({
       headers: {'Authorization': itemsenseConfig.authorizationHeader},
@@ -17,11 +17,11 @@ export class ItemsenseApiService{
     });
   }
 
-  makeRequest(itemsenseModel, requestType, body, id, queryParams){
+  makeRequest(itemsenseModel, requestType, body, id, queryParams) {
     let options = {};
     options.url = itemsenseModel.getRequestUrl(requestType, id, queryParams);
     options.method = requestType.method;
-    if(body){
+    if(body) {
       options.body = body;
     }
     return this.itemsenseRequest(options);

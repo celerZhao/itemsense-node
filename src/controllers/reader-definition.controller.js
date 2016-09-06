@@ -12,27 +12,29 @@ import {ReaderDefinition}  from '../models/coordinator/reader-definition.model.j
 
 export class ReaderDefinitionController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new ReaderDefinition();
     this.itemsenseService = itemsenseService;
   }
-  get(readerDefinitionName){
+
+  get(readerDefinitionName) {
     return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET, null, readerDefinitionName );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET );
   }
-  create(readerDefinition){
+
+  create(readerDefinition) {
     return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.CREATE, readerDefinition );
   }
-  update(readerDefinition){
+
+  update(readerDefinition) {
     return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.UPDATE, readerDefinition );
   }
-  delete(readerDefinitionName){
+
+  delete(readerDefinitionName) {
     return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.DELETE, null, readerDefinitionName );
   }
-
-
-
 
 }

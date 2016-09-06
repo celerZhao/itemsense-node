@@ -10,30 +10,29 @@ import {ZoneMap} from '../models/coordinator/zone-map.model.js';
 
 export class ZoneMapController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new ZoneMap();
     this.itemsenseService = itemsenseService;
   }
-  get(zoneMapName){
+
+  get(zoneMapName) {
     return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET, null, zoneMapName );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET );
   }
-  create(zoneMap){
+
+  create(zoneMap) {
     return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.CREATE, zoneMap );
   }
-  update(zoneMap){
+
+  update(zoneMap) {
     return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.UPDATE, zoneMap );
   }
-  delete(zoneMapName){
+
+  delete(zoneMapName) {
     return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.DELETE, null, zoneMapName );
   }
-
-
-
-
-
-
 
 }

@@ -41,11 +41,12 @@ export class ItemSense {
     this._wm.set('softwareImageController', new SoftwareImageController(this._itemsenseService));
     this._wm.set('softwareUpgradeController', new SoftwareUpgradeController(this._itemsenseService));
     this._wm.set('softwareVersionController', new SoftwareVersionController(this._itemsenseService));
-
   }
+
   get itemsenseUrl() {
     return this._itemsenseConfig.itemsenseUrl;
   }
+
 
   get authorizationHeader() {
     let { username, password, authToken } = this._itemsenseConfig;
@@ -57,49 +58,64 @@ export class ItemSense {
     }
   }
 
-  get authentication(){
+
+  get authentication() {
     return this._wm.get('authenticationController');
   }
-  get currentZoneMap(){
+
+  get currentZoneMap() {
     return this._wm.get('currentZoneMapController');
   }
-  get facilities(){
+
+  get facilities() {
     return this._wm.get('facilityController');
   }
-  get jobs(){
+
+  get jobs() {
     return this._wm.get('jobController');
   }
-  get readerConfigurations(){
+
+  get readerConfigurations() {
     return this._wm.get('readerConfigurationController');
   }
-  get readerDefinitions(){
+
+  get readerDefinitions() {
     return this._wm.get('readerDefinitionController');
   }
-  get recipes(){
+
+  get recipes() {
     return this._wm.get('recipeController');
   }
-  get users(){
+
+  get users() {
     return this._wm.get('userController');
   }
-  get zoneMaps(){
+
+  get zoneMaps() {
     return this._wm.get('zoneMapController');
   }
-  get items(){
+
+  get items() {
     return this._wm.get('itemController');
   }
-  get messageQueue(){
+
+  get messageQueue() {
     return this._wm.get('messageQueueController');
   }
-  get health(){
+
+  get health() {
     return this._wm.get('healthController');
   }
-  get softwareImages(){
+
+  get softwareImages() {
     return this._wm.get('softwareImageController');
   }
-  get softwareUpgrades(){
+
+  get softwareUpgrades() {
     return this._wm.get('softwareUpgradeController');
   }
-  get softwareVersions(){
+
+  get softwareVersions() {
     return this._wm.get('softwareVersionController');
   }
 

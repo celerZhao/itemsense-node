@@ -11,7 +11,7 @@ const READER_TYPES = ['GATEWAY', 'XARRAY'];
 
 export class ReaderDefinition extends ItemSenseEndpoint{
 
-  constructor(){
+  constructor() {
     let path = '/configuration/v1/readerDefinitions';
     let endpointInfo = { path: path};
 
@@ -19,14 +19,14 @@ export class ReaderDefinition extends ItemSenseEndpoint{
 
   }
 
-  static get readerTypes(){
+  static get readerTypes() {
     return  {
       GATEWAY: 'GATEWAY',
       XARRAY:'XARRAY'
     };
   }
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       GET:{
         endpoint:'show',
@@ -47,7 +47,7 @@ export class ReaderDefinition extends ItemSenseEndpoint{
     };
   }
 
-  static get scrambled28(){
+  static get scrambled28() {
     return [
       45,16,35,14,49,
       36,2,31,18,29,
@@ -57,7 +57,7 @@ export class ReaderDefinition extends ItemSenseEndpoint{
       20,34,4
     ];
   }
-  static get scrambled52(){
+  static get scrambled52() {
     return [
       45,16,35,6,41,
       28,47,18,29,8,

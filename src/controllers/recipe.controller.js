@@ -1,3 +1,4 @@
+
 /**
  * Created by jcombopi on 2/26/16.
  */
@@ -15,27 +16,29 @@ import {Recipe} from '../models/coordinator/recipe.model.js';
 
 export class RecipeController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new Recipe();
     this.itemsenseService = itemsenseService;
   }
-  get(recipeName){
+
+  get(recipeName) {
     return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.GET, null, recipeName );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.GET );
   }
-  create(recipe){
+
+  create(recipe) {
     return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.CREATE, recipe );
   }
-  update(recipe){
+
+  update(recipe) {
     return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.UPDATE, recipe );
   }
-  delete(recipeName){
+
+  delete(recipeName) {
     return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.DELETE, null, recipeName );
   }
-
-
-
 
 }

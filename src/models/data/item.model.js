@@ -9,14 +9,14 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 
 export class Item extends ItemSenseEndpoint{
 
-  constructor(){
+  constructor() {
     let path = '/data/v1/items';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
 
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       GET:{
         endpoint:'show',

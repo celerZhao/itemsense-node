@@ -15,27 +15,29 @@ import {User} from '../models/coordinator/user.model.js';
 
 export class UserController {
 
-  constructor(itemsenseService){
+  constructor(itemsenseService) {
     this.model = new User();
     this.itemsenseService = itemsenseService;
   }
-  get(username){
+
+  get(username) {
     return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET, null, username );
   }
-  getAll(){
+
+  getAll() {
     return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET );
   }
-  create(user){
+
+  create(user) {
     return this.itemsenseService.makeRequest(this.model, User.requestTypes.CREATE, user );
   }
-  update(user){
+
+  update(user) {
     return this.itemsenseService.makeRequest(this.model, User.requestTypes.UPDATE, user );
   }
-  delete(username){
+
+  delete(username) {
     return this.itemsenseService.makeRequest(this.model, User.requestTypes.DELETE, null, username );
   }
-
-
-
 
 }

@@ -26,7 +26,7 @@ export class Recipe extends ItemSenseEndpoint {
     };
   }
 
-  static get locationAggregationModel(){
+  static get locationAggregationModel() {
     return {
       BY_TIME: 'BY_TIME',
       BY_CYCLES: 'BY_CYCLES'

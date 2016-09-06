@@ -27,7 +27,7 @@ itemsenseConfig.itemsenseUrl = 'http://192.168.0.113/itemsense';
 var itemsense = new ItemSense(itemsenseConfig); //Instantiate new ItemSense instance
 
 //Run a sample request
-itemsense.items.get().then(function(response){
+itemsense.items.get().then(function(response) {
   console.log(response);
 });
 ```

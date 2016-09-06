@@ -12,12 +12,12 @@ import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
 export class SoftwareVersion extends ItemSenseEndpoint{
 
 
-  constructor(){
+  constructor() {
     let path = '/configuration/v1/softwareVersions';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       CREATE: {
         endpoint: 'createOrReplace',
