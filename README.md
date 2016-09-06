@@ -44,6 +44,7 @@ itemsense.items.get().then(function(response){
 9. <a href= "#messageQueue">Message Queue </a>
 10. <a href= "#items">Items </a>
 11. <a href= "#health">Health </a>
+11. <a href= "#updates">Software Updates </a>
 
 
 
@@ -270,4 +271,36 @@ itemsense.health.configureQueue(queueObject) // Configure a queue to receive hea
 itemsense.health.readers() // Get status for all current readers
 
 itemsense.health.reader( readerId ) // Get status for a given reader. Accepts string readerID.
+```
+
+### Software updates
+
+<div id="updates"></div>
+
+For information about Software Update Functionality, visit http://developer.impinj.com/itemsense/docs/api/#updates
+
+```javascript
+itemsense.softwareImages.get( imageType, imageName ) // Download a software image
+
+
+itemsense.softwareUpgrades.getAll() // Returns the ids for all the upgrade jobs
+
+itemsense.softwareUpgrades.get( upgradeInstanceId ) // Returns the status of a specific upgrade job
+
+itemsense.softwareUpgrades.start( upgradeData ) // Adds and schedules a new upgrade task
+
+itemsense.softwareUpgrades.stop( upgradeInstanceId ) // Cancels a specific upgrade job
+
+itemsense.softwareUpgrades.trigger( upgradeData ) // Injects a dummy upgrade task for a reader
+
+
+itemsense.softwareVersions.createOrReplace( readerSoftwareVersionData ) // Update a software version metadata record ( no policy enforcement )
+
+itemsense.softwareVersions.destroy( imageType, softwareVersionId ) // Remove a specific VersionInfo by ImageType and VersionId
+
+itemsense.softwareVersions.list( imageType ) // Show all versions of an ImageType by VersionPolicy
+
+itemsense.softwareVersions.get( imageType, softwareVersionId ) // Show a specific VersionIno by ImageType and VersionId
+
+itemsense.softwareVersions.update( versionPolicyObj ) // Update the version policy for a reader software version
 ```
