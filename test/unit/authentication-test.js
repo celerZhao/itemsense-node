@@ -14,6 +14,46 @@ exports.examples = function(expect) {
         });
       });
     });
+
+    describe('.getToken()', function() {
+      it('GETs to /authentication/v1/token', function() {
+        return expect(this.subject.authentication.getToken()).to.wrap.request({
+          method: 'get',
+          path: '/itemsense/authentication/v1/token'
+        });
+      });
+    });
+
+    describe('.getAllTokens(username)', function() {
+      it('GETs to /authentication/v1/listTokens/{username}', function() {
+        const username = "impinjUser"
+        return expect(this.subject.authentication.getAllTokens(username)).to.wrap.request({
+          method: 'get',
+          path: `/itemsense/authentication/v1/listTokens/${username}`
+        });
+      });
+    });
+
+    describe('.revokeToken(token)', function() {
+      it('PUTs to /authentication/v1/revokeToken with {token: token} in body', function() {
+        const token = "token"
+        return expect(this.subject.authentication.revokeToken(token)).to.wrap.request({
+          method: 'put',
+          path: `/itemsense/authentication/v1/revokeToken`,
+          body: {token}
+        });
+      });
+    });
+
+    describe('.revokeTokens(username)', function() {
+      it('PUTs to /authentication/v1/revokeTokens/{username}', function() {
+        const username = "impinjUser"
+        return expect(this.subject.authentication.revokeAllTokens(username)).to.wrap.request({
+          method: 'put',
+          path: `/itemsense/authentication/v1/revokeTokens/${ username }`
+        });
+      });
+    });
   });
 
 }

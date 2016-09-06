@@ -12,6 +12,11 @@ export function addRequestHelper(host) {
       utils.flag(this, 'assertResponse', true);
     });
 
+    utils.addProperty(chai.Assertion.prototype, 'wrap', function() {
+      utils.flag(this, 'assertSend', true);
+      utils.flag(this, 'assertResponse', true);
+    });
+
     utils.addMethod(chai.Assertion.prototype, 'request', function(request) {
       let obj, scope;
 
@@ -37,7 +42,13 @@ export function stubRequest(host) {
 	  let { method, path, body, header, status, responseBody } = request;
 	  scope = nock(host);
 	  stub = scope[method](path, body);
-	  if (header) stub.matchHeader(header[0], header[1]);
+    // quick fix to ensure proper authorization is used. Might wish to add a .withAuth Chai property,
+    // and dynamically generate auth depending on credentials
+    if (header) {
+      stub.matchHeader(...header);
+    } else {
+  	  stub.matchHeader('Authorization', 'Basic c2VhbjpwYXNzd29yZA==');
+    }
 	  stub.reply(status || 200, responseBody);
 	  return scope;
 	}
