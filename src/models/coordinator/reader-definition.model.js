@@ -15,7 +15,7 @@ export class ReaderDefinition extends ItemSenseEndpoint{
     let path = '/configuration/v1/readerDefinitions';
     let endpointInfo = { path: path};
 
-    super( endpointInfo );
+    super(endpointInfo);
 
   }
 

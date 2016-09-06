@@ -14,23 +14,23 @@ export class FacilityController {
   }
 
   get(facilityName) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET, null, facilityName );
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET, null, facilityName);
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET);
   }
 
   create(facility) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.CREATE, facility );
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.CREATE, facility);
   }
 
   update(facility) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, facility );
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, facility);
   }
 
   delete(facilityName) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.DELETE, null, facilityName );
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.DELETE, null, facilityName);
   }
 
 }

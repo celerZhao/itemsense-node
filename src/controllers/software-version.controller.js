@@ -15,23 +15,23 @@ export class SoftwareVersionController {
     this.itemsenseService = itemsenseService;
   }
 
-  createOrReplace( softwareVersionData ) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.CREATE, softwareVersionData );
+  createOrReplace(softwareVersionData) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.CREATE, softwareVersionData);
   }
 
-  destroy( imageType, softwareVersionId ) {
+  destroy(imageType, softwareVersionId) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.DESTROY, null, `${imageType}/${softwareVersionId}`);
   }
 
-  list( imageType ) {
+  list(imageType) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.LIST, null, imageType);
   }
 
-  get( imageType, softwareVersionId ) {
+  get(imageType, softwareVersionId) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${imageType}/${softwareVersionId}`);
   }
 
-  update( versionPolicyObj ) {
-    return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.UPDATE, versionPolicyObj );
+  update(versionPolicyObj) {
+    return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.UPDATE, versionPolicyObj);
   }
 }

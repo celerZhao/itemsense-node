@@ -15,7 +15,7 @@ export class MessageQueueController {
   }
 
   configure(messageQueue) {
-    return this.itemsenseService.makeRequest(this.model, MessageQueue.requestTypes.CONFIGURE, messageQueue );
+    return this.itemsenseService.makeRequest(this.model, MessageQueue.requestTypes.CONFIGURE, messageQueue);
   }
 
 }

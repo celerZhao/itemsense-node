@@ -3,7 +3,7 @@ exports.examples = function(expect) {
     it('accepts configuration object with itemsenseURL, username, and password and uses host and credentials in subsequent calls.', function() {
       const users = [{ name: "Admin", roles: [ "Admin" ] }];
 
-      return expect( this.subject.users.getAll() ).to.haveSent.and.resolveTo.request({
+      return expect(this.subject.users.getAll()).to.haveSent.and.resolveTo.request({
         method: 'get',
         path: '/itemsense/configuration/v1/users/show',
         header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA=='],
@@ -18,7 +18,7 @@ exports.examples = function(expect) {
       const itemsenseUrl = this.itemsenseUrl;
       const itemsense2 = new this.describedClass({ itemsenseUrl, authToken });
 
-      return expect( itemsense2.users.getAll() ).to.haveSent.and.resolveTo.request({
+      return expect(itemsense2.users.getAll()).to.haveSent.and.resolveTo.request({
         method: 'get',
         path: '/itemsense/configuration/v1/users/show',
         header: ['Authorization', `Token {"token": "${authToken}"}`],

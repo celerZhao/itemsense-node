@@ -16,7 +16,7 @@ export class User extends ItemSenseEndpoint{
     let endpointInfo = { path: path};
 
 
-    super( endpointInfo );
+    super(endpointInfo);
 
   }
 

@@ -15,7 +15,7 @@ export class Job extends ItemSenseEndpoint{
   constructor() {
     let path = '/control/v1/jobs';
     let endpointInfo = {path: path };
-    super( endpointInfo);
+    super(endpointInfo);
   }
 
 

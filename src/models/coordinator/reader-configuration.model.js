@@ -13,7 +13,7 @@ export class ReaderConfiguration extends ItemSenseEndpoint {
     let path = '/configuration/v1/readerConfigurations';
     let endpointInfo = { path: path};
 
-    super( endpointInfo );
+    super(endpointInfo);
 
   }
 

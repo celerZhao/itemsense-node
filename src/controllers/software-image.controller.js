@@ -16,7 +16,7 @@ export class SoftwareImageController {
   }
 
   get(imageType, imageName) {
-    return this.itemsenseService.makeRequest(this.model, SoftwareImage.requestTypes.GET, null, `${imageType}/${imageName}` );
+    return this.itemsenseService.makeRequest(this.model, SoftwareImage.requestTypes.GET, null, `${imageType}/${imageName}`);
   }
 
 }

@@ -16,23 +16,23 @@ export class ZoneMapController {
   }
 
   get(zoneMapName) {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET, null, zoneMapName );
+    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET, null, zoneMapName);
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET);
   }
 
   create(zoneMap) {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.CREATE, zoneMap );
+    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.CREATE, zoneMap);
   }
 
   update(zoneMap) {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.UPDATE, zoneMap );
+    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.UPDATE, zoneMap);
   }
 
   delete(zoneMapName) {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.DELETE, null, zoneMapName );
+    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.DELETE, null, zoneMapName);
   }
 
 }

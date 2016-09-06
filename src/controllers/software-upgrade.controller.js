@@ -16,11 +16,11 @@ export class SoftwareUpgradeController {
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET);
   }
 
   get(upgradeInstanceId) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET, null, upgradeInstanceId );
+  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET, null, upgradeInstanceId);
   }
 
   start(upgradeData) {

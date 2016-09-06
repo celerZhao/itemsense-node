@@ -24,23 +24,23 @@ export class JobController {
   }
 
   get(id) {
-    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.GET, null, id );
+    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.GET, null, id);
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.GET);
   }
 
   start(job) {
-    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.START, job );
+    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.START, job);
   }
 
   stop(id) {
-    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.STOP, null, id );
+    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.STOP, null, id);
   }
 
   stats(id) {
-    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.STATS, null, id );
+    return this.itemsenseService.makeRequest(this.model, Job.requestTypes.STATS, null, id);
   }
 
 }

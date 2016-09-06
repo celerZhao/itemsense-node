@@ -22,23 +22,23 @@ export class RecipeController {
   }
 
   get(recipeName) {
-    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.GET, null, recipeName );
+    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.GET, null, recipeName);
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.GET);
   }
 
   create(recipe) {
-    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.CREATE, recipe );
+    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.CREATE, recipe);
   }
 
   update(recipe) {
-    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.UPDATE, recipe );
+    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.UPDATE, recipe);
   }
 
   delete(recipeName) {
-    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.DELETE, null, recipeName );
+    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.DELETE, null, recipeName);
   }
 
 }

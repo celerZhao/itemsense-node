@@ -20,10 +20,10 @@ export function addRequestHelper(host) {
 
       let promises = []
       if (utils.flag(this, 'assertSend')) {
-        promises.push( this._obj.then(x => scope.done()) );
+        promises.push(this._obj.then(x => scope.done()));
       }
       if (utils.flag(this, 'assertResponse')) {
-        promises.push( this._obj.then(x => chai.expect(x).to.deep.equal(request.responseBody)) );
+        promises.push(this._obj.then(x => chai.expect(x).to.deep.equal(request.responseBody)));
       }
 
       return Promise.all(promises);

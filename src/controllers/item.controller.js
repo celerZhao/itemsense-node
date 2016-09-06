@@ -14,11 +14,11 @@ export class ItemController {
   }
 
   get(queryParams) {
-    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.GET, null, null, queryParams );
+    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.GET, null, null, queryParams);
   }
 
   getHistory(queryParams) {
-    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.HISTORY, null, null, queryParams );
+    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.HISTORY, null, null, queryParams);
   }
 
 }

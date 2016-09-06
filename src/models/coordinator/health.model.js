@@ -5,7 +5,7 @@ export class Health extends ItemSenseEndpoint {
 		let path = '/health/v1';
 		let endpointInfo = { path };
 
-		super( endpointInfo );
+		super(endpointInfo);
 	}
 
 	static get requestTypes() {

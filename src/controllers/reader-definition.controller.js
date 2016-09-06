@@ -18,23 +18,23 @@ export class ReaderDefinitionController {
   }
 
   get(readerDefinitionName) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET, null, readerDefinitionName );
+    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET, null, readerDefinitionName);
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET);
   }
 
   create(readerDefinition) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.CREATE, readerDefinition );
+    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.CREATE, readerDefinition);
   }
 
   update(readerDefinition) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.UPDATE, readerDefinition );
+    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.UPDATE, readerDefinition);
   }
 
   delete(readerDefinitionName) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.DELETE, null, readerDefinitionName );
+    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.DELETE, null, readerDefinitionName);
   }
 
 }

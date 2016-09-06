@@ -21,7 +21,7 @@ export class ItemSenseEndpoint{
     return this._requestTypes;
   }
 
-  getRequestUrl( requestType, id, queryParams) {
+  getRequestUrl(requestType, id, queryParams) {
     let url = this._path;
     if(requestType.endpoint) {
       url += '/' + requestType.endpoint;

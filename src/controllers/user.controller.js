@@ -21,23 +21,23 @@ export class UserController {
   }
 
   get(username) {
-    return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET, null, username );
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET, null, username);
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET );
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET);
   }
 
   create(user) {
-    return this.itemsenseService.makeRequest(this.model, User.requestTypes.CREATE, user );
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.CREATE, user);
   }
 
   update(user) {
-    return this.itemsenseService.makeRequest(this.model, User.requestTypes.UPDATE, user );
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.UPDATE, user);
   }
 
   delete(username) {
-    return this.itemsenseService.makeRequest(this.model, User.requestTypes.DELETE, null, username );
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.DELETE, null, username);
   }
 
 }

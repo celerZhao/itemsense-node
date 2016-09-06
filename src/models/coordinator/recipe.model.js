@@ -15,7 +15,7 @@ export class Recipe extends ItemSenseEndpoint {
     let path = '/configuration/v1/recipes';
     let endpointInfo = {path: path};
 
-    super( endpointInfo);
+    super(endpointInfo);
 
   }
 
