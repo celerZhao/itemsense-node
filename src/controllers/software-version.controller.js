@@ -20,18 +20,18 @@ export class SoftwareVersionController {
   }
 
   destroy( imageType, softwareVersionId ) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.DESTROY, null, `${imageType}/${softwareVersionId}`)
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.DESTROY, null, `${imageType}/${softwareVersionId}`);
   }
 
   list( imageType ) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.LIST, null, imageType)
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.LIST, null, imageType);
   }
 
   get( imageType, softwareVersionId ) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${imageType}/${softwareVersionId}`)
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${imageType}/${softwareVersionId}`);
   }
 
   update( versionPolicyObj ) {
-    return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.UPDATE, versionPolicyObj )
+    return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.UPDATE, versionPolicyObj );
   }
 }

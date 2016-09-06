@@ -22,17 +22,17 @@ export class ItemSenseEndpoint{
   }
 
   getRequestUrl( requestType, id, queryParams) {
-    let url = this._path
+    let url = this._path;
     if(requestType.endpoint) {
-      url += "/" + requestType.endpoint;
+      url += '/' + requestType.endpoint;
     }
 
     if(id) {
-      url += "/" + id;
+      url += '/' + id;
     }
 
     if(queryParams) {
-      url += "?" + querystring.stringify(queryParams);
+      url += '?' + querystring.stringify(queryParams);
     }
     return url;
   }

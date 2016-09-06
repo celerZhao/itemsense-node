@@ -54,7 +54,7 @@ export class ItemSense {
     if (authToken) {
       return `Token {"token": "${authToken}"}`;
     } else {
-      return "Basic " + new Buffer(username + ":" + password, "utf8").toString("base64");
+      return 'Basic ' + new Buffer(username + ':' + password, 'utf8').toString('base64');
     }
   }
 
