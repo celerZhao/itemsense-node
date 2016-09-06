@@ -14,7 +14,6 @@ export class ReaderDefinition extends ItemSenseEndpoint{
     let endpointInfo = { path: path };
 
     super(endpointInfo);
-
   }
 
   static get requestTypes() {
