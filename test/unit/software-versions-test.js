@@ -2,7 +2,7 @@ exports.examples = function(expect) {
 	describe('.softwareVersions', function() {
 		describe('.createOrReplace( readerSoftwareVersionData )', function() {
 			it('PUTs to /configuration/v1/softwareVersions/createOrReplace', function() {
-				let readerSoftwareVersionData = {versionInfo: { versionIdentifier: { version: "string", imageType: "string" }}, description: "description", updatedComment: "comment"};
+				const readerSoftwareVersionData = {versionInfo: { versionIdentifier: { version: "string", imageType: "string" }}, description: "description", updatedComment: "comment"};
 				return expect( this.subject.softwareVersions.createOrReplace(readerSoftwareVersionData) ).to.haveSent.and.resolveTo.request({
 					method: 'put',
 					path: '/itemsense/configuration/v1/softwareVersions/createOrReplace',
@@ -14,8 +14,8 @@ exports.examples = function(expect) {
 
 		describe('.destroy( imageType, softwareVersionId )', function() {
 			it('DELETEs to /configuration/v1/softwareVersions/destroy/:imageType/:softwareVersionId', function() {
-				let imageType = 'firmware_speedway';
-				let softwareVersionId = 'sampleVersionId';
+				const imageType = 'firmware_speedway';
+				const softwareVersionId = 'sampleVersionId';
 				return expect( this.subject.softwareVersions.destroy(imageType, softwareVersionId) ).to.haveSent.and.resolveTo.request({
 					method: 'delete',
 					path: `/itemsense/configuration/v1/softwareVersions/destroy/${imageType}/${softwareVersionId}`,
@@ -26,7 +26,7 @@ exports.examples = function(expect) {
 
 		describe('.list( imageType )', function() {
 			it('GETs to /configuration/v1/softwareVersions/list/:imageType', function() {
-				let imageType = 'firmware_speedway';
+				const imageType = 'firmware_speedway';
 				return expect( this.subject.softwareVersions.list(imageType) ).to.haveSent.and.resolveTo.request({
 					method: 'get',
 					path: `/itemsense/configuration/v1/softwareVersions/list/${imageType}`,
@@ -37,8 +37,8 @@ exports.examples = function(expect) {
 
 		describe('.get( imageType, softwareVersionId )', function() {
 			it('GETs to /configuration/v1/softwareVersions/show/:imageType/:softwareVersionId', function() {
-				let imageType = 'firmware_speedway';
-				let softwareVersionId = 'sampleVersionId';
+				const imageType = 'firmware_speedway';
+				const softwareVersionId = 'sampleVersionId';
 				return expect( this.subject.softwareVersions.get(imageType, softwareVersionId) ).to.haveSent.and.resolveTo.request({
 					method: 'get',
 					path: `/itemsense/configuration/v1/softwareVersions/show/${imageType}/${softwareVersionId}`,
@@ -49,7 +49,7 @@ exports.examples = function(expect) {
 
 		describe('.update( versionPolicyObj )', function() {
 			it('PUTs to /configuration/v1/softwareVersions/updatePolicy', function() {
-				let versionPolicyObj = {versionIdentifier: {version: 'sampleVersionId', imageType: 'firmware_speedway'}, policy: 'string', updatedComment: "string"};
+				const versionPolicyObj = {versionIdentifier: {version: 'sampleVersionId', imageType: 'firmware_speedway'}, policy: 'string', updatedComment: "string"};
 				return expect( this.subject.softwareVersions.update(versionPolicyObj) ).to.haveSent.and.resolveTo.request({
 					method: 'put',
 					path: '/itemsense/configuration/v1/softwareVersions/updatePolicy',
