@@ -21,7 +21,7 @@ exports.examples = function(expect) {
       return expect(itemsense2.users.getAll()).to.haveSent.and.resolveTo.request({
         method: 'get',
         path: '/itemsense/configuration/v1/users/show',
-        header: ['Authorization', `Token {"token": "${authToken}"}`],
+        header: ['Authorization', `Token { "token": "${authToken }" }`],
         status: 200,
         responseBody: users
       });

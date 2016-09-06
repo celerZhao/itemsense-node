@@ -6,7 +6,7 @@
  */
 'use strict';
 
-import {CurrentZoneMap} from '../models/coordinator/current-zone-map.model.js';
+import { CurrentZoneMap } from '../models/coordinator/current-zone-map.model.js';
 
 
 

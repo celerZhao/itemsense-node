@@ -11,7 +11,7 @@
 
 'use strict';
 
-import {Recipe} from '../models/coordinator/recipe.model.js';
+import { Recipe } from '../models/coordinator/recipe.model.js';
 
 
 export class RecipeController {

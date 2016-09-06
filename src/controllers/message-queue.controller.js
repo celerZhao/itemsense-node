@@ -4,7 +4,7 @@
 
 'use strict';
 
-import {MessageQueue} from '../models/data/message-queue.model.js';
+import { MessageQueue } from '../models/data/message-queue.model.js';
 
 
 export class MessageQueueController {

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import {Facility} from '../models/coordinator/facility.model.js';
+import { Facility } from '../models/coordinator/facility.model.js';
 
 
 export class FacilityController {

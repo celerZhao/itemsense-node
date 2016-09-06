@@ -4,7 +4,7 @@
 'use strict';
 
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 export class MessageQueue extends ItemSenseEndpoint{
 

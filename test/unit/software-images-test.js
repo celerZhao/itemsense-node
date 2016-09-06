@@ -7,7 +7,7 @@ exports.examples = function(expect) {
 
 				return expect(this.subject.softwareImages.get(imageType, imageName)).to.haveSent.and.resolveTo.request({
 					method: 'get',
-					path: `/itemsense/configuration/v1/images/${imageType}/${imageName}`,
+					path: `/itemsense/configuration/v1/images/${ imageType }/${imageName }`,
 					header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA=='],
 					status: 200
 				});

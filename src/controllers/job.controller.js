@@ -13,7 +13,7 @@
 
 'use strict';
 
-import {Job} from '../models/coordinator/job.model.js';
+import { Job } from '../models/coordinator/job.model.js';
 
 
 export class JobController {

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import {Item} from '../models/data/item.model.js';
+import { Item } from '../models/data/item.model.js';
 
 
 export class ItemController {

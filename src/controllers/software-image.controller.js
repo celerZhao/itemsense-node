@@ -5,7 +5,7 @@
 
 'use strict';
 
-import {SoftwareImage} from '../models/coordinator/software-image.model.js';
+import { SoftwareImage } from '../models/coordinator/software-image.model.js';
 
 
 export class SoftwareImageController {
@@ -16,7 +16,7 @@ export class SoftwareImageController {
   }
 
   get(imageType, imageName) {
-    return this.itemsenseService.makeRequest(this.model, SoftwareImage.requestTypes.GET, null, `${imageType}/${imageName}`);
+    return this.itemsenseService.makeRequest(this.model, SoftwareImage.requestTypes.GET, null, `${ imageType }/${imageName }`);
   }
 
 }

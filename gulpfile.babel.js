@@ -45,7 +45,7 @@ gulp.task('watchAllAndRunTests', function() {
 // Only way to ensure both build tasks complete before running tests
 // is to add them as a dependency.
 gulp.task('runTests', ['buildSource', 'buildTests'], function() {
-  gulp.src(testDest + '/test.js', {read: false})
+  gulp.src(testDest + '/test.js', { read: false })
       .pipe(mocha().on("error", handleError));
 });
 

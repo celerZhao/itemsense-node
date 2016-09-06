@@ -5,13 +5,13 @@
 'use strict';
 
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 export class Authentication extends ItemSenseEndpoint{
 
   constructor() {
     let path = '/authentication/v1';
-    let endpointInfo = {path: path};
+    let endpointInfo = { path: path };
     super(endpointInfo);
   }
 

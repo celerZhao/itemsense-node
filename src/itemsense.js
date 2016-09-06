@@ -2,22 +2,22 @@
  * Created by jcombopi on 2/25/16.
  */
 
-import {ItemsenseApiService} from './services/itemsense-api.service.js';
-import {AuthenticationController} from './controllers/authentication.controller.js';
-import {CurrentZoneMapController} from './controllers/current-zone-map.controller.js';
-import {FacilityController} from './controllers/facility.controller.js';
-import {JobController} from './controllers/job.controller.js';
-import {ReaderConfigurationController} from './controllers/reader-configuration.controller.js';
-import {ReaderDefinitionController} from './controllers/reader-definition.controller.js';
-import {RecipeController} from './controllers/recipe.controller.js';
-import {UserController} from './controllers/user.controller.js';
-import {ZoneMapController} from './controllers/zone-map.controller.js';
-import {ItemController} from './controllers/item.controller.js';
-import {MessageQueueController} from './controllers/message-queue.controller.js';
-import {HealthController} from './controllers/health.controller.js';
-import {SoftwareImageController} from './controllers/software-image.controller.js';
-import {SoftwareUpgradeController} from './controllers/software-upgrade.controller.js';
-import {SoftwareVersionController} from './controllers/software-version.controller.js';
+import { ItemsenseApiService } from './services/itemsense-api.service.js';
+import { AuthenticationController } from './controllers/authentication.controller.js';
+import { CurrentZoneMapController } from './controllers/current-zone-map.controller.js';
+import { FacilityController } from './controllers/facility.controller.js';
+import { JobController } from './controllers/job.controller.js';
+import { ReaderConfigurationController } from './controllers/reader-configuration.controller.js';
+import { ReaderDefinitionController } from './controllers/reader-definition.controller.js';
+import { RecipeController } from './controllers/recipe.controller.js';
+import { UserController } from './controllers/user.controller.js';
+import { ZoneMapController } from './controllers/zone-map.controller.js';
+import { ItemController } from './controllers/item.controller.js';
+import { MessageQueueController } from './controllers/message-queue.controller.js';
+import { HealthController } from './controllers/health.controller.js';
+import { SoftwareImageController } from './controllers/software-image.controller.js';
+import { SoftwareUpgradeController } from './controllers/software-upgrade.controller.js';
+import { SoftwareVersionController } from './controllers/software-version.controller.js';
 
 export class ItemSense {
 
@@ -52,7 +52,7 @@ export class ItemSense {
     let { username, password, authToken } = this._itemsenseConfig;
 
     if (authToken) {
-      return `Token {"token": "${authToken}"}`;
+      return `Token { "token": "${authToken }" }`;
     } else {
       return 'Basic ' + new Buffer(username + ':' + password, 'utf8').toString('base64');
     }

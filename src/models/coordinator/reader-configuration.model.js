@@ -4,14 +4,14 @@
 
 'use strict';
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 
 export class ReaderConfiguration extends ItemSenseEndpoint {
 
   constructor() {
     let path = '/configuration/v1/readerConfigurations';
-    let endpointInfo = { path: path};
+    let endpointInfo = { path: path };
 
     super(endpointInfo);
 

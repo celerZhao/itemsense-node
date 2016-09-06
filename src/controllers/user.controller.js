@@ -10,7 +10,7 @@
 
 'use strict';
 
-import {User} from '../models/coordinator/user.model.js';
+import { User } from '../models/coordinator/user.model.js';
 
 
 export class UserController {

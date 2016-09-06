@@ -5,7 +5,7 @@
 
 'use strict';
 
-import {ZoneMap} from '../models/coordinator/zone-map.model.js';
+import { ZoneMap } from '../models/coordinator/zone-map.model.js';
 
 
 export class ZoneMapController {

@@ -4,7 +4,7 @@
 
 'use strict';
 
-import {ReaderConfiguration} from '../models/coordinator/reader-configuration.model.js';
+import { ReaderConfiguration } from '../models/coordinator/reader-configuration.model.js';
 
 
 export class ReaderConfigurationController {

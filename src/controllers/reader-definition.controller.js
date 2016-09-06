@@ -7,7 +7,7 @@
 
 'use strict';
 
-import {ReaderDefinition}  from '../models/coordinator/reader-definition.model.js';
+import { ReaderDefinition }  from '../models/coordinator/reader-definition.model.js';
 
 
 export class ReaderDefinitionController {

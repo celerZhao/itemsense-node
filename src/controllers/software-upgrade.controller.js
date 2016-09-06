@@ -5,7 +5,7 @@
 
 'use strict';
 
-import {SoftwareUpgrade} from '../models/coordinator/software-upgrade.model.js';
+import { SoftwareUpgrade } from '../models/coordinator/software-upgrade.model.js';
 
 
 export class SoftwareUpgradeController {

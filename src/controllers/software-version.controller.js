@@ -5,7 +5,7 @@
 
 'use strict';
 
-import {SoftwareVersion} from '../models/coordinator/software-version.model.js';
+import { SoftwareVersion } from '../models/coordinator/software-version.model.js';
 
 
 export class SoftwareVersionController {
@@ -20,7 +20,7 @@ export class SoftwareVersionController {
   }
 
   destroy(imageType, softwareVersionId) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.DESTROY, null, `${imageType}/${softwareVersionId}`);
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.DESTROY, null, `${ imageType }/${softwareVersionId }`);
   }
 
   list(imageType) {
@@ -28,7 +28,7 @@ export class SoftwareVersionController {
   }
 
   get(imageType, softwareVersionId) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${imageType}/${softwareVersionId}`);
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${ imageType }/${softwareVersionId }`);
   }
 
   update(versionPolicyObj) {

@@ -11,7 +11,7 @@ export class ItemsenseApiService{
   constructor(itemsenseConfig) {
     this._itemsenseConfig = itemsenseConfig;
     this.itemsenseRequest =  request.defaults({
-      headers: {'Authorization': itemsenseConfig.authorizationHeader},
+      headers: { 'Authorization': itemsenseConfig.authorizationHeader },
       baseUrl: itemsenseConfig.itemsenseUrl,
       json: true
     });

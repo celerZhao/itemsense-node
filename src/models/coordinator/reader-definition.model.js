@@ -4,7 +4,7 @@
 
 'use strict';
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 const READER_TYPES = ['GATEWAY', 'XARRAY'];
 
@@ -13,7 +13,7 @@ export class ReaderDefinition extends ItemSenseEndpoint{
 
   constructor() {
     let path = '/configuration/v1/readerDefinitions';
-    let endpointInfo = { path: path};
+    let endpointInfo = { path: path };
 
     super(endpointInfo);
 

@@ -1,4 +1,4 @@
-import {Health} from '../models/coordinator/health.model.js';
+import { Health } from '../models/coordinator/health.model.js';
 
 export class HealthController {
 	constructor(itemsenseService) {
