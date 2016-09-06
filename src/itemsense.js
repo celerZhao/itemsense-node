@@ -14,6 +14,7 @@ import {UserController} from './controllers/user.controller.js';
 import {ZoneMapController} from './controllers/zone-map.controller.js';
 import {ItemController} from './controllers/item.controller.js';
 import {MessageQueueController} from './controllers/message-queue.controller.js';
+import {HealthController} from './controllers/health.controller.js';
 import {SoftwareImageController} from './controllers/software-image.controller.js';
 import {SoftwareUpgradeController} from './controllers/software-upgrade.controller.js';
 import {SoftwareVersionController} from './controllers/software-version.controller.js';
@@ -36,6 +37,7 @@ export class ItemSense {
     this._wm.set('zoneMapController', new ZoneMapController(this._itemsenseService));
     this._wm.set('itemController', new ItemController(this._itemsenseService));
     this._wm.set('messageQueueController', new MessageQueueController(this._itemsenseService));
+    this._wm.set('healthController', new HealthController(this._itemsenseService));
     this._wm.set('softwareImageController', new SoftwareImageController(this._itemsenseService));
     this._wm.set('softwareUpgradeController', new SoftwareUpgradeController(this._itemsenseService));
     this._wm.set('softwareVersionController', new SoftwareVersionController(this._itemsenseService));
@@ -87,6 +89,9 @@ export class ItemSense {
   }
   get messageQueue(){
     return this._wm.get('messageQueueController');
+  }
+  get health(){
+    return this._wm.get('healthController');
   }
   get softwareImages(){
     return this._wm.get('softwareImageController');
