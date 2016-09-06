@@ -1,11 +1,11 @@
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 export class Health extends ItemSenseEndpoint {
 	constructor() {
 		let path = '/health/v1';
 		let endpointInfo = { path };
 
-		super( endpointInfo );
+		super(endpointInfo);
 	}
 
 	static get requestTypes() {

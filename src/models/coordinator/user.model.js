@@ -7,24 +7,24 @@
 
 'use strict';
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 export class User extends ItemSenseEndpoint{
 
-  constructor(){
+  constructor() {
     let path = '/configuration/v1/users';
-    let endpointInfo = { path: path};
+    let endpointInfo = { path: path };
 
 
-    super( endpointInfo );
+    super(endpointInfo);
 
   }
 
-  static get roles(){
+  static get roles() {
     return ['Admin','ConfigManager', 'DataManager', 'JobRunner'];
   }
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       GET:{
         endpoint:'show',

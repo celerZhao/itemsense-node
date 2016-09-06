@@ -10,7 +10,7 @@ $ npm i itemsense-node --save
 
 ## Usage
 
-  Each itemsense-node API request returns a promise that will resolve when the operation has been completed. For more information about promises, check out the npm package [request-promise](https://www.npmjs.com/package/request-promise ).
+  Each itemsense-node API request returns a promise that will resolve when the operation has been completed. For more information about promises, check out the npm package [request-promise](https://www.npmjs.com/package/request-promise).
 
 
 
@@ -27,7 +27,7 @@ itemsenseConfig.itemsenseUrl = 'http://192.168.0.113/itemsense';
 var itemsense = new ItemSense(itemsenseConfig); //Instantiate new ItemSense instance
 
 //Run a sample request
-itemsense.items.get().then(function(response){
+itemsense.items.get().then(function(response) {
   console.log(response);
 });
 ```
@@ -44,6 +44,7 @@ itemsense.items.get().then(function(response){
 9. <a href= "#messageQueue">Message Queue </a>
 10. <a href= "#items">Items </a>
 11. <a href= "#health">Health </a>
+11. <a href= "#updates">Software Updates </a>
 
 
 
@@ -104,7 +105,7 @@ itemsense.items.get().then(function(response){
 For information about token authentication, visit http://developer.impinj.com/itemsense/docs/api/#authentication
 
 ```js
-itemsense.authentication.getToken( username ) //creates a token for given user
+itemsense.authentication.getToken(username) //creates a token for given user
 
 itemsense.authentication.validateToken(id) //validates a specific token id
 
@@ -269,5 +270,37 @@ itemsense.health.configureQueue(queueObject) // Configure a queue to receive hea
 
 itemsense.health.readers() // Get status for all current readers
 
-itemsense.health.reader( readerId ) // Get status for a given reader. Accepts string readerID.
+itemsense.health.reader(readerId) // Get status for a given reader. Accepts string readerID.
+```
+
+### Software updates
+
+<div id="updates"></div>
+
+For information about Software Update Functionality, visit http://developer.impinj.com/itemsense/docs/api/#updates
+
+```javascript
+itemsense.softwareImages.get(imageType, imageName) // Download a software image
+
+
+itemsense.softwareUpgrades.getAll() // Returns the ids for all the upgrade jobs
+
+itemsense.softwareUpgrades.get(upgradeInstanceId) // Returns the status of a specific upgrade job
+
+itemsense.softwareUpgrades.start(upgradeData) // Adds and schedules a new upgrade task
+
+itemsense.softwareUpgrades.stop(upgradeInstanceId) // Cancels a specific upgrade job
+
+itemsense.softwareUpgrades.trigger(upgradeData) // Injects a dummy upgrade task for a reader
+
+
+itemsense.softwareVersions.createOrReplace(readerSoftwareVersionData ) // Update a software version metadata record (no policy enforcement)
+
+itemsense.softwareVersions.destroy(imageType, softwareVersionId) // Remove a specific VersionInfo by ImageType and VersionId
+
+itemsense.softwareVersions.list(imageType) // Show all versions of an ImageType by VersionPolicy
+
+itemsense.softwareVersions.get(imageType, softwareVersionId) // Show a specific VersionIno by ImageType and VersionId
+
+itemsense.softwareVersions.update(versionPolicyObj) // Update the version policy for a reader software version
 ```

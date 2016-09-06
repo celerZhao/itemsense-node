@@ -5,19 +5,19 @@
 'use strict';
 
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 
 
 export class ZoneMap extends ItemSenseEndpoint{
 
 
-  constructor(){
+  constructor() {
     let path = '/configuration/v1/zoneMaps';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       GET:{
         endpoint:'show',

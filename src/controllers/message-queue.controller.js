@@ -4,7 +4,7 @@
 
 'use strict';
 
-import {MessageQueue} from '../models/data/message-queue.model.js';
+import { MessageQueue } from '../models/data/message-queue.model.js';
 
 
 export class MessageQueueController {
@@ -13,12 +13,9 @@ export class MessageQueueController {
     this.model = new MessageQueue();
     this.itemsenseService = itemsenseService;
   }
-  configure(messageQueue){
-    return this.itemsenseService.makeRequest(this.model, MessageQueue.requestTypes.CONFIGURE, messageQueue );
+
+  configure(messageQueue) {
+    return this.itemsenseService.makeRequest(this.model, MessageQueue.requestTypes.CONFIGURE, messageQueue);
   }
-
-
-
-
 
 }

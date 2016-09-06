@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import {Item} from '../models/data/item.model.js';
+import { Item } from '../models/data/item.model.js';
 
 
 export class ItemController {
@@ -12,14 +12,13 @@ export class ItemController {
     this.model = new Item();
     this.itemsenseService = itemsenseService;
   }
-  get(queryParams){
-    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.GET, null, null, queryParams );
-  }
-  getHistory(queryParams){
-    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.HISTORY, null, null, queryParams );
+
+  get(queryParams) {
+    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.GET, null, null, queryParams);
   }
 
-
-
+  getHistory(queryParams) {
+    return this.itemsenseService.makeRequest(this.model, Item.requestTypes.HISTORY, null, null, queryParams);
+  }
 
 }

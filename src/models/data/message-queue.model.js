@@ -4,18 +4,18 @@
 'use strict';
 
 
-import {ItemSenseEndpoint} from '../itemsense-endpoint.model.js';
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
 export class MessageQueue extends ItemSenseEndpoint{
 
-  constructor(){
+  constructor() {
     let path = '/data/v1/items';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }
 
 
-  static get requestTypes(){
+  static get requestTypes() {
     return {
       CONFIGURE:{
         endpoint:'queues',

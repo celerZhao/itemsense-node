@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import {Authentication} from '../models/coordinator/authentication.model.js';
+import { Authentication } from '../models/coordinator/authentication.model.js';
 
 
 
