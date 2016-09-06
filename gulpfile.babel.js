@@ -3,6 +3,7 @@
 const gulp       = require('gulp');
 const babel      = require('gulp-babel');
 const mocha      = require('gulp-mocha');
+const del        = require('del');
 const scriptSrc  = 'src/**/*.js';
 const scriptDest = 'dist';
 const testSrc    = './test/**/*.js';
@@ -21,13 +22,13 @@ gulp.task('test', [
                   ]);
 
 
-gulp.task('buildSource', function() {
+gulp.task('buildSource', ['clean'], function() {
   return gulp.src([scriptSrc])
     .pipe(babel())
     .pipe(gulp.dest(scriptDest));
 });
 
-gulp.task('buildTests', function() {
+gulp.task('buildTests', ['clean'], function() {
   return gulp.src([testSrc])
       .pipe(babel())
       .pipe(gulp.dest(testDest));
@@ -46,6 +47,10 @@ gulp.task('watchAllAndRunTests', function() {
 gulp.task('runTests', ['buildSource', 'buildTests'], function() {
   gulp.src(testDest + '/test.js', {read: false})
       .pipe(mocha().on("error", handleError));
+});
+
+gulp.task('clean', function() {
+  return del(['dist', 'built-tests'])
 });
 
 function handleError(err) {
