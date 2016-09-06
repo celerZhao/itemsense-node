@@ -19,7 +19,7 @@ export class SoftwareVersion extends ItemSenseEndpoint{
   }
   static get requestTypes(){
     return {
-      UPDATE: {
+      CREATE: {
         endpoint: 'createOrReplace',
         method: 'PUT'
       },
@@ -34,6 +34,10 @@ export class SoftwareVersion extends ItemSenseEndpoint{
       SHOW: {
         endpoint: 'show',
         method: 'GET'
+      },
+      UPDATE: {
+        endpoint: 'updatePolicy',
+        method: 'PUT'
       }
 
     };

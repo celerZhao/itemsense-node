@@ -21,8 +21,8 @@ export class SoftwareUpgradeController {
   	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.GET, null, upgradeInstanceId );
   }
 
-  start(upgradeInstanceId) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.START, {upgradeInstanceId});
+  start(upgradeData) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.START, upgradeData);
   }
   stop(upgradeInstanceId) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareUpgrade.requestTypes.STOP, null, upgradeInstanceId);

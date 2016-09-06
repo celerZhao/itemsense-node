@@ -9,8 +9,7 @@ exports.examples = function(expect) {
 					method: 'get',
 					path: `/itemsense/configuration/v1/images/${imageType}/${imageName}`,
 					header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA=='],
-					status: 200,
-					responseBody: 3
+					status: 200
 				});
 			});
 		})

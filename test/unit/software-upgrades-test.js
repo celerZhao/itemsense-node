@@ -21,13 +21,13 @@ exports.examples = function(expect) {
 			});
 		});
 
-		describe('.start( upgradeInstanceId )', function() {
+		describe('.start( upgradeData )', function() {
 			it('POSTs to /control/v1/upgrades/start', function() {
-				let upgradeInstanceId = "exampleId";
-				return expect( this.subject.softwareUpgrades.start(upgradeInstanceId) ).to.haveSent.and.resolveTo.request({
+				let upgradeData = {readerGroupingType: "facility", groupingUnitIds: ["facilityId"], target: "targetObject", policy: "policyObject"};
+				return expect( this.subject.softwareUpgrades.start(upgradeData) ).to.haveSent.and.resolveTo.request({
 					method: 'post',
 					path: `/itemsense/control/v1/upgrades/start`,
-					body: { upgradeInstanceId },
+					body: upgradeData,
 					header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA==']
 				});
 			});
@@ -44,13 +44,13 @@ exports.examples = function(expect) {
 			});
 		});
 
-		describe('.trigger( dataForUpgrade )', function() {
+		describe('.trigger( upgradeData )', function() {
 			it('POSTs to /control/v1/upgrades/trigger/direct/devices', function() {
-				let dataForUpgrade = {readerGroupingType: 'string', groupingUnitIds: ["string"]};
-				return expect( this.subject.softwareUpgrades.trigger(dataForUpgrade) ).to.haveSent.and.resolveTo.request({
+				let upgradeData = {readerGroupingType: 'string', groupingUnitIds: ["string"]};
+				return expect( this.subject.softwareUpgrades.trigger(upgradeData) ).to.haveSent.and.resolveTo.request({
 					method: 'post',
 					path: `/itemsense/control/v1/upgrades/trigger/direct/devices`,
-					body: dataForUpgrade,
+					body: upgradeData,
 					header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA==']
 				});
 			});

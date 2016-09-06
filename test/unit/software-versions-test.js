@@ -1,9 +1,9 @@
 exports.examples = function(expect) {
 	describe('.softwareVersions', function() {
-		describe('.create( readerSoftwareVersionData )', function() {
+		describe('.createOrReplace( readerSoftwareVersionData )', function() {
 			it('PUTs to /configuration/v1/softwareVersions/createOrReplace', function() {
-				let readerSoftwareVersionData = {versionInfo: { versionIdentifier: { version: "string", imageType: "string" }}};
-				return expect( this.subject.softwareVersions.create(readerSoftwareVersionData) ).to.haveSent.and.resolveTo.request({
+				let readerSoftwareVersionData = {versionInfo: { versionIdentifier: { version: "string", imageType: "string" }}, description: "description", updatedComment: "comment"};
+				return expect( this.subject.softwareVersions.createOrReplace(readerSoftwareVersionData) ).to.haveSent.and.resolveTo.request({
 					method: 'put',
 					path: '/itemsense/configuration/v1/softwareVersions/createOrReplace',
 					body: readerSoftwareVersionData,
@@ -46,5 +46,16 @@ exports.examples = function(expect) {
 				});
 			});
 		});
+
+		describe('.update( versionPolicyObj )', function() {
+			it('PUTs to /configuration/v1/softwareVersions/updatePolicy', function() {
+				let versionPolicyObj = {versionIdentifier: {version: 'sampleVersionId', imageType: 'firmware_speedway'}, policy: 'string', updatedComment: "string"};
+				return expect( this.subject.softwareVersions.update(versionPolicyObj) ).to.haveSent.and.resolveTo.request({
+					method: 'put',
+					path: '/itemsense/configuration/v1/softwareVersions/updatePolicy',
+					body: versionPolicyObj
+				})
+			});
+		})
 	});
 }

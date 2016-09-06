@@ -15,8 +15,8 @@ export class SoftwareVersionController {
     this.itemsenseService = itemsenseService;
   }
 
-  create( softwareVersionData ) {
-  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.UPDATE, softwareVersionData );
+  createOrReplace( softwareVersionData ) {
+  	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.CREATE, softwareVersionData );
   }
   destroy( imageType, softwareVersionId ) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.DESTROY, null, `${imageType}/${softwareVersionId}`)
@@ -26,5 +26,8 @@ export class SoftwareVersionController {
   }
   get( imageType, softwareVersionId ) {
   	return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.SHOW, null, `${imageType}/${softwareVersionId}`)
+  }
+  update( versionPolicyObj ) {
+    return this.itemsenseService.makeRequest(this.model, SoftwareVersion.requestTypes.UPDATE, versionPolicyObj )
   }
 }

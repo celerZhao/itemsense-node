@@ -11,7 +11,7 @@ exports.examples = function(expect) {
           method: 'put',
           path: '/itemsense/authentication/v1/token/' + username,
           header: ['Authorization', 'Basic c2VhbjpwYXNzd29yZA=='],
-          responseBody: {token}
+          responseBody: { token }
         });
       });
     });
