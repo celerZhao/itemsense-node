@@ -15,7 +15,12 @@ export class AuthenticationController {
   }
 
   getToken(username) {
-    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.CREATE, null, username);
+    if (username) {
+      return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.CREATE, null, username);
+    } else {
+      return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.CREATE_CURRENT);
+    }
+
   }
 
   validateToken(id) {
@@ -27,10 +32,10 @@ export class AuthenticationController {
   }
 
   revokeToken(token) {
-    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.REVOKE, token);
+    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.REVOKE, { token });
   }
 
   revokeAllTokens(username) {
-    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.REVOKE, null, username);
+    return this.itemsenseService.makeRequest(this.model, Authentication.requestTypes.REVOKE_ALL, null, username);
   }
 }

@@ -6,7 +6,6 @@
 
 import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 
-const READER_TYPES = ['GATEWAY', 'XARRAY'];
 
 
 export class Recipe extends ItemSenseEndpoint {
@@ -17,20 +16,6 @@ export class Recipe extends ItemSenseEndpoint {
 
     super(endpointInfo);
 
-  }
-
-  static get zoneModel() {
-    return {
-      GEOGRAPHIC: 'GEOGRAPHIC',
-      GATEWAY: 'GATEWAY'
-    };
-  }
-
-  static get locationAggregationModel() {
-    return {
-      BY_TIME: 'BY_TIME',
-      BY_CYCLES: 'BY_CYCLES'
-    };
   }
 
   static get requestTypes() {

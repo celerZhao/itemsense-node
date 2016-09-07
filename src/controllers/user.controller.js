@@ -21,7 +21,11 @@ export class UserController {
   }
 
   get(username) {
-    return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET, null, username);
+    if(username) {
+      return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET, null, username);
+    } else {
+      return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET_CURRENT);
+    }
   }
 
   getAll() {
@@ -38,6 +42,10 @@ export class UserController {
 
   delete(username) {
     return this.itemsenseService.makeRequest(this.model, User.requestTypes.DELETE, null, username);
+  }
+
+  getRoles() {
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.ROLES);
   }
 
 }

@@ -144,9 +144,11 @@ itemsense.facilities.get(facilityName) // returns a facility object based on the
 
 itemsense.facilities.getAll() // returns all of the facilities for an itemsense instance
 
-itemsense.facilities.create(facility) // creates a facility
+itemsense.facilities.create(facility) // Create a new facility (but do not replace an existing one)
 
-itemsense.facilities.update(facility) //updates a faciity
+itemsense.facilities.createOrReplace(facility) // Replace an existing facility in the store, or creates a new one
+
+itemsense.facilities.update(facility) // Aliases .createOrReplace()
 ```
 
 

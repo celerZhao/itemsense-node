@@ -22,6 +22,10 @@ export class Authentication extends ItemSenseEndpoint{
         endpoint: 'token',
         method: 'PUT'
       },
+      CREATE_CURRENT: {
+        endpoint: 'token',
+        method: 'GET'
+      },
       VALIDATE:{
         endpoint: 'validateToken',
         method: 'GET'
@@ -31,7 +35,11 @@ export class Authentication extends ItemSenseEndpoint{
         method: 'GET'
       },
       REVOKE:{
-        endpoint: 'destroy',
+        endpoint: 'revokeToken',
+        method: 'PUT'
+      },
+      REVOKE_ALL:{
+        endpoint: 'revokeTokens',
         method: 'PUT'
       }
     };

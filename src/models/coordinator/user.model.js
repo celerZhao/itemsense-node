@@ -30,6 +30,10 @@ export class User extends ItemSenseEndpoint{
         endpoint:'show',
         method: 'GET'
       },
+      GET_CURRENT: {
+        endpoint: 'currentUser',
+        method: 'GET'
+      },
       CREATE:{
         endpoint: 'create',
         method: 'POST'
@@ -41,6 +45,10 @@ export class User extends ItemSenseEndpoint{
       DELETE:{
         endpoint: 'destroy',
         method: 'DELETE'
+      },
+      ROLES: {
+        endpoint: 'roles/show',
+        method: 'GET'
       }
     };
   }
