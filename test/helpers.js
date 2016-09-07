@@ -39,9 +39,10 @@ export function addRequestHelper(host) {
 export function stubRequest(host) {
   return function (request) {
     let scope, stub;
-    let { method, path, body, header, status, responseBody } = request;
+    let { method, path, body, query, header, status, responseBody } = request;
     scope = nock(host);
     stub = scope[method](path, body);
+    stub.query(query);
     // quick fix to ensure proper authorization is used. Might wish to add a .withAuth Chai property,
     // and dynamically generate auth depending on credentials
     if (header) {
