@@ -1,5 +1,10 @@
 # ItemSense Node Library Changelog
 
+## 1.2.0
+Adds Firmware Update behaviour.
+- Fixes for some Authentication endpoints
+- Fix endpoint used by ItemHistory methods
+
 ## 1.1.0
 Adds reader health behaviour.
 - All health endpoints added: (`events`, `configureQueue`, `readers`, and `reader`)
