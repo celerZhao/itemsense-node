@@ -29,6 +29,10 @@ export class FacilityController {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, {name});
   }
 
+  update(name) {
+    return this.createOrReplace(name);
+  }
+
   delete(facilityName) {
     return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.DELETE, null, facilityName);
   }

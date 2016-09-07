@@ -20,6 +20,15 @@ exports.examples = function(expect) {
           body: {name: facilityName}
         });
       });
+
+      it('is aliased by .update(facilityName)', function() {
+        const facilityName = "sampleFacility";
+        return expect(this.subject.facilities.update(facilityName)).to.wrap.request({
+          method: 'put',
+          path: '/itemsense/configuration/v1/facilities/createOrReplace',
+          body: {name: facilityName}
+        });
+      })
     });
 
     describe('.get(facilityName)', function() {
