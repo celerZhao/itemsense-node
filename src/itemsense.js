@@ -121,6 +121,8 @@ export class ItemSense {
 
   subscribe(queueConfig) {
     const amqp = require('amqp');
+    const { EventEmitter } = require('events');
+
     const { username, password} = this._itemsenseConfig;
     const { serverUrl, queue } = queueConfig;
     let connection = amqp.createConnection({
@@ -128,14 +130,23 @@ export class ItemSense {
       login: username,
       password
     }, {reconnect: false});
-
+    let emitter = new EventEmitter;
     connection.on('ready', function() {
-      connection.queue(queue, {}, function(queue) {
+      connection.queue(queue, {
+        durable: true,
+        noDeclare: true,
+        arguments: {"x-expires": 3600000, "x-message-ttl": 3600000, "x-max-length-bytes": 1073741824}
+      }, function(queue) {
         queue.subscribe(function(msg) {
-          console.log(msg);
+          emitter.emit('data', JSON.parse(msg.data));
         });
       });
     });
+
+    connection.on("error", function (err) {
+     console.log(err);
+    });
+    return emitter;
   }
 }
 
