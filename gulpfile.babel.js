@@ -24,7 +24,7 @@ gulp.task('test', [
 
 gulp.task('buildSource', ['clean'], function() {
   return gulp.src([scriptSrc])
-    .pipe(babel())
+    .pipe(babel().on("error", handleError))
     .pipe(gulp.dest(scriptDest));
 });
 

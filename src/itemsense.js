@@ -119,6 +119,24 @@ export class ItemSense {
     return this._wm.get('softwareVersionController');
   }
 
+  subscribe(queueConfig) {
+    const amqp = require('amqp');
+    const { username, password} = this._itemsenseConfig;
+    const { serverUrl, queue } = queueConfig;
+    let connection = amqp.createConnection({
+      url: serverUrl,
+      login: username,
+      password
+    }, {reconnect: false});
+
+    connection.on('ready', function() {
+      connection.queue(queue, {}, function(queue) {
+        queue.subscribe(function(msg) {
+          console.log(msg);
+        });
+      });
+    });
+  }
 }
 
 module.exports = ItemSense;
