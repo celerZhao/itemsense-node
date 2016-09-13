@@ -4,31 +4,43 @@ import { EventEmitter } from 'events';
 export class MessageQueue extends EventEmitter {
   constructor(url, queue, login, password) {
     super();
-    let connection = amqp.createConnection({
-      url,
-      login,
-      password
-    }, {reconnect: false});
-    let emitter = new EventEmitter;
-    connection.on('ready', function() {
-      connection.queue(queue, {
+    this._connectionConfig = {url, login, password};
+    this.queue = queue;
+    this.queueConfig = {
         durable: true,
         noDeclare: true,
         arguments: {"x-expires": 3600000, "x-message-ttl": 3600000, "x-max-length-bytes": 1073741824}
-      }, function(queue) {
-        queue.subscribe(function(msg) {
-          emitter.emit('data', JSON.parse(msg.data));
-        });
-      });
-    });
+      }
+  }
 
-    connection.on("error", function (err) {
-     console.log(err);
+  subscribe() {
+    this.createConnection()
+    .then((connection) => this.createQueue(connection))
+    .then((queue) => this.createSubscription(queue));
+  }
+
+  createConnection() {
+    return new Promise((resolve) => {
+      const connection = amqp.createConnection(this._connectionConfig, {reconnect: false});
+      connection.on('ready', () => resolve(connection));
     });
-    return emitter;
+  }
+
+  createQueue(connection) {
+    return new Promise((resolve, reject) => {
+      connection.queue(this.queue, this.queueConfig, (queue) => resolve(queue));
+    });
+  }
+
+  createSubscription(queue) {
+    queue.subscribe((msg) => {
+      this.emit('data', JSON.parse(msg.data));
+    });
   }
 
   static subscribe(url, queue, login, password) {
-    return new this(...arguments);
+    const mq = new this(...arguments);
+    mq.subscribe();
+    return mq;
   }
 }

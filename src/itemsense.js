@@ -3,7 +3,6 @@
  */
 
 import { ItemsenseApiService } from './services/itemsense-api.service.js';
-import { MessageQueue } from './services/message-queue.service.js';
 import { AuthenticationController } from './controllers/authentication.controller.js';
 import { CurrentZoneMapController } from './controllers/current-zone-map.controller.js';
 import { FacilityController } from './controllers/facility.controller.js';
@@ -120,11 +119,6 @@ export class ItemSense {
     return this._wm.get('softwareVersionController');
   }
 
-  subscribe(queueConfig) {
-    const { username, password } = this._itemsenseConfig;
-    const { serverUrl, queue } = queueConfig;
-    return MessageQueue.subscribe(serverUrl, queue, username, password);
-  }
 }
 
 module.exports = ItemSense;

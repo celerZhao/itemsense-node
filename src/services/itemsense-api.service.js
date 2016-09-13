@@ -8,11 +8,11 @@ import ItemsenseEndpoint from '../models/itemsense-endpoint.model.js';
 
 export class ItemsenseApiService{
 
-  constructor(itemsenseConfig) {
-    this._itemsenseConfig = itemsenseConfig;
+  constructor(itemsense) {
+    this._itemsenseConfig = itemsense._itemsenseConfig;
     this.itemsenseRequest =  request.defaults({
-      headers: { 'Authorization': itemsenseConfig.authorizationHeader },
-      baseUrl: itemsenseConfig.itemsenseUrl,
+      headers: { 'Authorization': itemsense.authorizationHeader },
+      baseUrl: this._itemsenseConfig.itemsenseUrl,
       json: true
     });
   }
