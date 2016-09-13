@@ -2,10 +2,9 @@ import amqp from 'amqp';
 import { EventEmitter } from 'events';
 
 export class MessageQueue extends EventEmitter {
-  constructor(url, queue, login, password) {
+  constructor(login, password) {
     super();
-    this._connectionConfig = {url, login, password};
-    this.queue = queue;
+    this._connectionConfig = {login, password};
     this.queueConfig = {
         durable: true,
         noDeclare: true,
@@ -13,10 +12,18 @@ export class MessageQueue extends EventEmitter {
       }
   }
 
-  subscribe() {
+  subscribe(url, queue) {
+    this._connectionConfig.url = url;
+    this.queue = queue;
     this.createConnection()
-    .then((connection) => this.createQueue(connection))
-    .then((queue) => this.createSubscription(queue));
+    .then((connection) => {
+      this.emit('status', 'connection');
+      return this.createQueue(connection);
+    })
+    .then((queue) => {
+      this.emit('status', 'queue');
+      return this.createSubscription(queue);
+    });
   }
 
   createConnection() {
@@ -36,11 +43,12 @@ export class MessageQueue extends EventEmitter {
     queue.subscribe((msg) => {
       this.emit('data', JSON.parse(msg.data));
     });
+    this.emit('status', 'listening')
   }
 
   static subscribe(url, queue, login, password) {
-    const mq = new this(...arguments);
-    mq.subscribe();
+    const mq = new this(login, password);
+    mq.subscribe(url, queue);
     return mq;
   }
 }

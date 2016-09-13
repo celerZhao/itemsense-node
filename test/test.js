@@ -28,6 +28,7 @@ describe('ItemSense', function() {
     this.subject = new ItemSense(itemsenseConfig);
     this.itemsenseUrl = itemsenseUrl;
     this.itemsenseConfig = itemsenseConfig;
+    this.stub = helpers.stubRequest(host);
   });
 
   var normalizedPath = require("path").join(__dirname, "unit");
