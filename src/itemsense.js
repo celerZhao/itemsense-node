@@ -3,6 +3,7 @@
  */
 
 import { ItemsenseApiService } from './services/itemsense-api.service.js';
+import { MessageQueue } from './services/message-queue.service.js';
 import { AuthenticationController } from './controllers/authentication.controller.js';
 import { CurrentZoneMapController } from './controllers/current-zone-map.controller.js';
 import { FacilityController } from './controllers/facility.controller.js';
@@ -120,33 +121,9 @@ export class ItemSense {
   }
 
   subscribe(queueConfig) {
-    const amqp = require('amqp');
-    const { EventEmitter } = require('events');
-
-    const { username, password} = this._itemsenseConfig;
+    const { username, password } = this._itemsenseConfig;
     const { serverUrl, queue } = queueConfig;
-    let connection = amqp.createConnection({
-      url: serverUrl,
-      login: username,
-      password
-    }, {reconnect: false});
-    let emitter = new EventEmitter;
-    connection.on('ready', function() {
-      connection.queue(queue, {
-        durable: true,
-        noDeclare: true,
-        arguments: {"x-expires": 3600000, "x-message-ttl": 3600000, "x-max-length-bytes": 1073741824}
-      }, function(queue) {
-        queue.subscribe(function(msg) {
-          emitter.emit('data', JSON.parse(msg.data));
-        });
-      });
-    });
-
-    connection.on("error", function (err) {
-     console.log(err);
-    });
-    return emitter;
+    return MessageQueue.subscribe(serverUrl, queue, username, password);
   }
 }
 
