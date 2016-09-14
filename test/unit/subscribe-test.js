@@ -5,6 +5,11 @@ import EventEmitter from 'events';
 exports.examples = function(expect, sinon) {
   describe('AmqpHandler', function() {
     before(function() {
+      // The following code serves two purposes:
+      // 1. Stub out the node amqp library.
+      // 2. Provide an `amqpStream` object that can simulate messages coming down the queue.
+      //    This works because `amqp.subscribe` calls it's callback whenever a new message is available.
+      //    We simply listen for new events on amqpStream and call the stub's callback.
       this.queueObj = {serverUrl: 'amqp://localhost:5672/%2F', queue: '13fe4dd7-9073-4507-a0c3-32403753f7c0'}
       let queueObj = {subscribe: function() {}};
       let amqpStream = new EventEmitter();
@@ -20,6 +25,8 @@ exports.examples = function(expect, sinon) {
       this.connectionStub.emit('ready');
     });
 
+    // These tests should ultimately be abstracted away from a particular implementation of the AmqpHandler (rather than `items`)
+    // but it gets the job done.
     describe('.subscribe(queueObject)', function() {
       it('returns an EventEmitter that emits "data" when a new message is received.', function(done) {
         this.emitter.once('data', (data) => {
