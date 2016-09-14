@@ -316,14 +316,13 @@ itemsense.softwareVersions.update(versionPolicyObj) // Update the version policy
 
 <div id="consumingQueues"></div>
 
-For resources that expose message queues (currently `health` and `items`), we provide a helper to facilitate consuming new messages:
+For resources that expose message queues (currently `health` and `items`), we provide a `configureAndSubscribe` helper to facilitate consuming new messages. Call it just like you would the `configureQueue` method. It returns a promise that resolves to an event emitter.
+
+This object will emit `data` events as new messages are sent on the queue:
 
 ```javascript
-is.health.configureAndSubscribe(queueConfig).then(queue => {
-  queue.on('status', done);
-  queue.on('data', done);
+is.items.configureAndSubscribe(queueConfig).then(queue => {
+  queue.on('data', data => console.log("A js object: ", data) );
+  //The messages contents are provided as a pre-parsed json object.
 });
-
-
-
 ```
