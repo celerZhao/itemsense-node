@@ -5,23 +5,14 @@
 'use strict';
 
 import { MessageQueue } from '../models/data/message-queue.model.js';
-import { AmqpHandler } from '../services/amqp-handler.service.js';
 
 
 
-export class MessageQueueController extends AmqpHandler {
+export class MessageQueueController {
 
   constructor(itemsenseService) {
-  	const { username, password } = itemsenseService._itemsenseConfig;
-    super(username, password);
-
     this.model = new MessageQueue();
     this.itemsenseService = itemsenseService;
-  }
-
-
-  configureQueue(messageQueue) {
-    return this.itemsenseService.makeRequest(this.model, MessageQueue.requestTypes.CONFIGURE, messageQueue);
   }
 
   // maintained for backwards compatability

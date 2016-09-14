@@ -16,7 +16,7 @@ exports.examples = function(expect, sinon) {
       this.connectionStub = new EventEmitter;
       this.connectionStub.queue = this.queueStub;
       this.createConnectionStub = sinon.stub(amqp, 'createConnection').returns(this.connectionStub);
-      this.emitter = this.subject.messageQueue.subscribe(this.queueObj);
+      this.emitter = this.subject.items.subscribe(this.queueObj);
       this.connectionStub.emit('ready');
     });
 
@@ -54,12 +54,12 @@ exports.examples = function(expect, sinon) {
     describe('.configureAndSubscribe(queueObject)', function() {
       it('returns a promise that resolves to a queue representing the ', function(done) {
         let queueConfig = { epc: "E280116060000205077DA28F" };
-        let messageQueueStub = sinon.stub(this.subject.messageQueue, 'configureQueue')
+        let messageQueueStub = sinon.stub(this.subject.items, 'configureQueue')
                                     .returns(Promise.resolve(this.queueObj));
         let emitter = new EventEmitter;
-        let subscribeStub = sinon.stub(this.subject.messageQueue, 'subscribe').returns(emitter)
+        let subscribeStub = sinon.stub(this.subject.items, 'subscribe').returns(emitter)
 
-        this.subject.messageQueue.configureAndSubscribe(queueConfig)
+        this.subject.items.configureAndSubscribe(queueConfig)
         .then( queue => {
           queue.on('data', () => {
             sinon.assert.calledWith(messageQueueStub, queueConfig);

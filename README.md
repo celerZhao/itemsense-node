@@ -45,6 +45,7 @@ itemsense.items.get().then(function(response) {
 10. <a href= "#items">Items </a>
 11. <a href= "#health">Health </a>
 11. <a href= "#updates">Software Updates </a>
+11. <a href= "#consumingQueues">Consuming Message Queues </a>
 
 
 
@@ -240,6 +241,7 @@ itemsense.jobs.stats(jobId) // retrieves the job stats for a specific job
 
 <div id="messageQueue"></div>
 
+_Depracated: This functionality was moved to <a href= "#items">Items</a>._
 For information about message queues, visit http://developer.impinj.com/itemsense/docs/api/#message-queues
 
 ```javascript
@@ -257,6 +259,8 @@ For information about items, visit http://developer.impinj.com/itemsense/docs/ap
 itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query param object
 
 itemsense.items.getHistory(queryParams) // Retrieves item history records from ItemSense, takes in an optional query param object
+
+itemsense.items.configureQueue(queueConfig) // Configure a queue to receive item event messages with the given filter
 ```
 
 ### Health
@@ -305,4 +309,21 @@ itemsense.softwareVersions.list(imageType) // Show all versions of an ImageType 
 itemsense.softwareVersions.get(imageType, softwareVersionId) // Show a specific VersionIno by ImageType and VersionId
 
 itemsense.softwareVersions.update(versionPolicyObj) // Update the version policy for a reader software version
+```
+
+
+### Consuming Message Queues
+
+<div id="consumingQueues"></div>
+
+For resources that expose message queues (currently `health` and `items`), we provide a helper to facilitate consuming new messages:
+
+```javascript
+is.health.configureAndSubscribe(queueConfig).then(queue => {
+  queue.on('status', done);
+  queue.on('data', done);
+});
+
+
+
 ```
