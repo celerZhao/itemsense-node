@@ -326,3 +326,15 @@ is.items.configureAndSubscribe(queueConfig).then(queue => {
   //The messages contents are provided as a pre-parsed json object.
 });
 ```
+
+The queue object will also emit `status` events as it proceeds with configuring and connecting to the AMQP service. You can use these to help debug or track the progress of the connection:
+
+```javascript
+is.health.configureAndSubscribe(queueConfig).then(queue => {
+  queue.on('status', msg => console.log(msg) );
+  //This will broadcast:
+  // 'connection': a connection has successfully been established to the AMQP server
+  // 'queue': a queue has successfully been opened
+  // 'listening': a subscription to the queue has successfully been established, we are now listening for data
+});
+```
