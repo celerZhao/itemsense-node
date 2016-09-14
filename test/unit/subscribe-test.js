@@ -3,7 +3,7 @@ import amqp from 'amqp';
 import EventEmitter from 'events';
 
 exports.examples = function(expect, sinon) {
-  describe('.messageQueue', function() {
+  describe('AmqpHandler', function() {
     before(function() {
       this.queueObj = {serverUrl: 'amqp://localhost:5672/%2F', queue: '13fe4dd7-9073-4507-a0c3-32403753f7c0'}
       let queueObj = {subscribe: function() {}};
@@ -54,7 +54,7 @@ exports.examples = function(expect, sinon) {
     describe('.configureAndSubscribe(queueObject)', function() {
       it('returns a promise that resolves to a queue representing the ', function(done) {
         let queueConfig = { epc: "E280116060000205077DA28F" };
-        let messageQueueStub = sinon.stub(this.subject.messageQueue, 'configure')
+        let messageQueueStub = sinon.stub(this.subject.messageQueue, 'configureQueue')
                                     .returns(Promise.resolve(this.queueObj));
         let emitter = new EventEmitter;
         let subscribeStub = sinon.stub(this.subject.messageQueue, 'subscribe').returns(emitter)
@@ -68,10 +68,7 @@ exports.examples = function(expect, sinon) {
           });
           emitter.emit('data', 'the pipes are open');
         });
-
-
       });
     });
-  })
-
+  });
 }
