@@ -47,5 +47,10 @@ exports.examples = function(expect) {
         });
       });
     });
+
+    it('handles AMQP events', function() {
+      let AmqpHandler = require('../../dist/services/amqp-handler.service.js');
+      expect(this.subject.health instanceof AmqpHandler.constructor).to.be.true;
+    });
   });
 }

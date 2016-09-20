@@ -1,5 +1,10 @@
 # ItemSense Node Library Changelog
 
+## 1.3.0
+- Added `configureAndSubscribe` functionality to message queue-handling endpoints.
+- `.messageQueue` is depracated:
+  - Moved `messageQueue.configure()` to `items.configureQueue()`
+
 ## 1.2.0
 Adds Firmware Update behaviour.
 - Fixes for some Authentication endpoints

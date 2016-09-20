@@ -1,6 +1,6 @@
 {
   "name": "itemsense-node",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "An API wrapper for Impinj's ItemSense",
   "homepage": "http://developer.impinj.com",
   "repository": "https://github.com/impinj/itemsense-node",
@@ -9,6 +9,7 @@
   "license": "MIT",
   "main": "dist/itemsense.js",
   "dependencies": {
+    "amqp": "^0.2.6",
     "querystring": "^0.2.0",
     "request": "^2.69.0",
     "request-promise": "^2.0.1"
@@ -44,7 +45,7 @@
     "postcss-cssnext": "^2.1.0",
     "postcss-import": "^7.0.0",
     "postcss-nested": "^1.0.0",
-    "sinon": "^1.16.1"
+    "sinon": "^1.17.5"
   },
   "scripts": {
     "lint": "eslint src docs/js tools",

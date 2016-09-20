@@ -1,5 +1,6 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import sinon from 'sinon';
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
@@ -26,10 +27,12 @@ describe('ItemSense', function() {
     this.describedClass = ItemSense;
     this.subject = new ItemSense(itemsenseConfig);
     this.itemsenseUrl = itemsenseUrl;
+    this.itemsenseConfig = itemsenseConfig;
+    this.stub = helpers.stubRequest(host);
   });
 
   var normalizedPath = require("path").join(__dirname, "unit");
   require("fs").readdirSync(normalizedPath).forEach(function(file) {
-    require("./unit/" + file).examples(expect);
+    require("./unit/" + file).examples(expect, sinon);
   });
 });

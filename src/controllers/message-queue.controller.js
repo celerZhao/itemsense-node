@@ -7,6 +7,7 @@
 import { MessageQueue } from '../models/data/message-queue.model.js';
 
 
+
 export class MessageQueueController {
 
   constructor(itemsenseService) {
@@ -14,8 +15,9 @@ export class MessageQueueController {
     this.itemsenseService = itemsenseService;
   }
 
+  // maintained for backwards compatability
   configure(messageQueue) {
-    return this.itemsenseService.makeRequest(this.model, MessageQueue.requestTypes.CONFIGURE, messageQueue);
+    return this.configureQueue(messageQueue);
   }
 
 }
