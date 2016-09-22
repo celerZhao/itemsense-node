@@ -10,7 +10,7 @@ import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 export class Item extends ItemSenseEndpoint{
 
   constructor() {
-    let path = '/v1/items';
+    let path = '/data/v1/items';
     let endpointInfo = {path: path };
     super(endpointInfo);
   }

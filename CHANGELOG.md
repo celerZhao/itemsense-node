@@ -1,5 +1,8 @@
 # ItemSense Node Library Changelog
 
+## 1.3.0a
+- Repaired `items` resource endpoints
+
 ## 1.3.0
 - Added `configureAndSubscribe` functionality to message queue-handling endpoints.
 - `.messageQueue` is depracated:

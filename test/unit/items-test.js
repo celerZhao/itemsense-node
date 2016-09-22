@@ -5,7 +5,7 @@ exports.examples = function(expect) {
         const queryParams = { facility: 'sampleFacility' };
         return expect(this.subject.items.get(queryParams)).to.wrap.request({
           method: 'get',
-          path: `/itemsense/v1/items/show`,
+          path: `/itemsense/data/v1/items/show`,
           query: queryParams
         });
       });
@@ -16,7 +16,7 @@ exports.examples = function(expect) {
         const queryParams = { facility: 'sampleFacility' };
         return expect(this.subject.items.getHistory(queryParams)).to.wrap.request({
           method: 'get',
-          path: `/itemsense/v1/items/show/history`,
+          path: `/itemsense/data/v1/items/show/history`,
           query: queryParams
         });
       });
