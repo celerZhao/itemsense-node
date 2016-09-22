@@ -23,7 +23,7 @@ exports.examples = function(expect) {
 
 		describe('.start(upgradeData)', function() {
 			it('POSTs to /control/v1/upgrades/start', function() {
-				const upgradeData = { target: { type: "FACILITY", values: ["facilityId"] }, version: { name: "foo", imageType: "FIRMWARE_SPEEDWAY" } };
+				const upgradeData = { target: { type: "FACILITY", values: ["facilityId"] }, versionIdentifier: { version: "foo", imageType: "FIRMWARE_SPEEDWAY" } };
 				return expect(this.subject.softwareUpgrades.start(upgradeData)).to.haveSent.and.resolveTo.request({
 					method: 'post',
 					path: `/itemsense/control/v1/upgrades/start`,
