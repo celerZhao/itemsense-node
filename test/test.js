@@ -14,8 +14,8 @@ import * as helpers from './helpers';
 
 describe('ItemSense', function() {
   before(function() {
-    let host = 'http://localhost:8080';
-    let itemsenseUrl = host + "/itemsense/";
+    let host            = 'http://localhost:8080';
+    let itemsenseUrl    = host + "/itemsense/";
     let itemsenseConfig = {
       itemsenseUrl,
       username: "sean",
@@ -24,11 +24,11 @@ describe('ItemSense', function() {
 
     helpers.addRequestHelper(host);
 
-    this.describedClass = ItemSense;
-    this.subject = new ItemSense(itemsenseConfig);
-    this.itemsenseUrl = itemsenseUrl;
+    this.describedClass  = ItemSense;
+    this.subject         = new ItemSense(itemsenseConfig);
+    this.itemsenseUrl    = itemsenseUrl;
     this.itemsenseConfig = itemsenseConfig;
-    this.stub = helpers.stubRequest(host);
+    this.stub            = helpers.stubRequest(host);
   });
 
   var normalizedPath = require("path").join(__dirname, "unit");
