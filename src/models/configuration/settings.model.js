@@ -10,8 +10,8 @@ import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
 export class Settings extends ItemSenseEndpoint{
 
   constructor() {
-    let path = 'configuration/v1/settings';
-    let endpointInfo = { path: path };
+    const path = 'configuration/v1/settings';
+    const endpointInfo = { path };
     super(endpointInfo);
   }
 

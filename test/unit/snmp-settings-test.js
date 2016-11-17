@@ -25,7 +25,7 @@ exports.examples = function(expect) {
 
     describe('.configure(snmpOptions)', function () {
       it('PUTs to /itemsense/configuration/v1/settings/SNMP with settingsOptions as the body', function () {
-        var settingsOptions = {
+        const settingsOptions = {
               "authConfig": {
                 "type": "string"
               },
