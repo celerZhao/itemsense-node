@@ -1,5 +1,8 @@
 # ItemSense Node Library Changelog
 
+## 1.4.0
+- Added SNMP settings functionality
+
 ## 1.3.1
 - Fixed issue where message queue subscriptions would fail silently. Now, if there is an external issue connecting to the queue, an error is raised with details.
 
