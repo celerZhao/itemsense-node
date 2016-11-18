@@ -22,39 +22,52 @@ exports.examples = function(expect, sinon) {
       this.connectionStub.queue = this.queueStub;
       this.createConnectionStub = sinon.stub(amqp, 'createConnection').returns(this.connectionStub);
       this.emitter = this.subject.items.subscribe(this.queueObj);
-      this.connectionStub.emit('ready');
     });
 
     // These tests should ultimately be abstracted away from a particular implementation of the AmqpHandler (rather than `items`)
     // but it gets the job done.
     describe('.subscribe(queueObject)', function() {
-      it('returns an EventEmitter that emits "data" when a new message is received.', function(done) {
-        this.emitter.once('data', (data) => {
-          expect(data.msg).to.equal('hello world!');
-          done();
-        });
-        this.amqpStream.emit('data', {data: '{"msg": "hello world!"}'});
+      it('raises an error should the AMQP connection fail for any reason', function() {
+        const error = "ERRCONREFUSED";
+        return expect(() => {
+          let emitter = this.subject.items.subscribe(this.queueObj);
+          this.connectionStub.emit('error', error);
+        }).to.throw(error);
       });
 
-
-      it('creates an AMQP connection using the provided serverUrl and ItemSense credentials.', function() {
-        let createConnectionArgs = [{
-          url: this.queueObj.serverUrl,
-          login: this.itemsenseConfig.username,
-          password: this.itemsenseConfig.password
-        }, { reconnect: false }];
-
-        sinon.assert.calledWith(this.createConnectionStub, ...createConnectionArgs);
-      });
-
-      it('waits for AMQP connection to be ready, then subscribes to the queue when the queue is ready', function(done) {
-        this.emitter.once('data', () => {
-          sinon.assert.calledWith(this.queueStub, this.queueObj.queue);
-          sinon.assert.called(this.subscribeStub);
-          done();
+      describe('upon successful connection', function() {
+        before(function() {
+          this.connectionStub.emit('ready');
         });
 
-        this.amqpStream.emit('data', {data: '{"msg": "hello world!"}'});
+        it('returns an EventEmitter that emits "data" when a new message is received.', function(done) {
+          this.emitter.once('data', (data) => {
+            expect(data.msg).to.equal('hello world!');
+            done();
+          });
+          this.amqpStream.emit('data', {data: '{"msg": "hello world!"}'});
+        });
+
+
+        it('creates an AMQP connection using the provided serverUrl and ItemSense credentials.', function() {
+          let createConnectionArgs = [{
+            url: this.queueObj.serverUrl,
+            login: this.itemsenseConfig.username,
+            password: this.itemsenseConfig.password
+          }, { reconnect: false }];
+
+          sinon.assert.calledWith(this.createConnectionStub, ...createConnectionArgs);
+        });
+
+        it('waits for AMQP connection to be ready, then subscribes to the queue when the queue is ready', function(done) {
+          this.emitter.once('data', () => {
+            sinon.assert.calledWith(this.queueStub, this.queueObj.queue);
+            sinon.assert.called(this.subscribeStub);
+            done();
+           });
+
+          this.amqpStream.emit('data', {data: '{"msg": "hello world!"}'});
+        });
       });
     });
 
