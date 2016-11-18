@@ -30,6 +30,9 @@ export class MessageQueue extends EventEmitter {
     return new Promise((resolve) => {
       const connection = amqp.createConnection(this._connectionConfig, {reconnect: false});
       connection.on('ready', () => resolve(connection));
+      connection.on('error', err => {
+        throw err;
+      });
     });
   }
 
