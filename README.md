@@ -45,6 +45,7 @@ itemsense.items.get().then(function(response) {
 10. <a href= "#items">Items </a>
 11. <a href= "#health">Health </a>
 11. <a href= "#updates">Software Updates </a>
+11. <a href= "#settings">Settings </a>
 11. <a href= "#consumingQueues">Consuming Message Queues </a>
 
 
@@ -309,6 +310,20 @@ itemsense.softwareVersions.list(imageType) // Show all versions of an ImageType 
 itemsense.softwareVersions.get(imageType, softwareVersionId) // Show a specific VersionIno by ImageType and VersionId
 
 itemsense.softwareVersions.update(versionPolicyObj) // Update the version policy for a reader software version
+```
+
+### Settings - SNMP
+
+<div id="settings"></div>
+
+For information about SNMP Settings, visit http://developer.impinj.com/itemsense/docs/api/#settings-snmp
+
+```javascript
+itemsense.settings.get() // Returns the current SNMP settings
+
+itemsense.settings.configure(settingsObject) // Updates SNMP settings based on a configuration object
+
+itemsense.settings.disable() // Disables SNMP and deletes any configuration
 ```
 
 

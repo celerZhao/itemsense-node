@@ -18,6 +18,7 @@ import { HealthController } from './controllers/health.controller.js';
 import { SoftwareImageController } from './controllers/software-image.controller.js';
 import { SoftwareUpgradeController } from './controllers/software-upgrade.controller.js';
 import { SoftwareVersionController } from './controllers/software-version.controller.js';
+import { SettingsController } from './controllers/settings.controller.js';
 
 export class ItemSense {
 
@@ -41,6 +42,7 @@ export class ItemSense {
     this._wm.set('softwareImageController', new SoftwareImageController(this._itemsenseService));
     this._wm.set('softwareUpgradeController', new SoftwareUpgradeController(this._itemsenseService));
     this._wm.set('softwareVersionController', new SoftwareVersionController(this._itemsenseService));
+    this._wm.set('settingsController', new SettingsController(this._itemsenseService));
   }
 
   get itemsenseUrl() {
@@ -117,6 +119,10 @@ export class ItemSense {
 
   get softwareVersions() {
     return this._wm.get('softwareVersionController');
+  }
+
+  get settings() {
+    return this._wm.get('settingsController');
   }
 
 }
