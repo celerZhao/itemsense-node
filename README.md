@@ -37,16 +37,17 @@ itemsense.items.get().then(function(response) {
 2. <a href="authToken">Authorization Tokens</a>
 3. <a href="#users">Users</a>
 4. <a href="#zoneMaps">Zone Maps </a>
-5. <a href= "#currentZoneMap"> Current Zone Map </a>
+5. <a href= "#currentZoneMap">Current Zone Map </a>
 6. <a href= "#readerDefinitions">Reader Definitions </a>
-7. <a href ="#readerConfigurations"> Reader Configurations </a>
-8. <a href= "#jobs">Jobs </a>
+7. <a href ="#readerConfigurations">Reader Configurations </a>
+7. <a href ="#recipes">Recipes</a>
+8. <a href= "#jobs">Jobs</a>
 9. <a href= "#messageQueue">Message Queue </a>
 10. <a href= "#items">Items </a>
 11. <a href= "#health">Health </a>
-11. <a href= "#updates">Software Updates </a>
-11. <a href= "#settings">Settings </a>
-11. <a href= "#consumingQueues">Consuming Message Queues </a>
+12. <a href= "#updates">Software Updates </a>
+13. <a href= "#settings">Settings </a>
+14. <a href= "#consumingQueues">Consuming Message Queues </a>
 
 
 
@@ -186,7 +187,7 @@ itemsense.zoneMaps.clear(facilityName) // clears the current zone map value
 
 <div id="readerDefintions"></div>
 
-For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
+For information reader definitions, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
 
 ```javascript
 itemsense.readerDefinitions.get(readerDefinitionName) // returns a reader definition object based on the name
@@ -204,7 +205,7 @@ itemsense.readerDefinitions.delete(readerDefinitionName) //deletes a reader defi
 
 <div id="readerConfigurations"></div>
 
-For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
+For information about reader configurations, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
 
 ```javascript
 itemsense.readerConfigurations.get(readerConfigurationName) // returns a reader configuration object based on the name
@@ -216,6 +217,24 @@ itemsense.readerConfigurations.create(readerConfiguration) // creates a reader c
 itemsense.readerConfigurations.update(readerConfiguration) //updates a reader configuration
 
 itemsense.readerConfigurations.delete(readerConfigurationName) //deletes a reader configuration based on the name
+```
+
+### Recipes
+
+<div id="recipes"></div>
+
+For information about recipes, visit http://developer.impinj.com/itemsense/docs/api/#recipes
+
+```javascript
+itemsense.recipes.get(recipeName) // returns a recipe object based on the name
+
+itemsense.recipes.getAll() // returns all of the recipes for an itemsense instance
+
+itemsense.recipes.create(recipe) // creates a recipe
+
+itemsense.recipes.update(recipe) //updates a recipe
+
+itemsense.recipes.delete(recipeName) //deletes a recipe based on the name
 ```
 
 
