@@ -17,16 +17,16 @@ $ npm i itemsense-node --save
 ### Basic Usage
 
 ```javascript
-var ItemSense = require('itemsense-node');	 //Require itemsense-node package to get started
+var ItemSense = require('itemsense-node');	 // Require itemsense-node package to get started
 
-var itemsenseConfig = {};  //Create itemsense config json object, or read one in
+var itemsenseConfig = {};  // Create itemsense config json object, or read one in
 itemsenseConfig.username = 'admin';
 itemsenseConfig.password = 'admindefault';
 itemsenseConfig.itemsenseUrl = 'http://192.168.0.113/itemsense';
 
-var itemsense = new ItemSense(itemsenseConfig); //Instantiate new ItemSense instance
+var itemsense = new ItemSense(itemsenseConfig); // Instantiate new ItemSense instance
 
-//Run a sample request
+// Run a sample request
 itemsense.items.get().then(function(response) {
   console.log(response);
 });
@@ -37,16 +37,17 @@ itemsense.items.get().then(function(response) {
 2. <a href="authToken">Authorization Tokens</a>
 3. <a href="#users">Users</a>
 4. <a href="#zoneMaps">Zone Maps </a>
-5. <a href= "#currentZoneMap"> Current Zone Map </a>
+5. <a href= "#currentZoneMap">Current Zone Map </a>
 6. <a href= "#readerDefinitions">Reader Definitions </a>
-7. <a href ="#readerConfigurations"> Reader Configurations </a>
-8. <a href= "#jobs">Jobs </a>
+7. <a href ="#readerConfigurations">Reader Configurations </a>
+7. <a href ="#recipes">Recipes</a>
+8. <a href= "#jobs">Jobs</a>
 9. <a href= "#messageQueue">Message Queue </a>
 10. <a href= "#items">Items </a>
 11. <a href= "#health">Health </a>
-11. <a href= "#updates">Software Updates </a>
-11. <a href= "#settings">Settings </a>
-11. <a href= "#consumingQueues">Consuming Message Queues </a>
+12. <a href= "#updates">Software Updates </a>
+13. <a href= "#settings">Settings </a>
+14. <a href= "#consumingQueues">Consuming Message Queues </a>
 
 
 
@@ -107,9 +108,9 @@ itemsense.items.get().then(function(response) {
 For information about token authentication, visit http://developer.impinj.com/itemsense/docs/api/#authentication
 
 ```js
-itemsense.authentication.getToken(username) //creates a token for given user
+itemsense.authentication.getToken(username) // creates a token for given user
 
-itemsense.authentication.validateToken(id) //validates a specific token id
+itemsense.authentication.validateToken(id) // validates a specific token id
 
 itemsense.authentication.getAllTokens(username) // retrieves all tokens available for a specific user
 
@@ -132,7 +133,7 @@ itemsense.users.getAll() // returns all of the users for an itemsense instance
 
 itemsense.users.create(user) // creates a user
 
-itemsense.users.update(user) //updates a user
+itemsense.users.update(user) // updates a user
 
 ```
 ### Facilities
@@ -167,7 +168,7 @@ itemsense.zoneMaps.getAll() // returns all of the zone maps for an itemsense ins
 
 itemsense.zoneMaps.create(zoneMap) // creates a zone map
 
-itemsense.zoneMaps.update(zoneMap) //updates a zone map
+itemsense.zoneMaps.update(zoneMap) // updates a zone map
 ```
 
 ### Current Zone Map
@@ -186,7 +187,7 @@ itemsense.zoneMaps.clear(facilityName) // clears the current zone map value
 
 <div id="readerDefintions"></div>
 
-For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
+For information reader definitions, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
 
 ```javascript
 itemsense.readerDefinitions.get(readerDefinitionName) // returns a reader definition object based on the name
@@ -195,16 +196,16 @@ itemsense.readerDefinitions.getAll() // returns all of the reader definitions fo
 
 itemsense.readerDefinitions.create(readerDefinition) // creates a reader definition
 
-itemsense.readerDefinitions.update(readerDefinition) //updates a reader definition
+itemsense.readerDefinitions.update(readerDefinition) // updates a reader definition
 
-itemsense.readerDefinitions.delete(readerDefinitionName) //deletes a reader definition based on the name
+itemsense.readerDefinitions.delete(readerDefinitionName) // deletes a reader definition based on the name
 ```
 
 ### Reader Configurations
 
 <div id="readerConfigurations"></div>
 
-For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
+For information about reader configurations, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
 
 ```javascript
 itemsense.readerConfigurations.get(readerConfigurationName) // returns a reader configuration object based on the name
@@ -213,9 +214,27 @@ itemsense.readerConfigurations.getAll() // returns all of the reader configurati
 
 itemsense.readerConfigurations.create(readerConfiguration) // creates a reader configuration
 
-itemsense.readerConfigurations.update(readerConfiguration) //updates a reader configuration
+itemsense.readerConfigurations.update(readerConfiguration) // updates a reader configuration
 
-itemsense.readerConfigurations.delete(readerConfigurationName) //deletes a reader configuration based on the name
+itemsense.readerConfigurations.delete(readerConfigurationName) // deletes a reader configuration based on the name
+```
+
+### Recipes
+
+<div id="recipes"></div>
+
+For information about recipes, visit http://developer.impinj.com/itemsense/docs/api/#recipes
+
+```javascript
+itemsense.recipes.get(recipeName) // returns a recipe object based on the name
+
+itemsense.recipes.getAll() // returns all of the recipes for an itemsense instance
+
+itemsense.recipes.create(recipe) // creates a recipe
+
+itemsense.recipes.update(recipe) // updates a recipe
+
+itemsense.recipes.delete(recipeName) // deletes a recipe based on the name
 ```
 
 
@@ -232,7 +251,7 @@ itemsense.jobs.getAll() // returns all of the jobs for an itemsense instance
 
 itemsense.jobs.start(job) // starts a job
 
-itemsense.jobs.stop(jobId) //stops a job based on the id
+itemsense.jobs.stop(jobId) // stops a job based on the id
 
 itemsense.jobs.stats(jobId) // retrieves the job stats for a specific job
 
@@ -338,7 +357,7 @@ This object will emit `data` events as new messages are sent on the queue:
 ```javascript
 is.items.configureAndSubscribe(queueConfig).then(queue => {
   queue.on('data', data => console.log("A js object: ", data) );
-  //The messages contents are provided as a pre-parsed json object.
+  // The messages contents are provided as a pre-parsed json object.
 });
 ```
 
@@ -347,7 +366,7 @@ The queue object will also emit `status` events as it proceeds with configuring 
 ```javascript
 is.health.configureAndSubscribe(queueConfig).then(queue => {
   queue.on('status', msg => console.log(msg) );
-  //This will broadcast:
+  // This will broadcast:
   // 'connection': a connection has successfully been established to the AMQP server
   // 'queue': a queue has successfully been opened
   // 'listening': a subscription to the queue has successfully been established, we are now listening for data
