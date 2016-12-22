@@ -37,7 +37,7 @@ export class ItemSense {
     this._wm.set('userController', new UserController(this._itemsenseService));
     this._wm.set('zoneMapController', new ZoneMapController(this._itemsenseService));
     this._wm.set('itemController', new ItemController(this._itemsenseService));
-    this._wm.set('messageQueueController', new MessageQueueController(this._itemsenseService));
+    this._wm.set('messageQueueController', new MessageQueueController(this._itemsenseService, this));
     this._wm.set('healthController', new HealthController(this._itemsenseService));
     this._wm.set('softwareImageController', new SoftwareImageController(this._itemsenseService));
     this._wm.set('softwareUpgradeController', new SoftwareUpgradeController(this._itemsenseService));
