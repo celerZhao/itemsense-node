@@ -1,5 +1,8 @@
 # ItemSense Node Library Changelog
 
+## 1.4.1
+- Repaired `messageQueue.configure()` functionality
+
 ## 1.4.0
 - Added SNMP settings functionality
 
