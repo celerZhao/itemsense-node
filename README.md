@@ -36,7 +36,7 @@ itemsense.items.get().then(function(response) {
 1. <a href="#itemsenseConfig">ItemSense Configuration</a>
 2. <a href="authToken">Authorization Tokens</a>
 3. <a href="#users">Users</a>
-3. <a href="#facilities>Facilities</a>
+4. <a href="#facilities">Facilities</a>
 4. <a href="#zoneMaps">Zone Maps </a>
 5. <a href= "#currentZoneMap">Current Zone Map </a>
 6. <a href= "#readerDefinitions">Reader Definitions </a>
