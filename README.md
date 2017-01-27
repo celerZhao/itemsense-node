@@ -36,6 +36,7 @@ itemsense.items.get().then(function(response) {
 1. <a href="#itemsenseConfig">ItemSense Configuration</a>
 2. <a href="authToken">Authorization Tokens</a>
 3. <a href="#users">Users</a>
+4. <a href="#facilities">Facilities</a>
 4. <a href="#zoneMaps">Zone Maps </a>
 5. <a href= "#currentZoneMap">Current Zone Map </a>
 6. <a href= "#readerDefinitions">Reader Definitions </a>
@@ -147,11 +148,11 @@ itemsense.facilities.get(facilityName) // returns a facility object based on the
 
 itemsense.facilities.getAll() // returns all of the facilities for an itemsense instance
 
-itemsense.facilities.create(facility) // Create a new facility (but do not replace an existing one)
+itemsense.facilities.create(facilityName) // Create a new facility (but do not replace an existing one)
 
-itemsense.facilities.createOrReplace(facility) // Replace an existing facility in the store, or creates a new one
+itemsense.facilities.createOrReplace(facilityName) // Replace an existing facility in the store, or creates a new one
 
-itemsense.facilities.update(facility) // Aliases .createOrReplace()
+itemsense.facilities.update(facilityName) // Aliases .createOrReplace()
 ```
 
 
