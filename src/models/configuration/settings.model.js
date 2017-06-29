@@ -1,20 +1,11 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-export class Settings extends ItemSenseEndpoint{
-
+export class Settings extends ItemSenseEndpoint {
   constructor() {
     const path = 'configuration/v1/settings';
     const endpointInfo = { path };
     super(endpointInfo);
   }
-
 
   static get requestTypes() {
     return {
@@ -32,6 +23,4 @@ export class Settings extends ItemSenseEndpoint{
       }
     };
   }
-
-
 }

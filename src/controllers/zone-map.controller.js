@@ -1,11 +1,5 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
 
-
-'use strict';
-
-import { ZoneMap } from '../models/coordinator/zone-map.model.js';
+import { ZoneMap } from '../models/coordinator/zone-map.model';
 
 
 export class ZoneMapController {
@@ -16,7 +10,11 @@ export class ZoneMapController {
   }
 
   get(zoneMapName) {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.GET, null, zoneMapName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ZoneMap.requestTypes.GET,
+      null,
+      zoneMapName);
   }
 
   getAll() {
@@ -32,7 +30,12 @@ export class ZoneMapController {
   }
 
   delete(zoneMapName) {
-    return this.itemsenseService.makeRequest(this.model, ZoneMap.requestTypes.DELETE, null, zoneMapName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ZoneMap.requestTypes.DELETE,
+      null,
+      zoneMapName
+    );
   }
 
 }

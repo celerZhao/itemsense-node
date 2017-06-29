@@ -1,14 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-'use strict';
-
-import { CurrentZoneMap } from '../models/coordinator/current-zone-map.model.js';
-
-
+import { CurrentZoneMap } from '../models/coordinator/current-zone-map.model';
 
 export class CurrentZoneMapController {
 
@@ -18,15 +8,30 @@ export class CurrentZoneMapController {
   }
 
   get(facilityName) {
-    return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.GET, null, facilityName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      CurrentZoneMap.requestTypes.GET,
+      null,
+      facilityName
+    );
   }
 
   update(zoneMapName) {
-    return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.UPDATE,null, zoneMapName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      CurrentZoneMap.requestTypes.UPDATE,
+      null,
+      zoneMapName
+    );
   }
 
   clear(facilityName) {
-    return this.itemsenseService.makeRequest(this.model, CurrentZoneMap.requestTypes.DELETE, null, facilityName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      CurrentZoneMap.requestTypes.DELETE,
+      null,
+      facilityName
+    );
   }
 
 }

@@ -1,22 +1,12 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-
-
-export class SoftwareVersion extends ItemSenseEndpoint{
-
-
+export class SoftwareVersion extends ItemSenseEndpoint {
   constructor() {
-    let path = '/configuration/v1/softwareVersions';
-    let endpointInfo = {path: path };
+    const path = '/configuration/v1/softwareVersions';
+    const endpointInfo = { path };
     super(endpointInfo);
   }
+
   static get requestTypes() {
     return {
       CREATE: {
@@ -39,7 +29,6 @@ export class SoftwareVersion extends ItemSenseEndpoint{
         endpoint: 'updatePolicy',
         method: 'PUT'
       }
-
     };
   }
 }

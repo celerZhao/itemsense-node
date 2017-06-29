@@ -1,11 +1,11 @@
-import { MessageQueue} from './message-queue.service.js';
+import { MessageQueue } from './message-queue.service';
 
 export class AmqpHandler {
 
-	constructor(username, password) {
-  	this.username = username;
-  	this.password = password;
-	}
+  constructor(username, password) {
+    this.username = username;
+    this.password = password;
+  }
 
   subscribe(queueObj) {
     const { username, password } = this.itemsenseService._itemsenseConfig;
@@ -14,10 +14,10 @@ export class AmqpHandler {
   }
 
   configureAndSubscribe(queueConfig) {
-  	return new Promise((resolve) => {
-  		this.configureQueue(queueConfig).then((queueObj) => {
-	  		resolve(this.subscribe(queueObj));
-	  	});
-		});
+    return new Promise((resolve) => {
+      this.configureQueue(queueConfig).then((queueObj) => {
+        resolve(this.subscribe(queueObj));
+      });
+    });
   }
 }

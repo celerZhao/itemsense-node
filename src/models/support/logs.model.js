@@ -1,17 +1,17 @@
 import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-export class MessageQueue extends ItemSenseEndpoint {
+
+export class Logs extends ItemSenseEndpoint {
   constructor() {
-    const path = '/data/v1/items';
+    const path = '/support/v1/logs';
     const endpointInfo = { path };
     super(endpointInfo);
   }
 
   static get requestTypes() {
     return {
-      CONFIGURE: {
-        endpoint: 'queues',
-        method: 'PUT'
+      GET: {
+        method: 'GET'
       }
     };
   }

@@ -1,15 +1,15 @@
-exports.examples = function(expect) {
-  describe('.health', function() {
-    describe('.events(queryObject)', function() {
-      it('POSTs to /health/v1/events with queryObject and resolves to API response', function() {
-        const queryObject  = { fromTime: "2016-08-31T16:51:51.280Z", toTime: "2016-08-31T16:51:51.280Z", pageSize: 0 };
+exports.examples = (expect) => {
+  describe('.health', () => {
+    describe('.events(queryObject)', () => {
+      it('POSTs to /health/v1/events with queryObject and resolves to API response', function () {
+        const queryObject = { fromTime: '2016-08-31T16:51:51.280Z', toTime: '2016-08-31T16:51:51.280Z', pageSize: 0 };
         expect(this.subject.health.events(queryObject)).to.haveSent.and.resolveTo.request({
           method: 'post',
           path: '/itemsense/health/v1/events'
         });
       });
 
-      it('POSTs to /health/v1/events without queryObject and resolves to API response', function() {
+      it('POSTs to /health/v1/events without queryObject and resolves to API response', function () {
         expect(this.subject.health.events()).to.haveSent.and.resolveTo.request({
           method: 'post',
           path: '/itemsense/health/v1/events'
@@ -17,9 +17,9 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.configureQueue(queueObject)', function() {
-      it('PUTs to /health/v1/events/queues and resolves to API response', function() {
-        const queueObject = { readerId: "", type: "", code: "" };
+    describe('.configureQueue(queueObject)', () => {
+      it('PUTs to /health/v1/events/queues and resolves to API response', function () {
+        const queueObject = { readerId: '', type: '', code: '' };
         expect(this.subject.health.configureQueue(queueObject)).to.haveSent.and.resolveTo.request({
           method: 'put',
           path: '/itemsense/health/v1/events/queues'
@@ -27,9 +27,8 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.readers()', function() {
-      it('GETs to /health/v1/readers', function() {
-        const response = [{ readerId: "" }];
+    describe('.readers()', () => {
+      it('GETs to /health/v1/readers', function () {
         expect(this.subject.health.readers()).to.haveSent.and.resolveTo.request({
           method: 'get',
           path: '/itemsense/health/v1/readers'
@@ -37,20 +36,19 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.reader(readerId)', function() {
-      it('GETs to /health/v1/readers/readerId', function() {
-        const readerId = "127.0.0.1";
-
-        expect(this.subject.health.reader(readerId )).to.haveSent.and.resolveTo.request({
+    describe('.reader(readerId)', () => {
+      it('GETs to /health/v1/readers/readerId', function () {
+        const readerId = '127.0.0.1';
+        expect(this.subject.health.reader(readerId)).to.haveSent.and.resolveTo.request({
           method: 'get',
-          path: '/itemsense/health/v1/readers/' + readerId
+          path: `/itemsense/health/v1/readers/${readerId}`
         });
       });
     });
 
-    it('handles AMQP events', function() {
-      let AmqpHandler = require('../../dist/services/amqp-handler.service.js');
+    it('handles AMQP events', function () {
+      const AmqpHandler = require('../../dist/services/amqp-handler.service.js');
       expect(this.subject.health instanceof AmqpHandler.constructor).to.be.true;
     });
   });
-}
+};

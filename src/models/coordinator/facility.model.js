@@ -1,42 +1,30 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-export class Facility extends ItemSenseEndpoint{
-
+export class Facility extends ItemSenseEndpoint {
   constructor() {
-    let path = '/configuration/v1/facilities';
-    let endpointInfo = {path: path };
+    const path = '/configuration/v1/facilities';
+    const endpointInfo = { path };
     super(endpointInfo);
   }
 
-
   static get requestTypes() {
     return {
-      GET:{
-        endpoint:'show',
+      GET: {
+        endpoint: 'show',
         method: 'GET'
       },
-      CREATE:{
+      CREATE: {
         endpoint: 'create',
         method: 'POST'
       },
-      UPDATE:{
+      UPDATE: {
         endpoint: 'createOrReplace',
         method: 'PUT'
       },
-      DELETE:{
+      DELETE: {
         endpoint: 'destroy',
         method: 'DELETE'
       }
     };
   }
-
-
-
 }

@@ -1,8 +1,8 @@
-exports.examples = function(expect) {
-	describe('.currentZoneMaps', function() {
-		describe('.get(facilityName)', function() {
-      it('GETs to /control/v1/currentZoneMap/show/{facilityName}', function() {
-        const facilityName = 'sampleFacility'
+exports.examples = (expect) => {
+  describe('.currentZoneMaps', () => {
+    describe('.get(facilityName)', () => {
+      it('GETs to /control/v1/currentZoneMap/show/{facilityName}', function () {
+        const facilityName = 'sampleFacility';
         return expect(this.subject.currentZoneMap.get(facilityName)).to.wrap.request({
           method: 'get',
           path: `/itemsense/control/v1/currentZoneMap/show/${facilityName}`
@@ -10,9 +10,9 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.update(zoneMapName)', function() {
-      it('POSTs to /control/v1/currentZoneMap/select/{zoneMapName}', function() {
-        const zoneMapName = 'sampleZoneMap'
+    describe('.update(zoneMapName)', () => {
+      it('POSTs to /control/v1/currentZoneMap/select/{zoneMapName}', function () {
+        const zoneMapName = 'sampleZoneMap';
         return expect(this.subject.currentZoneMap.update(zoneMapName)).to.wrap.request({
           method: 'post',
           path: `/itemsense/control/v1/currentZoneMap/select/${zoneMapName}`
@@ -20,14 +20,14 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.clear(facilityName)', function() {
-      it('DELETEs to /control/v1/currentZoneMap/clear/{facilityName}', function() {
-        const facilityName = 'sampleFacility'
+    describe('.clear(facilityName)', () => {
+      it('DELETEs to /control/v1/currentZoneMap/clear/{facilityName}', function () {
+        const facilityName = 'sampleFacility';
         return expect(this.subject.currentZoneMap.clear(facilityName)).to.wrap.request({
           method: 'delete',
           path: `/itemsense/control/v1/currentZoneMap/clear/${facilityName}`
         });
       });
     });
-	});
-}
+  });
+};

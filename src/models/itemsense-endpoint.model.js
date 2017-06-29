@@ -1,16 +1,8 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
-
-'use strict';
-
 import querystring from 'querystring';
 
-export class ItemSenseEndpoint{
-
+export class ItemSenseEndpoint {
   constructor(entityInfo) {
     this._path = entityInfo.path;
-
   }
 
   get path() {
@@ -23,18 +15,17 @@ export class ItemSenseEndpoint{
 
   getRequestUrl(requestType, id, queryParams) {
     let url = this._path;
-    if(requestType.endpoint) {
-      url += '/' + requestType.endpoint;
+    if (requestType.endpoint) {
+      url += `/${requestType.endpoint}`;
     }
 
-    if(id) {
-      url += '/' + id;
+    if (id) {
+      url += `/${id}`;
     }
 
-    if(queryParams) {
-      url += '?' + querystring.stringify(queryParams);
+    if (queryParams) {
+      url += `?${querystring.stringify(queryParams)}`;
     }
     return url;
   }
-
 }

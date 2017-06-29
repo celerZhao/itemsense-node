@@ -1,17 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-
-'use strict';
-
-import { Recipe } from '../models/coordinator/recipe.model.js';
-
+import { Recipe } from '../models/coordinator/recipe.model';
 
 export class RecipeController {
 
@@ -37,7 +24,12 @@ export class RecipeController {
   }
 
   delete(recipeName) {
-    return this.itemsenseService.makeRequest(this.model, Recipe.requestTypes.DELETE, null, recipeName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      Recipe.requestTypes.DELETE,
+      null,
+      recipeName
+    );
   }
 
 }

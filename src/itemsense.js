@@ -1,24 +1,24 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
-
-import { ItemsenseApiService } from './services/itemsense-api.service.js';
-import { AuthenticationController } from './controllers/authentication.controller.js';
-import { CurrentZoneMapController } from './controllers/current-zone-map.controller.js';
-import { FacilityController } from './controllers/facility.controller.js';
-import { JobController } from './controllers/job.controller.js';
-import { ReaderConfigurationController } from './controllers/reader-configuration.controller.js';
-import { ReaderDefinitionController } from './controllers/reader-definition.controller.js';
-import { RecipeController } from './controllers/recipe.controller.js';
-import { UserController } from './controllers/user.controller.js';
-import { ZoneMapController } from './controllers/zone-map.controller.js';
-import { ItemController } from './controllers/item.controller.js';
-import { MessageQueueController } from './controllers/message-queue.controller.js';
-import { HealthController } from './controllers/health.controller.js';
-import { SoftwareImageController } from './controllers/software-image.controller.js';
-import { SoftwareUpgradeController } from './controllers/software-upgrade.controller.js';
-import { SoftwareVersionController } from './controllers/software-version.controller.js';
-import { SettingsController } from './controllers/settings.controller.js';
+import { ItemsenseApiService } from './services/itemsense-api.service';
+import { AuthenticationController } from './controllers/authentication.controller';
+import { CurrentZoneMapController } from './controllers/current-zone-map.controller';
+import { FacilityController } from './controllers/facility.controller';
+import { JobController } from './controllers/job.controller';
+import { ReaderConfigurationController } from './controllers/reader-configuration.controller';
+import { ReaderDefinitionController } from './controllers/reader-definition.controller';
+import { RecipeController } from './controllers/recipe.controller';
+import { UserController } from './controllers/user.controller';
+import { ZoneMapController } from './controllers/zone-map.controller';
+import { ItemController } from './controllers/item.controller';
+import { MessageQueueController } from './controllers/message-queue.controller';
+import { HealthController } from './controllers/health.controller';
+import { SoftwareImageController } from './controllers/software-image.controller';
+import { SoftwareUpgradeController } from './controllers/software-upgrade.controller';
+import { SoftwareVersionController } from './controllers/software-version.controller';
+import { SettingsController } from './controllers/settings.controller';
+import { AntennaConfigurationsController } from './controllers/antenna-configuration.controller';
+import { ThresholdsController } from './controllers/thresholds.controller';
+import { ConfigurationController } from './controllers/support/configuration.controller';
+import { LogsController } from './controllers/support/logs.controller';
 
 export class ItemSense {
 
@@ -26,11 +26,11 @@ export class ItemSense {
     this._itemsenseConfig = itemSenseConfig;
     this._itemsenseService = new ItemsenseApiService(this);
     this._wm = new Map();
-    //controllers for client
+    // controllers for client
     this._wm.set('authenticationController', new AuthenticationController(this._itemsenseService));
     this._wm.set('currentZoneMapController', new CurrentZoneMapController(this._itemsenseService));
     this._wm.set('facilityController', new FacilityController(this._itemsenseService));
-    this._wm.set('jobController',  new JobController(this._itemsenseService));
+    this._wm.set('jobController', new JobController(this._itemsenseService));
     this._wm.set('readerConfigurationController', new ReaderConfigurationController(this._itemsenseService));
     this._wm.set('readerDefinitionController', new ReaderDefinitionController(this._itemsenseService));
     this._wm.set('recipeController', new RecipeController(this._itemsenseService));
@@ -43,23 +43,24 @@ export class ItemSense {
     this._wm.set('softwareUpgradeController', new SoftwareUpgradeController(this._itemsenseService));
     this._wm.set('softwareVersionController', new SoftwareVersionController(this._itemsenseService));
     this._wm.set('settingsController', new SettingsController(this._itemsenseService));
+    this._wm.set('antennaConfigurationsController', new AntennaConfigurationsController(this._itemsenseService));
+    this._wm.set('thresholdsController', new ThresholdsController(this._itemsenseService));
+    this._wm.set('configurationController', new ConfigurationController(this._itemsenseService));
+    this._wm.set('logsController', new LogsController(this._itemsenseService));
   }
 
   get itemsenseUrl() {
     return this._itemsenseConfig.itemsenseUrl;
   }
 
-
   get authorizationHeader() {
-    let { username, password, authToken } = this._itemsenseConfig;
+    const { username, password, authToken } = this._itemsenseConfig;
 
     if (authToken) {
-      return `Token { "token": "${authToken }" }`;
-    } else {
-      return 'Basic ' + new Buffer(username + ':' + password, 'utf8').toString('base64');
+      return `Token { "token": "${authToken}" }`;
     }
+    return `Basic ${new Buffer(`${username}:${password}`, 'utf8').toString('base64')}`;
   }
-
 
   get authentication() {
     return this._wm.get('authenticationController');
@@ -125,6 +126,21 @@ export class ItemSense {
     return this._wm.get('settingsController');
   }
 
+  get antennaConfigurations() {
+    return this._wm.get('antennaConfigurationsController');
+  }
+
+  get thresholds() {
+    return this._wm.get('thresholdsController');
+  }
+
+  get configuration() {
+    return this._wm.get('configurationController');
+  }
+
+  get logs() {
+    return this._wm.get('logsController');
+  }
 }
 
 module.exports = ItemSense;

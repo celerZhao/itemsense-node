@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "it": false,
+    "describe": false,
+    "before": false 
+  },
+  "rules": {
+    "react/jsx-quotes": 0,
+    "jsx-quotes": [2, "prefer-double"],
+    "no-console": 0,
+    "comma-dangle": "off",
+    "global-require": "off",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off"
+  }
+}

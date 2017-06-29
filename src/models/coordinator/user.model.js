@@ -1,48 +1,35 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
-/**
- * Created by jcombopi on 2/25/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-export class User extends ItemSenseEndpoint{
-
+export class User extends ItemSenseEndpoint {
   constructor() {
-    let path = '/configuration/v1/users';
-    let endpointInfo = { path: path };
-
-
+    const path = '/configuration/v1/users';
+    const endpointInfo = { path };
     super(endpointInfo);
-
   }
 
   static get roles() {
-    return ['Admin','ConfigManager', 'DataManager', 'JobRunner'];
+    return ['Admin', 'ConfigManager', 'DataManager', 'JobRunner'];
   }
 
   static get requestTypes() {
     return {
-      GET:{
-        endpoint:'show',
+      GET: {
+        endpoint: 'show',
         method: 'GET'
       },
       GET_CURRENT: {
         endpoint: 'currentUser',
         method: 'GET'
       },
-      CREATE:{
+      CREATE: {
         endpoint: 'create',
         method: 'POST'
       },
-      UPDATE:{
+      UPDATE: {
         endpoint: 'createOrReplace',
         method: 'PUT'
       },
-      DELETE:{
+      DELETE: {
         endpoint: 'destroy',
         method: 'DELETE'
       },
@@ -52,5 +39,4 @@ export class User extends ItemSenseEndpoint{
       }
     };
   }
-
 }

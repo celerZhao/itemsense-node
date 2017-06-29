@@ -1,37 +1,27 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-
-
-export class SoftwareUpgrade extends ItemSenseEndpoint{
-
-
+export class SoftwareUpgrade extends ItemSenseEndpoint {
   constructor() {
-    let path = '/control/v1/upgrades';
-    let endpointInfo = {path: path };
+    const path = '/control/v1/upgrades';
+    const endpointInfo = { path };
     super(endpointInfo);
   }
+
   static get requestTypes() {
     return {
-      GET:{
-        endpoint:'show',
+      GET: {
+        endpoint: 'show',
         method: 'GET'
       },
-      START:{
-        endpoint:'start',
+      START: {
+        endpoint: 'start',
         method: 'POST'
       },
-      STOP:{
-        endpoint:'stop',
+      STOP: {
+        endpoint: 'stop',
         method: 'POST'
       },
-      TRIGGER:{
+      TRIGGER: {
         endpoint: 'trigger/direct/devices',
         method: 'POST'
       }

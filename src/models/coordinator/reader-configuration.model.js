@@ -1,37 +1,27 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
-
-'use strict';
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
 export class ReaderConfiguration extends ItemSenseEndpoint {
-
   constructor() {
-    let path = '/configuration/v1/readerConfigurations';
-    let endpointInfo = { path: path };
-
+    const path = '/configuration/v1/readerConfigurations';
+    const endpointInfo = { path };
     super(endpointInfo);
-
   }
 
   static get requestTypes() {
     return {
-      GET:{
-        endpoint:'show',
+      GET: {
+        endpoint: 'show',
         method: 'GET'
       },
-      CREATE:{
+      CREATE: {
         endpoint: 'create',
         method: 'POST'
       },
-      UPDATE:{
+      UPDATE: {
         endpoint: 'createOrReplace',
         method: 'PUT'
       },
-      DELETE:{
+      DELETE: {
         endpoint: 'destroy',
         method: 'DELETE'
       }
@@ -61,10 +51,10 @@ export class ReaderConfiguration extends ItemSenseEndpoint {
   }
 
   static get operations() {
-   return {
-     NORMAL: 'NORMAL',
-     DO_NOTHING: 'DO_NOTHING'
-   };
+    return {
+      NORMAL: 'NORMAL',
+      DO_NOTHING: 'DO_NOTHING'
+    };
   }
 }
 

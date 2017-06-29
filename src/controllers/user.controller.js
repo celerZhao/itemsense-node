@@ -1,16 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-
-'use strict';
-
-import { User } from '../models/coordinator/user.model.js';
+import { User } from '../models/coordinator/user.model';
 
 
 export class UserController {
@@ -21,11 +9,10 @@ export class UserController {
   }
 
   get(username) {
-    if(username) {
+    if (username) {
       return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET, null, username);
-    } else {
-      return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET_CURRENT);
     }
+    return this.itemsenseService.makeRequest(this.model, User.requestTypes.GET_CURRENT);
   }
 
   getAll() {
