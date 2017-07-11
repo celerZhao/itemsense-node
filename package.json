@@ -1,6 +1,6 @@
 {
   "name": "itemsense-node",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "An API wrapper for Impinj's ItemSense",
   "homepage": "http://developer.impinj.com",
   "repository": "https://github.com/impinj/itemsense-node",
@@ -10,6 +10,7 @@
   "main": "dist/itemsense.js",
   "dependencies": {
     "amqp": "^0.2.6",
+    "buffer-concat": "^1.0.0",
     "querystring": "^0.2.0",
     "request": "^2.69.0",
     "request-promise": "^2.0.1"
@@ -25,9 +26,11 @@
     "chai-as-promised": "^5.3.0",
     "cssnano": "^3.0.3",
     "del": "^2.2.2",
-    "eslint": "^1.5.0",
-    "eslint-config-airbnb": "0.0.8",
-    "eslint-plugin-react": "^3.4.2",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
     "front-matter": "^1.0.0",
     "gaze": "^0.5.1",
     "gulp": "~3.9.0",
@@ -51,6 +54,7 @@
     "lint": "eslint src docs/js tools",
     "test": "mocha test --compilers js:babel/register",
     "build": "babel-node --eval \"require('./tools/build')().catch(err => console.error(err.stack))\"",
-    "start": "babel-node tools/start"
+    "start": "babel-node tools/start",
+    "linter": "node_modules/.bin/eslint src test; exit 0;"
   }
 }

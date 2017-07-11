@@ -1,20 +1,11 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-export class Authentication extends ItemSenseEndpoint{
-
+export class Authentication extends ItemSenseEndpoint {
   constructor() {
-    let path = '/authentication/v1';
-    let endpointInfo = { path: path };
+    const path = '/authentication/v1';
+    const endpointInfo = { path };
     super(endpointInfo);
   }
-
 
   static get requestTypes() {
     return {
@@ -26,25 +17,22 @@ export class Authentication extends ItemSenseEndpoint{
         endpoint: 'token',
         method: 'GET'
       },
-      VALIDATE:{
+      VALIDATE: {
         endpoint: 'validateToken',
         method: 'GET'
       },
-      LIST:{
+      LIST: {
         endpoint: 'listTokens',
         method: 'GET'
       },
-      REVOKE:{
+      REVOKE: {
         endpoint: 'revokeToken',
         method: 'PUT'
       },
-      REVOKE_ALL:{
+      REVOKE_ALL: {
         endpoint: 'revokeTokens',
         method: 'PUT'
       }
     };
   }
-
-
-
 }

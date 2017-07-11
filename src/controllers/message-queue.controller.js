@@ -1,12 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-
-'use strict';
-
-import { MessageQueue } from '../models/data/message-queue.model.js';
-
-
+import { MessageQueue } from '../models/data/message-queue.model';
 
 export class MessageQueueController {
 

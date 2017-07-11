@@ -1,10 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-'use strict';
-
-import { Facility } from '../models/coordinator/facility.model.js';
-
+import { Facility } from '../models/coordinator/facility.model';
 
 export class FacilityController {
 
@@ -14,7 +8,12 @@ export class FacilityController {
   }
 
   get(facilityName) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.GET, null, facilityName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      Facility.requestTypes.GET,
+      null,
+      facilityName
+    );
   }
 
   getAll() {
@@ -26,7 +25,7 @@ export class FacilityController {
   }
 
   createOrReplace(name) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, {name});
+    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.UPDATE, { name });
   }
 
   update(name) {
@@ -34,7 +33,11 @@ export class FacilityController {
   }
 
   delete(facilityName) {
-    return this.itemsenseService.makeRequest(this.model, Facility.requestTypes.DELETE, null, facilityName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      Facility.requestTypes.DELETE,
+      null,
+      facilityName
+    );
   }
-
 }

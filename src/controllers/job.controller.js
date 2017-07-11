@@ -1,20 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-
-'use strict';
-
-import { Job } from '../models/coordinator/job.model.js';
-
+import { Job } from '../models/coordinator/job.model';
 
 export class JobController {
 

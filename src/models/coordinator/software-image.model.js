@@ -1,26 +1,15 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-'use strict';
-
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-
-
-export class SoftwareImage extends ItemSenseEndpoint{
-
-
+export class SoftwareImage extends ItemSenseEndpoint {
   constructor() {
-    let path = '/configuration/v1/images';
-    let endpointInfo = {path: path };
+    const path = '/configuration/v1/images';
+    const endpointInfo = { path };
     super(endpointInfo);
   }
+
   static get requestTypes() {
     return {
-      GET:{
-        endpoint:'',
+      GET: {
         method: 'GET'
       }
     };

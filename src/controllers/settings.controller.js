@@ -1,7 +1,4 @@
-'use strict';
-
-import { Settings } from '../models/configuration/settings.model.js';
-
+import { Settings } from '../models/configuration/settings.model';
 
 export class SettingsController {
 
@@ -15,11 +12,15 @@ export class SettingsController {
   }
 
   configure(settingsOptions) {
-  	return this.itemsenseService.makeRequest(this.model, Settings.requestTypes.CONFIGURE, settingsOptions);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      Settings.requestTypes.CONFIGURE,
+      settingsOptions
+    );
   }
 
-   disable() {
-  	return this.itemsenseService.makeRequest(this.model, Settings.requestTypes.DISABLE);
+  disable() {
+    return this.itemsenseService.makeRequest(this.model, Settings.requestTypes.DISABLE);
   }
 
 }

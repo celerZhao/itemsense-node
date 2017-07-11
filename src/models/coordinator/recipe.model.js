@@ -1,21 +1,11 @@
-/**
- * Created by jcombopi on 2/25/16.
- */
-
-'use strict';
-
-import { ItemSenseEndpoint } from '../itemsense-endpoint.model.js';
-
-
+import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
 export class Recipe extends ItemSenseEndpoint {
 
   constructor() {
-    let path = '/configuration/v1/recipes';
-    let endpointInfo = { path: path };
-
+    const path = '/configuration/v1/recipes';
+    const endpointInfo = { path };
     super(endpointInfo);
-
   }
 
   static get requestTypes() {

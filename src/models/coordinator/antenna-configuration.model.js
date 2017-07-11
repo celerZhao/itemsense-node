@@ -1,8 +1,8 @@
 import { ItemSenseEndpoint } from '../itemsense-endpoint.model';
 
-export class ZoneMap extends ItemSenseEndpoint {
+export class AntennaConfigurations extends ItemSenseEndpoint {
   constructor() {
-    const path = '/configuration/v1/zoneMaps';
+    const path = '/configuration/v1/thresholds/antennaConfigurations';
     const endpointInfo = { path };
     super(endpointInfo);
   }
@@ -10,19 +10,18 @@ export class ZoneMap extends ItemSenseEndpoint {
   static get requestTypes() {
     return {
       GET: {
-        endpoint: 'show',
         method: 'GET'
       },
-      CREATE: {
-        endpoint: 'create',
+
+      POST: {
         method: 'POST'
       },
-      UPDATE: {
-        endpoint: 'createOrReplace',
+
+      PUT: {
         method: 'PUT'
       },
+
       DELETE: {
-        endpoint: 'destroy',
         method: 'DELETE'
       }
     };

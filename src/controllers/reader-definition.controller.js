@@ -1,14 +1,4 @@
-/**
- * Created by jcombopi on 2/26/16.
- */
-/**
- * Created by jcombopi on 2/26/16.
- */
-
-'use strict';
-
-import { ReaderDefinition }  from '../models/coordinator/reader-definition.model.js';
-
+import { ReaderDefinition } from '../models/coordinator/reader-definition.model';
 
 export class ReaderDefinitionController {
 
@@ -18,23 +8,77 @@ export class ReaderDefinitionController {
   }
 
   get(readerDefinitionName) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET, null, readerDefinitionName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.SHOW,
+      null,
+      readerDefinitionName
+    );
   }
 
   getAll() {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.GET);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.SHOW
+    );
   }
 
   create(readerDefinition) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.CREATE, readerDefinition);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.CREATE,
+      readerDefinition
+    );
   }
 
   update(readerDefinition) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.UPDATE, readerDefinition);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.UPDATE,
+      readerDefinition
+    );
   }
 
   delete(readerDefinitionName) {
-    return this.itemsenseService.makeRequest(this.model, ReaderDefinition.requestTypes.DELETE, null, readerDefinitionName);
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.DELETE,
+      null,
+      readerDefinitionName
+    );
   }
 
+  groups() {
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.GROUPS
+    );
+  }
+
+  getAllFeatures(readerDefinitionName) {
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.GET,
+      null,
+      `${readerDefinitionName}/featureChanges`
+    );
+  }
+
+  setFeature(readerDefinitionName, targetState) {
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.POST,
+      targetState,
+      `${readerDefinitionName}/featureChanges`
+    );
+  }
+
+  getFeature(readerDefinitionName, featureName) {
+    return this.itemsenseService.makeRequest(
+      this.model,
+      ReaderDefinition.requestTypes.GET,
+      null,
+      `${readerDefinitionName}/featureChanges/${featureName}`
+    );
+  }
 }

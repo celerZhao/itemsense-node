@@ -1,8 +1,8 @@
-exports.examples = function(expect) {
-	describe('.users', function() {
-    describe('.create(userParams)', function() {
-      it('POSTs to /configuration/v1/users/create with given user object and resolves to API response', function() {
-        const user = { name: 'test1', roles: [ 'Admin' ] };
+exports.examples = (expect) => {
+  describe('.users', () => {
+    describe('.create(userParams)', () => {
+      it('POSTs to /configuration/v1/users/create with given user object and resolves to API response', function () {
+        const user = { name: 'test1', roles: ['Admin'] };
         const userParams = { name: 'test1', password: 'password', roles: ['admin'] };
 
         return expect(this.subject.users.create(userParams)).to.haveSent.and.resolveTo.request({
@@ -14,8 +14,8 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.update(userParams)', function() {
-      it('PUTs to /configuration/v1/users/createOrReplace with userParams as body', function() {
+    describe('.update(userParams)', () => {
+      it('PUTs to /configuration/v1/users/createOrReplace with userParams as body', function () {
         const userParams = { name: 'test1', password: 'password', roles: ['admin'] };
 
         return expect(this.subject.users.update(userParams)).to.wrap.request({
@@ -26,9 +26,9 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.delete(username)', function() {
-      it('DELETEs to /configuration/v1/users/destroy/{username}', function() {
-        const username = "impinjUser"
+    describe('.delete(username)', () => {
+      it('DELETEs to /configuration/v1/users/destroy/{username}', function () {
+        const username = 'impinjUser';
         return expect(this.subject.users.delete(username)).to.wrap.request({
           method: 'delete',
           path: `/itemsense/configuration/v1/users/destroy/${username}`
@@ -36,9 +36,9 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.get(username)', function() {
-      it('GETs to /configuration/v1/users/show/{username}', function() {
-        const username = "impinjUser"
+    describe('.get(username)', () => {
+      it('GETs to /configuration/v1/users/show/{username}', function () {
+        const username = 'impinjUser';
         return expect(this.subject.users.get(username)).to.wrap.request({
           method: 'get',
           path: `/itemsense/configuration/v1/users/show/${username}`
@@ -46,31 +46,31 @@ exports.examples = function(expect) {
       });
     });
 
-    describe('.get()', function() {
-      it('GETs to /configuration/v1/users/currentUser', function() {
+    describe('.get()', () => {
+      it('GETs to /configuration/v1/users/currentUser', function () {
         return expect(this.subject.users.get()).to.wrap.request({
           method: 'get',
-          path: `/itemsense/configuration/v1/users/currentUser`
+          path: '/itemsense/configuration/v1/users/currentUser'
         });
       });
     });
 
-    describe('.getAll()', function() {
-      it('GETs to /configuration/v1/users/show', function() {
+    describe('.getAll()', () => {
+      it('GETs to /configuration/v1/users/show', function () {
         return expect(this.subject.users.getAll()).to.wrap.request({
           method: 'get',
-          path: `/itemsense/configuration/v1/users/show`
+          path: '/itemsense/configuration/v1/users/show'
         });
       });
     });
 
-    describe('.getRoles()', function() {
-      it('GETs to /configuration/v1/users/roles/show', function() {
+    describe('.getRoles()', () => {
+      it('GETs to /configuration/v1/users/roles/show', function () {
         return expect(this.subject.users.getRoles()).to.wrap.request({
           method: 'get',
-          path: `/itemsense/configuration/v1/users/roles/show`
+          path: '/itemsense/configuration/v1/users/roles/show'
         });
       });
     });
   });
-}
+};
