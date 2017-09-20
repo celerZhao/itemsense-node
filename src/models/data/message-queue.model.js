@@ -11,8 +11,12 @@ export class MessageQueue extends ItemSenseEndpoint {
     return {
       CONFIGURE: {
         endpoint: 'queues',
-        method: 'PUT'
-      }
+        method: 'PUT',
+      },
+      CONFIGURETHRESHOLD: {
+        endpoint: 'queues/threshold',
+        method: 'PUT',
+      },
     };
   }
 }

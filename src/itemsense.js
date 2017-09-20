@@ -19,6 +19,7 @@ import { AntennaConfigurationsController } from './controllers/antenna-configura
 import { ThresholdsController } from './controllers/thresholds.controller';
 import { ConfigurationController } from './controllers/support/configuration.controller';
 import { LogsController } from './controllers/support/logs.controller';
+import { TransitionController } from './controllers/transition.controller';
 
 export class ItemSense {
 
@@ -47,6 +48,7 @@ export class ItemSense {
     this._wm.set('thresholdsController', new ThresholdsController(this._itemsenseService));
     this._wm.set('configurationController', new ConfigurationController(this._itemsenseService));
     this._wm.set('logsController', new LogsController(this._itemsenseService));
+    this._wm.set('transitionController', new TransitionController(this._itemsenseService));
   }
 
   get itemsenseUrl() {
@@ -140,6 +142,10 @@ export class ItemSense {
 
   get logs() {
     return this._wm.get('logsController');
+  }
+
+  get transitions() {
+    return this._wm.get('transitionController');
   }
 }
 
