@@ -1,17 +1,39 @@
 {
-  "extends": "airbnb",
-  "globals": {
-    "it": false,
-    "describe": false,
-    "before": false 
+  "extends": "airbnb-base",
+  "ecmaFeatures": {
+   "modules": true
   },
   "rules": {
-    "react/jsx-quotes": 0,
-    "jsx-quotes": [2, "prefer-double"],
-    "no-console": 0,
-    "comma-dangle": "off",
-    "global-require": "off",
-    "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off"
+    "indent": ["error", 2],
+    "no-tabs": 0,
+   "no-undef": 0,
+   "comma-dangle": ["error", {
+     "arrays": "always-multiline",
+     "objects": "always-multiline",
+     "imports": "always-multiline",
+     "exports": "always-multiline",
+     "functions": "ignore"
+   }],
+   "no-param-reassign": ["error", {
+     "props": true,
+     "ignorePropertyModificationsFor": [
+       "$scope", "flowFactoryProvider", "$httpProvider",
+       "$rootScope", "$http", "$sessionStorage",
+       "$ctrl", "acc", "$window"
+     ]
+   }],
+   "max-len": ["error", {
+     "ignoreComments": true,
+     "code": 100,
+     "tabWidth": 2
+   }],
+   "no-unused-expressions": ["error", {
+     "allowTernary": true
+   }],
+   "no-use-before-define": ["error", {
+     "functions": false,
+     "classes": true,
+     "variables": true
+   }]
   }
-}
+ }
