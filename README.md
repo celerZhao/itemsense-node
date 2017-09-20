@@ -346,7 +346,7 @@ itemsense.items.configureQueue(queueConfig) // Configure a queue to receive item
 
 <div id="transitions"></div>
 
-For information about items, visit http://developer.impinj.com/itemsense/docs/api/#items
+For information about transitions, visit http://developer.impinj.com/itemsense/docs/api/#items
 
 ```javascript
 itemsense.transitions.get(queryParams) // Retrieves transition events from ItemSense, takes in an optional query params object

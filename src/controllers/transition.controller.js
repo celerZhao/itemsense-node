@@ -25,7 +25,7 @@ export class TransitionController extends AmqpHandler {
   configureQueue(messageQueue) {
     return this.itemsenseService.makeRequest(
       this.queueModel,
-      MessageQueue.requestTypes.CONFIGURETHRESHOLD,
+      MessageQueue.requestTypes.CONFIGURE_THRESHOLD,
       messageQueue || {}
     );
   }

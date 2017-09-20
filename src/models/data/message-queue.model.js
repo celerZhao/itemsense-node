@@ -13,7 +13,7 @@ export class MessageQueue extends ItemSenseEndpoint {
         endpoint: 'queues',
         method: 'PUT',
       },
-      CONFIGURETHRESHOLD: {
+      CONFIGURE_THRESHOLD: {
         endpoint: 'queues/threshold',
         method: 'PUT',
       },
