@@ -335,11 +335,23 @@ itemsense.messageQueue.configure(messageQueue) // configures the message queue
 For information about items, visit http://developer.impinj.com/itemsense/docs/api/#items
 
 ```javascript
-itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query param object
+itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query params object
 
-itemsense.items.getHistory(queryParams) // Retrieves item history records from ItemSense, takes in an optional query param object
+itemsense.items.getHistory(queryParams) // Retrieves item history records from ItemSense, takes in an optional query params object
 
 itemsense.items.configureQueue(queueConfig) // Configure a queue to receive item event messages with the given filter
+```
+
+### Transitions
+
+<div id="transitions"></div>
+
+For information about transitions, visit http://developer.impinj.com/itemsense/docs/api/#items
+
+```javascript
+itemsense.transitions.get(queryParams) // Retrieves transition events from ItemSense, takes in an optional query params object
+
+itemsense.transitions.configureQueue(queueConfig) // Configure a queue to receive transition event messages which match the given filter
 ```
 
 ### Health
@@ -431,7 +443,7 @@ For a description of the `writeLocation` parameter, see the [Configuration](#con
 
 <div id="consumingQueues"></div>
 
-For resources that expose message queues (`health` and `items`), we provide a `configureAndSubscribe` helper to facilitate consuming new messages. Call it just like you would the `configureQueue` method. It returns a promise that resolves to an event emitter.
+For resources that expose message queues (`health`, `transitions` and `items`), we provide a `configureAndSubscribe` helper to facilitate consuming new messages. Call it just like you would the `configureQueue` method. It returns a promise that resolves to an event emitter.
 
 This object will emit `data` events as new messages are sent on the queue:
 

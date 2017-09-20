@@ -1,14 +1,13 @@
-import { Item } from '../models/data/item.model';
+import { Transition } from '../models/data/transition.model';
 import { MessageQueue } from '../models/data/message-queue.model';
 import { AmqpHandler } from '../services/amqp-handler.service';
 
-export class ItemController extends AmqpHandler {
-
+export class TransitionController extends AmqpHandler {
   constructor(itemsenseService) {
     const { username, password } = itemsenseService._itemsenseConfig;
     super(username, password);
 
-    this.model = new Item();
+    this.model = new Transition();
     this.queueModel = new MessageQueue();
     this.itemsenseService = itemsenseService;
   }
@@ -16,17 +15,7 @@ export class ItemController extends AmqpHandler {
   get(queryParams) {
     return this.itemsenseService.makeRequest(
       this.model,
-      Item.requestTypes.GET,
-      null,
-      null,
-      queryParams
-    );
-  }
-
-  getHistory(queryParams) {
-    return this.itemsenseService.makeRequest(
-      this.model,
-      Item.requestTypes.HISTORY,
+      Transition.requestTypes.GET,
       null,
       null,
       queryParams
@@ -36,9 +25,8 @@ export class ItemController extends AmqpHandler {
   configureQueue(messageQueue) {
     return this.itemsenseService.makeRequest(
       this.queueModel,
-      MessageQueue.requestTypes.CONFIGURE,
+      MessageQueue.requestTypes.CONFIGURE_THRESHOLD,
       messageQueue || {}
     );
   }
-
 }
