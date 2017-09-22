@@ -1,7 +1,25 @@
 import request from 'request-promise';
 import http from 'http';
 import URL from 'url';
-import bufConcat from 'buffer-concat';
+
+function bufferConcat(list, length) {
+  let bufLength = length;
+  if (!Array.isArray(list)) {
+    throw new Error('Usage: bufferConcat(list, [length])');
+  }
+  if (list.length === 0) return new Buffer(0);
+  if (list.length === 1) return list[0];
+
+  if (typeof length !== 'number') bufLength = list.reduce((acc, ele) => acc + ele.length, 0);
+
+  const buffer = new Buffer(bufLength);
+
+  list.reduce((pos, chunk) => {
+    chunk.copy(buffer, pos);
+    return pos + chunk.length;
+  }, 0);
+  return buffer;
+}
 
 export class ItemsenseApiService {
 
@@ -11,7 +29,7 @@ export class ItemsenseApiService {
     this.itemsenseRequest = request.defaults({
       headers: { Authorization: itemsense.authorizationHeader },
       baseUrl: this._itemsenseConfig.itemsenseUrl,
-      json: true
+      json: true,
     });
   }
 
@@ -48,7 +66,7 @@ export class ItemsenseApiService {
           responseBufferChunks.push(chunk);
         });
         res.on('end', () => {
-          const responseData = bufConcat(responseBufferChunks);
+          const responseData = bufferConcat(responseBufferChunks);
           if (!binary) {
             resolve(JSON.parse(responseData));
           } else {
