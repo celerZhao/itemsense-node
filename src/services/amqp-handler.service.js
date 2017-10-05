@@ -14,10 +14,11 @@ export class AmqpHandler {
   }
 
   configureAndSubscribe(queueConfig) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.configureQueue(queueConfig).then((queueObj) => {
         resolve(this.subscribe(queueObj));
-      });
+      })
+      .catch(e => reject(e));
     });
   }
 }
