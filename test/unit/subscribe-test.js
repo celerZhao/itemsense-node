@@ -89,10 +89,23 @@ exports.examples = (expect, sinon) => {
           queue.on('data', () => {
             sinon.assert.calledWith(messageQueueStub, queueConfig);
             sinon.assert.calledWith(subscribeStub, this.queueObj);
+            messageQueueStub.restore();
             done();
           });
           emitter.emit('data', 'the pipes are open');
         });
+      });
+      it('returns a rejected promise when configure queue returns error', function (done) {
+        const queueConfig = { epc: 'E280116060000205077DA28F' };
+        const configureQueueStub = sinon.stub(this.subject.items, 'configureQueue')
+                                    .returns(Promise.reject("BLURP!"));
+        const emitter = new EventEmitter();
+        this.subject.items.configureAndSubscribe(queueConfig)
+        .catch(e => {
+          sinon.assert.calledWith(configureQueueStub, queueConfig);
+          expect(e).to.equal("BLURP!")
+          done();
+        })
       });
     });
   });
