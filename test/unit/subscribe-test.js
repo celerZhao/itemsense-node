@@ -31,11 +31,13 @@ exports.examples = (expect, sinon) => {
     });
 
     describe('.subscribe(queueObject)', () => {
-      it('raises an error should the AMQP connection fail for any reason', function () {
+      it('emits an "error" event should the AMQP connection fail for any reason', function (done) {
         const error = 'ERRCONREFUSED';
-        return expect(() => {
-          this.connectionStub.emit('error', error);
-        }).to.throw(error);
+        this.queue.once('error', (data) => {
+          expect(data).to.equal(error);
+          done();
+        });
+        this.connectionStub.emit('error', error);
       });
       describe('upon successful connection', () => {
         before(function () {
