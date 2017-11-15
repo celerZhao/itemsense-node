@@ -7,16 +7,16 @@ export class AmqpHandler {
     this.password = password;
   }
 
-  subscribe(queueObj) {
+  subscribe(queueInfo) {
     const { username, password } = this.itemsenseService._itemsenseConfig;
-    const { serverUrl, queue } = queueObj;
-    return MessageQueue.subscribe(serverUrl, queue, username, password);
+    const { serverUrl, queue: queueId } = queueInfo;
+    return MessageQueue.subscribe(serverUrl, queueId, username, password);
   }
 
   configureAndSubscribe(queueConfig) {
     return new Promise((resolve, reject) => {
-      this.configureQueue(queueConfig).then((queueObj) => {
-        resolve(this.subscribe(queueObj));
+      this.configureQueue(queueConfig).then((queueInfo) => {
+        resolve(this.subscribe(queueInfo));
       })
       .catch(e => reject(e));
     });

@@ -12,9 +12,9 @@ export class MessageQueue extends EventEmitter {
     };
   }
 
-  subscribe(url, queue) {
-    this._connectionConfig.url = url;
-    this.queue = queue;
+  subscribe(serverUrl, queueId) {
+    this._connectionConfig.url = serverUrl;
+    this.queueId = queueId;
     this.createConnection()
     .then((connection) => {
       this.emit('status', 'connection');
@@ -38,7 +38,7 @@ export class MessageQueue extends EventEmitter {
 
   createQueue(connection) {
     return new Promise((resolve) => {
-      connection.queue(this.queue, this.queueConfig, queue => resolve(queue));
+      connection.queue(this.queueId, this.queueConfig, queue => resolve(queue));
     });
   }
 
@@ -49,9 +49,9 @@ export class MessageQueue extends EventEmitter {
     this.emit('status', 'listening');
   }
 
-  static subscribe(url, queue, login, password) {
+  static subscribe(serverUrl, queueId, login, password) {
     const mq = new this(login, password);
-    mq.subscribe(url, queue);
+    mq.subscribe(serverUrl, queueId);
     return mq;
   }
 }

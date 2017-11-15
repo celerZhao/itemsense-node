@@ -10,7 +10,7 @@ exports.examples = (expect, sinon) => {
       //    This works because `amqp.subscribe` calls it's callback whenever a new message is
       //    available.
       //    We simply listen for new events on amqpStream and call the stub's callback.
-      this.queueObj = {
+      this.queueInfo = {
         serverUrl: 'amqp://localhost:5672/%2F',
         queue: '13fe4dd7-9073-4507-a0c3-32403753f7c0'
       };
@@ -24,12 +24,12 @@ exports.examples = (expect, sinon) => {
       this.connectionStub = new EventEmitter();
       this.connectionStub.queue = this.queueStub;
       this.createConnectionStub = sinon.stub(amqp, 'createConnection').returns(this.connectionStub);
-      this.emitter = this.subject.items.subscribe(this.queueObj);
+      // These tests should ultimately be abstracted away from a particular
+      // implementation of the AmqpHandler (rather than `items`)
+      // but it gets the job done.
+      this.queue = this.subject.items.subscribe(this.queueInfo);
     });
 
-    // These tests should ultimately be abstracted away from a particular
-    // implementation of the AmqpHandler (rather than `items`)
-    // but it gets the job done.
     describe('.subscribe(queueObject)', () => {
       it('raises an error should the AMQP connection fail for any reason', function () {
         const error = 'ERRCONREFUSED';
@@ -37,14 +37,13 @@ exports.examples = (expect, sinon) => {
           this.connectionStub.emit('error', error);
         }).to.throw(error);
       });
-
       describe('upon successful connection', () => {
         before(function () {
           this.connectionStub.emit('ready');
         });
 
         it('returns an EventEmitter that emits "data" when a new message is received.', function (done) {
-          this.emitter.once('data', (data) => {
+          this.queue.once('data', (data) => {
             expect(data.msg).to.equal('hello world!');
             done();
           });
@@ -55,7 +54,7 @@ exports.examples = (expect, sinon) => {
         it('creates an AMQP connection using the provided serverUrl and ItemSense credentials.', function () {
           const createConnectionArgs = [
             {
-              url: this.queueObj.serverUrl,
+              url: this.queueInfo.serverUrl,
               login: this.itemsenseConfig.username,
               password: this.itemsenseConfig.password
             },
@@ -66,8 +65,8 @@ exports.examples = (expect, sinon) => {
         });
 
         it('waits for AMQP connection to be ready, then subscribes to the queue when the queue is ready', function (done) {
-          this.emitter.once('data', () => {
-            sinon.assert.calledWith(this.queueStub, this.queueObj.queue);
+          this.queue.once('data', () => {
+            sinon.assert.calledWith(this.queueStub, this.queueInfo.queue);
             sinon.assert.called(this.subscribeStub);
             done();
           });
@@ -80,7 +79,7 @@ exports.examples = (expect, sinon) => {
       it('returns a promise that resolves to a queue representing the ', function (done) {
         const queueConfig = { epc: 'E280116060000205077DA28F' };
         const messageQueueStub = sinon.stub(this.subject.items, 'configureQueue')
-                                    .returns(Promise.resolve(this.queueObj));
+                                    .returns(Promise.resolve(this.queueInfo));
         const emitter = new EventEmitter();
         const subscribeStub = sinon.stub(this.subject.items, 'subscribe').returns(emitter);
 
@@ -88,13 +87,14 @@ exports.examples = (expect, sinon) => {
         .then((queue) => {
           queue.on('data', () => {
             sinon.assert.calledWith(messageQueueStub, queueConfig);
-            sinon.assert.calledWith(subscribeStub, this.queueObj);
+            sinon.assert.calledWith(subscribeStub, this.queueInfo);
             messageQueueStub.restore();
             done();
           });
           emitter.emit('data', 'the pipes are open');
         });
       });
+
       it('returns a rejected promise when configure queue returns error', function (done) {
         const queueConfig = { epc: 'E280116060000205077DA28F' };
         const configureQueueStub = sinon.stub(this.subject.items, 'configureQueue')
