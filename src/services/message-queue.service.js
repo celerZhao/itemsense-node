@@ -17,11 +17,11 @@ export class MessageQueue extends EventEmitter {
     this.queueId = queueId;
     this.createConnection()
     .then((connection) => {
-      this.emit('status', 'connection');
+      this.emit('connectionEstablished', connection);
       return this.createQueue(connection);
     })
     .then((newQueue) => {
-      this.emit('status', 'queue');
+      this.emit('queueEstablished', newQueue);
       return this.createSubscription(newQueue);
     });
   }
@@ -46,7 +46,7 @@ export class MessageQueue extends EventEmitter {
     queue.subscribe((msg) => {
       this.emit('data', JSON.parse(msg.data));
     });
-    this.emit('status', 'listening');
+    this.emit('listening');
   }
 
   static subscribe(serverUrl, queueId, login, password) {

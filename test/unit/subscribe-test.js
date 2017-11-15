@@ -20,14 +20,28 @@ exports.examples = (expect, sinon) => {
       this.subscribeStub = sinon.stub(queueObj, 'subscribe', (callback) => {
         amqpStream.on('data', data => callback(data));
       });
-      this.queueStub = sinon.stub().yields({ subscribe: this.subscribeStub });
+      this.queueStub = sinon.stub();
       this.connectionStub = new EventEmitter();
-      this.connectionStub.queue = this.queueStub;
+      this.connectionStub.queue = this.queueStub.yields({ subscribe: this.subscribeStub });
       this.createConnectionStub = sinon.stub(amqp, 'createConnection').returns(this.connectionStub);
       // These tests should ultimately be abstracted away from a particular
       // implementation of the AmqpHandler (rather than `items`)
       // but it gets the job done.
       this.queue = this.subject.items.subscribe(this.queueInfo);
+    });
+
+
+    describe('status events', () => {
+      it('emits "connectionEstablished", "queueEstablished", "listening" when the connection to the server is established', function (done) {
+        this.queue.once('connectionEstablished', () => {
+          this.queue.once('queueEstablished', () => {
+            this.queue.once('listening', () => {
+              done();
+            });
+          });
+        });
+        this.connectionStub.emit('ready');
+      });
     });
 
     describe('.subscribe(queueObject)', () => {
@@ -39,6 +53,7 @@ exports.examples = (expect, sinon) => {
         });
         this.connectionStub.emit('error', error);
       });
+
       describe('upon successful connection', () => {
         before(function () {
           this.connectionStub.emit('ready');
