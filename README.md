@@ -5,8 +5,10 @@ For more information about ItemSense, check out http://developer.impinj.com.
 ## Install
 
 ```bash
-$ npm i itemsense-node --save
+$ yarn add itemsense-node
 ```
+
+Note: We recommend [Yarn](https://yarnpkg.com/en/) as the dependency manager for javascript projects. You are free to use NPM or Yarn interchangeably, but using Yarn protects against version drift of a project's dependencies, which NPM struggles with. 
 
 ## Usage
 
