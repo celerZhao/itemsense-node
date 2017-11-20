@@ -12,16 +12,16 @@ export class MessageQueue extends EventEmitter {
     };
   }
 
-  subscribe(url, queue) {
-    this._connectionConfig.url = url;
-    this.queue = queue;
+  subscribe(serverUrl, queueId) {
+    this._connectionConfig.url = serverUrl;
+    this.queueId = queueId;
     this.createConnection()
     .then((connection) => {
-      this.emit('status', 'connection');
+      this.emit('connectionEstablished', connection);
       return this.createQueue(connection);
     })
     .then((newQueue) => {
-      this.emit('status', 'queue');
+      this.emit('queueEstablished', newQueue);
       return this.createSubscription(newQueue);
     });
   }
@@ -31,14 +31,14 @@ export class MessageQueue extends EventEmitter {
       const connection = amqp.createConnection(this._connectionConfig, { reconnect: false });
       connection.on('ready', () => resolve(connection));
       connection.on('error', (err) => {
-        throw err;
+        this.emit('error', err);
       });
     });
   }
 
   createQueue(connection) {
     return new Promise((resolve) => {
-      connection.queue(this.queue, this.queueConfig, queue => resolve(queue));
+      connection.queue(this.queueId, this.queueConfig, queue => resolve(queue));
     });
   }
 
@@ -46,12 +46,12 @@ export class MessageQueue extends EventEmitter {
     queue.subscribe((msg) => {
       this.emit('data', JSON.parse(msg.data));
     });
-    this.emit('status', 'listening');
+    this.emit('listening');
   }
 
-  static subscribe(url, queue, login, password) {
+  static subscribe(serverUrl, queueId, login, password) {
     const mq = new this(login, password);
-    mq.subscribe(url, queue);
+    mq.subscribe(serverUrl, queueId);
     return mq;
   }
 }

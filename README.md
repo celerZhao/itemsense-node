@@ -5,8 +5,10 @@ For more information about ItemSense, check out http://developer.impinj.com.
 ## Install
 
 ```bash
-$ npm i itemsense-node --save
+$ yarn add itemsense-node
 ```
+
+Note: We recommend [Yarn](https://yarnpkg.com/en/) as the dependency manager for javascript projects. You are free to use NPM or Yarn interchangeably, but using Yarn protects against version drift of a project's dependencies, which NPM struggles with. 
 
 ## Usage
 
@@ -230,35 +232,35 @@ itemsense.readerConfigurations.update(readerConfiguration) // updates a reader c
 itemsense.readerConfigurations.delete(readerConfigurationName) // deletes a reader configuration based on the name
 ```
 
-### Thresholds 
+### Thresholds
 
-For more information on Thresholds, visit 
+For more information on Thresholds, visit
 http://developer.impinj.com/itemsense/docs/api/#thresholds
 
 ```javascript
-// Get an array of all the threshold configuration objects 
+// Get an array of all the threshold configuration objects
 // embed - (optional) An object to specify which JSON objects should be embedded
-//         in the threshold response object. Currently, only 
+//         in the threshold response object. Currently, only
 //         'antennaConfiguration'.
 //         Example: { embed: ['antennaConfiguration'] }
-itemsense.thresholds.getAll(embed) 
+itemsense.thresholds.getAll(embed)
 
 // Get a single threshold configuration object
-// embed - (optional) Same as for getAll method above. 
-itemsense.thresholds.get(thresholdId, embed) 
+// embed - (optional) Same as for getAll method above.
+itemsense.thresholds.get(thresholdId, embed)
 
-// Create a threshold 
-itemsense.thresholds.create(thresholdConfigObject) 
+// Create a threshold
+itemsense.thresholds.create(thresholdConfigObject)
 
 // Update an existing thresold
-itemsense.thresholds.update(thresholdId, thresholdConfigObject) 
+itemsense.thresholds.update(thresholdId, thresholdConfigObject)
 
 // Remove a threshold
-itemsense.thresholds.delete(thresholdId) 
+itemsense.thresholds.delete(thresholdId)
 ```
 
 ### Threshold Antenna Configurations
-For more information on Threshold Antenna Configurations, visit 
+For more information on Threshold Antenna Configurations, visit
 http://developer.impinj.com/itemsense/docs/api/#threshold-antenna-configuration
 
 ```javascript
@@ -424,9 +426,9 @@ Get all the configuration elements within an ItemSense instance in tar.gz format
 // Get all of ItemSense's configuration as a tar.gz file
 itemsense.configuration.getAll(writeLocation);
 ```
-The `writeLocation` parameter is an optional string which when specified, provides a path (and file name) to which the configuration tar.gz file should be written. Once written a resolved promise is returned containing a success message. If there is an error when writing to the specified location, a rejected promise is returned containing a description of the error. 
+The `writeLocation` parameter is an optional string which when specified, provides a path (and file name) to which the configuration tar.gz file should be written. Once written a resolved promise is returned containing a success message. If there is an error when writing to the specified location, a rejected promise is returned containing a description of the error.
 
-If `writeLocation` isn't specified the raw binary tar.gz blog of data is returned in a resolved Promised which the caller must handle. 
+If `writeLocation` isn't specified the raw binary tar.gz blog of data is returned in a resolved Promised which the caller must handle.
 
 #### Logs
 Get the logs of ItemSense in tar.gz format.
@@ -437,7 +439,7 @@ itemsense.logs.get(queryParamsObject, writeLocation);
 
 A javascript object may be passed containing the keys `from`, `to` and `extended`. A description of what these keys do can be found in the API document linked above.
 
-For a description of the `writeLocation` parameter, see the [Configuration](#configuration) section above. 
+For a description of the `writeLocation` parameter, see the [Configuration](#configuration) section above.
 
 ### Consuming Message Queues
 
@@ -445,20 +447,23 @@ For a description of the `writeLocation` parameter, see the [Configuration](#con
 
 For resources that expose message queues (`health`, `transitions` and `items`), we provide a `configureAndSubscribe` helper to facilitate consuming new messages. Call it just like you would the `configureQueue` method. It returns a promise that resolves to an event emitter.
 
-This object will emit `data` events as new messages are sent on the queue:
+This object will emit `data` events as new messages are sent on the queue, or `error` events if there are issues with the connection:
 
 ```javascript
 itemsense.items.configureAndSubscribe(queueConfig).then(queue => {
   queue.on('data', data => console.log("A js object: ", data) );
+  queue.on('error', err => console.log(err) );
   // The messages contents are provided as a pre-parsed json object.
 });
 ```
 
-The queue object will also emit `status` events as it proceeds with configuring and connecting to the AMQP service. You can use these to help debug or track the progress of the connection:
+The queue object will also emit events as it proceeds with configuring and connecting to the AMQP service. You can use these to help debug or track the progress of the connection:
 
 ```javascript
 itemsense.health.configureAndSubscribe(queueConfig).then(queue => {
-  queue.on('status', msg => console.log(msg) );
+  queue.on('connectionEstablished', msg => console.log('Connected!') );
+  queue.on('queueEstablished', msg => console.log('Queue Established!') );
+  queue.on('listening', msg => console.log('Listening for Data!') );
   // This will broadcast:
   // 'connection': a connection has successfully been established to the AMQP server
   // 'queue': a queue has successfully been opened
