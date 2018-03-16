@@ -1,14 +1,18 @@
 import amqp from 'amqp';
 import { EventEmitter } from 'events';
 
-export class MessageQueue extends EventEmitter {
+export default class MessageQueue extends EventEmitter {
   constructor(login, password) {
     super();
     this._connectionConfig = { login, password };
     this.queueConfig = {
       durable: true,
       noDeclare: true,
-      arguments: { 'x-expires': 3600000, 'x-message-ttl': 3600000, 'x-max-length-bytes': 1073741824 }
+      arguments: {
+        'x-expires': 3600000,
+        'x-message-ttl': 3600000,
+        'x-max-length-bytes': 1073741824,
+      },
     };
   }
 
@@ -17,10 +21,12 @@ export class MessageQueue extends EventEmitter {
     this.queueId = queueId;
     this.createConnection()
     .then((connection) => {
+      this.emit('status', 'connection');
       this.emit('connectionEstablished', connection);
       return this.createQueue(connection);
     })
     .then((newQueue) => {
+      this.emit('status', 'queue');
       this.emit('queueEstablished', newQueue);
       return this.createSubscription(newQueue);
     });
@@ -46,6 +52,7 @@ export class MessageQueue extends EventEmitter {
     queue.subscribe((msg) => {
       this.emit('data', JSON.parse(msg.data));
     });
+    this.emit('status', 'listening');
     this.emit('listening');
   }
 

@@ -1,4 +1,4 @@
-import { MessageQueue } from './message-queue.service';
+import MessageQueue from './message-queue.service';
 
 export class AmqpHandler {
 
