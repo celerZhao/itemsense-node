@@ -456,17 +456,29 @@ itemsense.items.configureAndSubscribe(queueConfig).then(queue => {
   // The messages contents are provided as a pre-parsed json object.
 });
 ```
-
-The queue object will also emit events as it proceeds with configuring and connecting to the AMQP service. You can use these to help debug or track the progress of the connection:
+The queue object will also emit `status` events as it proceeds with configuring and connecting to the AMQP service. You can use these to help debug or track the progress of the connection:
 
 ```javascript
 itemsense.health.configureAndSubscribe(queueConfig).then(queue => {
-  queue.on('connectionEstablished', msg => console.log('Connected!') );
-  queue.on('queueEstablished', msg => console.log('Queue Established!') );
-  queue.on('listening', msg => console.log('Listening for Data!') );
+  queue.on('status', msg => console.log(msg) );
   // This will broadcast:
   // 'connection': a connection has successfully been established to the AMQP server
   // 'queue': a queue has successfully been opened
   // 'listening': a subscription to the queue has successfully been established, we are now listening for data
 });
 ```
+
+Alternatively, the queue object will also emit "connection lifecycle" events as it proceeds with configuring and connecting to the AMQP service:
+
+```javascript
+itemsense.health.configureAndSubscribe(queueConfig).then(queue => {
+  queue.on('connectionEstablished', connectionObject => console.log('Connected!') );
+  queue.on('queueEstablished', amqpQueueObject => console.log('Queue Established!') );
+  queue.on('listening', () => console.log('Listening for Data!') );
+});
+```
+
+Note that:
+* On `connectionEstablished`, the event handler is passed the [AMQP Connection](https://www.npmjs.com/package/amqp#connection) object.
+* On `queueEstablished`, the event handler is passed the raw [AMQP Queue](https://www.npmjs.com/package/amqp#queue) object.
+* On `listening`, nothing is passed to the event handler.
