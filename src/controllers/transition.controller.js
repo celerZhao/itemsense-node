@@ -22,11 +22,13 @@ export class TransitionController extends AmqpHandler {
     );
   }
 
-  configureQueue(messageQueue) {
+  configureQueue(filter, options) {
     return this.itemsenseService.makeRequest(
       this.queueModel,
       MessageQueue.requestTypes.CONFIGURE_THRESHOLD,
-      messageQueue || {}
+      filter,
+      null,
+      options
     );
   }
 }

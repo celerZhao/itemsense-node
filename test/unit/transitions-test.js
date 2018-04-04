@@ -11,13 +11,26 @@ exports.examples = function (expect) {
       });
     });
 
-    describe('.configureQueue(messageQueueParams)', function () {
+    describe('.configureQueue(filterParams)', function () {
       it('PUTs to /data/v1/items/queues/threshold with messageQueueParams as the body', function () {
-        const messageQueueParams = { threshold: 'thresholdname', jobId: 'awesomeJobId' };
-        return expect(this.subject.transitions.configureQueue(messageQueueParams)).to.wrap.request({
+        const filterParams = { threshold: 'thresholdname', jobId: 'awesomeJobId' };
+        return expect(this.subject.transitions.configureQueue(filterParams)).to.wrap.request({
           method: 'put',
           path: '/itemsense/data/v1/items/queues/threshold',
-          body: messageQueueParams,
+          body: filterParams,
+        });
+      });
+    });
+
+    describe('.configureQueue(filterParams, optionParams)', function () {
+      it('PUTs to /data/v1/items/queues/threshold with messageQueueParams as the body', function () {
+        const filterParams = { threshold: 'thresholdname', jobId: 'awesomeJobId' };
+        const optionParams = { deliveryMethod: 'NON_PERSISTENT' };
+        return expect(this.subject.transitions.configureQueue(filterParams, optionParams)).to.wrap.request({
+          method: 'put',
+          path: '/itemsense/data/v1/items/queues/threshold',
+          query: optionParams,
+          body: filterParams
         });
       });
     });

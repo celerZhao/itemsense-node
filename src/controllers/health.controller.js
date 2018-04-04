@@ -17,11 +17,13 @@ export class HealthController extends AmqpHandler {
     );
   }
 
-  configureQueue(queueObject) {
+  configureQueue(filter, options) {
     return this.itemsenseService.makeRequest(
       this.model,
       Health.requestTypes.QUEUE,
-      queueObject || {}
+      filter,
+      null,
+      options
     );
   }
 
