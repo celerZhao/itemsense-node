@@ -13,9 +13,9 @@ export class AmqpHandler {
     return MessageQueue.subscribe(serverUrl, queueId, username, password);
   }
 
-  configureAndSubscribe(queueConfig) {
+  configureAndSubscribe(filter = {}, options = {}) {
     return new Promise((resolve, reject) => {
-      this.configureQueue(queueConfig).then((queueInfo) => {
+      this.configureQueue(filter, options).then((queueInfo) => {
         resolve(this.subscribe(queueInfo));
       })
       .catch(e => reject(e));

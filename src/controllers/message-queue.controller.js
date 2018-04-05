@@ -8,9 +8,9 @@ export class MessageQueueController {
     this.is = is;
   }
 
-  // maintained for backwards compatability
+  // maintained for backwards compatibility
   configure(messageQueue) {
-    return this.is.items.configureQueue(messageQueue);
+    return this.is.items.configureQueue(messageQueue, {});
   }
 
 }

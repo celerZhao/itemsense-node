@@ -19,10 +19,22 @@ exports.examples = (expect) => {
 
     describe('.configureQueue(queueObject)', () => {
       it('PUTs to /health/v1/events/queues and resolves to API response', function () {
-        const queueObject = { readerId: '', type: '', code: '' };
-        expect(this.subject.health.configureQueue(queueObject)).to.haveSent.and.resolveTo.request({
+        const filterParams = { readerId: '', type: '', code: '' };
+        expect(this.subject.health.configureQueue(filterParams)).to.haveSent.and.resolveTo.request({
           method: 'put',
           path: '/itemsense/health/v1/events/queues'
+        });
+      });
+    });
+
+    describe('.configureQueue(filterParams, options)', () => {
+      it('PUTs to /health/v1/events/queues and resolves to API response', function () {
+        const filterParams = { readerId: '', type: '', code: '' };
+        const optionsParams = { deliveryMethod: 'PERSISTENT' };
+        expect(this.subject.health.configureQueue(filterParams, optionsParams)).to.haveSent.and.resolveTo.request({
+          method: 'put',
+          path: '/itemsense/health/v1/events/queues',
+          query: optionsParams
         });
       });
     });

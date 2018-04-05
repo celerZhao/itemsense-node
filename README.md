@@ -341,7 +341,7 @@ itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an 
 
 itemsense.items.getHistory(queryParams) // Retrieves item history records from ItemSense, takes in an optional query params object
 
-itemsense.items.configureQueue(queueConfig) // Configure a queue to receive item event messages with the given filter
+itemsense.items.configureQueue(filter, options) // Configure a queue to receive item event messages with the given filter and options
 ```
 
 ### Transitions
@@ -353,7 +353,7 @@ For information about transitions, visit http://developer.impinj.com/itemsense/d
 ```javascript
 itemsense.transitions.get(queryParams) // Retrieves transition events from ItemSense, takes in an optional query params object
 
-itemsense.transitions.configureQueue(queueConfig) // Configure a queue to receive transition event messages which match the given filter
+itemsense.transitions.configureQueue(filter, options) // Configure a queue to receive transition event messages which match the given filter and options
 ```
 
 ### Health
@@ -365,7 +365,7 @@ For information about Reader Health, visit http://developer.impinj.com/itemsense
 ```javascript
 itemsense.health.events(queryParams) // Retrieves health events from ItemSense, accepts an optional query object
 
-itemsense.health.configureQueue(queueObject) // Configure a queue to receive health event messages with the given filter
+itemsense.health.configureQueue(filter, options) // Configure a queue to receive health event messages with the given filter and options
 
 itemsense.health.readers() // Get status for all current readers
 
@@ -450,7 +450,7 @@ For resources that expose message queues (`health`, `transitions` and `items`), 
 This object will emit `data` events as new messages are sent on the queue, or `error` events if there are issues with the connection:
 
 ```javascript
-itemsense.items.configureAndSubscribe(queueConfig).then(queue => {
+itemsense.items.configureAndSubscribe(filter, options).then(queue => {
   queue.on('data', data => console.log("A js object: ", data) );
   queue.on('error', err => console.log(err) );
   // The messages contents are provided as a pre-parsed json object.
@@ -459,7 +459,7 @@ itemsense.items.configureAndSubscribe(queueConfig).then(queue => {
 The queue object will also emit `status` events as it proceeds with configuring and connecting to the AMQP service. You can use these to help debug or track the progress of the connection:
 
 ```javascript
-itemsense.health.configureAndSubscribe(queueConfig).then(queue => {
+itemsense.health.configureAndSubscribe(filter, options).then(queue => {
   queue.on('status', msg => console.log(msg) );
   // This will broadcast:
   // 'connection': a connection has successfully been established to the AMQP server
@@ -471,7 +471,7 @@ itemsense.health.configureAndSubscribe(queueConfig).then(queue => {
 Alternatively, the queue object will also emit "connection lifecycle" events as it proceeds with configuring and connecting to the AMQP service:
 
 ```javascript
-itemsense.health.configureAndSubscribe(queueConfig).then(queue => {
+itemsense.health.configureAndSubscribe(filter, options).then(queue => {
   queue.on('connectionEstablished', connectionObject => console.log('Connected!') );
   queue.on('queueEstablished', amqpQueueObject => console.log('Queue Established!') );
   queue.on('listening', () => console.log('Listening for Data!') );

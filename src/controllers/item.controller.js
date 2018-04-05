@@ -33,12 +33,13 @@ export class ItemController extends AmqpHandler {
     );
   }
 
-  configureQueue(messageQueue) {
+  configureQueue(filter, options) {
     return this.itemsenseService.makeRequest(
       this.queueModel,
       MessageQueue.requestTypes.CONFIGURE,
-      messageQueue || {}
+      filter,
+      null,
+      options
     );
   }
-
 }

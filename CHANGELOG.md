@@ -1,5 +1,8 @@
 # ItemSense Node Library Changelog
 
+## 1.6.1
+- Updated `messageQueue.configure()` functionality to support query parameters for queues
+
 ## 1.4.1
 - Repaired `messageQueue.configure()` functionality
 
@@ -14,7 +17,7 @@
 
 ## 1.3.0
 - Added `configureAndSubscribe` functionality to message queue-handling endpoints.
-- `.messageQueue` is depracated:
+- `.messageQueue` is deprecated:
   - Moved `messageQueue.configure()` to `items.configureQueue()`
 
 ## 1.2.0
