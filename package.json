@@ -4,7 +4,7 @@
   "description": "An API wrapper for Impinj's ItemSense",
   "homepage": "http://developer.impinj.com",
   "repository": "https://github.com/impinj/itemsense-node",
-  "author": "Impinj Github <nkershaw@impinj.com>",
+  "author": "Impinj Github <jknapp@impinj.com>",
   "contributors": [],
   "license": "MIT",
   "main": "dist/itemsense.js",
