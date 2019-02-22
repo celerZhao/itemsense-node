@@ -323,7 +323,7 @@ itemsense.jobs.stats(jobId) // retrieves the job stats for a specific job
 <div id="messageQueue"></div>
 
 _Deprecated: This functionality was moved to <a href= "#items">Items</a>._
-For information about message queues, visit http://developer.impinj.com/itemsense/docs/api/#message-queues
+For information about message queues, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC85
 
 ```javascript
 itemsense.messageQueue.configure(messageQueue) // configures the message queue
