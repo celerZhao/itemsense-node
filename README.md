@@ -110,7 +110,7 @@ itemsense.items.get().then(function(response) {
 
 <div id="authToken"></div>
 
-For information about token authentication, visit http://developer.impinj.com/itemsense/docs/api/#authentication
+For information about token authentication, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC15
 
 ```js
 itemsense.authentication.getToken(username) // creates a token for given user
@@ -128,7 +128,7 @@ itemsense.authentication.revokeAllTokens(username) // revokes all tokens availab
 
 <div id="users"></div>
 
-For information about users, visit http://developer.impinj.com/itemsense/docs/api/#users
+For information about users, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC6
 
 ```javascript
 
@@ -145,7 +145,7 @@ itemsense.users.update(user) // updates a user
 
 <div id="facilities"></div>
 
-For information about facilities, visit http://developer.impinj.com/itemsense/docs/api/#facilities
+For information about facilities, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC23
 
 ```javascript
 itemsense.facilities.get(facilityName) // returns a facility object based on the name
@@ -164,7 +164,7 @@ itemsense.facilities.update(facilityName) // Aliases .createOrReplace()
 
 <div id="zoneMaps"></div>
 
-For information about zone maps, visit http://developer.impinj.com/itemsense/docs/api/#zone-maps
+For information about zone maps, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC29
 
 ```javascript
 itemsense.zoneMaps.get(zoneMapName) // returns a zone map object based on the name
@@ -192,7 +192,7 @@ itemsense.zoneMaps.clear(facilityName) // clears the current zone map value
 
 <div id="readerDefintions"></div>
 
-For information reader definitions, visit http://developer.impinj.com/itemsense/docs/api/#reader-definitions
+For information reader definitions, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC39
 
 ```javascript
 itemsense.readerDefinitions.get(readerDefinitionName) // returns a reader definition object based on the name
@@ -218,7 +218,7 @@ itemsense.readerDefinitions.getFeature(readerName, featureName) //Get the status
 
 <div id="readerConfigurations"></div>
 
-For information about reader configurations, visit http://developer.impinj.com/itemsense/docs/api/#reader-configurations
+For information about reader configurations, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC51
 
 ```javascript
 itemsense.readerConfigurations.get(readerConfigurationName) // returns a reader configuration object based on the name
@@ -235,7 +235,7 @@ itemsense.readerConfigurations.delete(readerConfigurationName) // deletes a read
 ### Thresholds
 
 For more information on Thresholds, visit
-http://developer.impinj.com/itemsense/docs/api/#thresholds
+https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC58
 
 ```javascript
 // Get an array of all the threshold configuration objects
@@ -261,7 +261,7 @@ itemsense.thresholds.delete(thresholdId)
 
 ### Threshold Antenna Configurations
 For more information on Threshold Antenna Configurations, visit
-http://developer.impinj.com/itemsense/docs/api/#threshold-antenna-configuration
+https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC64
 
 ```javascript
 //Get all the configured Threshold Antenna Configurations
@@ -284,7 +284,7 @@ itemsense.antennaConfigurations.delete(antennaConfigurationId)
 
 <div id="recipes"></div>
 
-For information about recipes, visit http://developer.impinj.com/itemsense/docs/api/#recipes
+For information about recipes, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC70
 
 ```javascript
 itemsense.recipes.get(recipeName) // returns a recipe object based on the name
@@ -303,7 +303,7 @@ itemsense.recipes.delete(recipeName) // deletes a recipe based on the name
 
 <div id="jobs"></div>
 
-For information about jobs, visit http://developer.impinj.com/itemsense/docs/api/#jobs
+For information about jobs, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC76
 
 ```javascript
 itemsense.jobs.get(jobId) // returns a job object based on the id
@@ -334,7 +334,7 @@ itemsense.messageQueue.configure(messageQueue) // configures the message queue
 
 <div id="items"></div>
 
-For information about items, visit http://developer.impinj.com/itemsense/docs/api/#items
+For information about items, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC81
 
 ```javascript
 itemsense.items.get(queryParams) // Retrieves items from ItemSense, takes in an option query params object
@@ -348,7 +348,7 @@ itemsense.items.configureQueue(filter, options) // Configure a queue to receive 
 
 <div id="transitions"></div>
 
-For information about transitions, visit http://developer.impinj.com/itemsense/docs/api/#items
+For information about transitions, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC84
 
 ```javascript
 itemsense.transitions.get(queryParams) // Retrieves transition events from ItemSense, takes in an optional query params object
@@ -360,7 +360,7 @@ itemsense.transitions.configureQueue(filter, options) // Configure a queue to re
 
 <div id="health"></div>
 
-For information about Reader Health, visit http://developer.impinj.com/itemsense/docs/api/#health
+For information about Reader Health, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC88
 
 ```javascript
 itemsense.health.events(queryParams) // Retrieves health events from ItemSense, accepts an optional query object
@@ -376,7 +376,7 @@ itemsense.health.reader(readerId) // Get status for a given reader. Accepts stri
 
 <div id="updates"></div>
 
-For information about Software Update Functionality, visit http://developer.impinj.com/itemsense/docs/api/#updates
+For information about Software Update Functionality, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC98
 
 ```javascript
 itemsense.softwareImages.get(imageType, imageName) // Download a software image
@@ -407,7 +407,7 @@ itemsense.softwareVersions.update(versionPolicyObj) // Update the version policy
 
 <div id="settings"></div>
 
-For information about SNMP Settings, visit http://developer.impinj.com/itemsense/docs/api/#settings-snmp
+For information about SNMP Settings, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC103
 
 ```javascript
 itemsense.settings.get() // Returns the current SNMP settings
@@ -418,7 +418,7 @@ itemsense.settings.disable() // Disables SNMP and deletes any configuration
 ```
 
 ### Support
-For information about the Support endpoints, visit http://developer.impinj.com/itemsense/docs/api/#support
+For information about the Support endpoints, visit https://platform.impinj.com/site/developer/itemsense/apidocs/index.gsp#TOC108
 
 #### Configuration
 Get all the configuration elements within an ItemSense instance in tar.gz format.
