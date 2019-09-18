@@ -10,31 +10,28 @@ const scriptDest = 'dist';
 const testSrc = './test/**/*.js';
 const testDest = 'built-tests';
 
-gulp.task('clean', function () {
+gulp.task('clean', gulp.series(function () {
   return del([scriptDest, testDest]);
-});
+}));
 
-gulp.task('buildSource', gulp.series('clean', function (done) {
+gulp.task('buildSource', gulp.series('clean', function () {
   return gulp.src([scriptSrc])
     .pipe(babel().on("error", handleError))
     .pipe(gulp.dest(scriptDest));
-  done();
 }));
 
-gulp.task('buildTests', gulp.series('buildSource', function (done) {
+gulp.task('buildTests', gulp.series('buildSource', function () {
   return gulp.src([testSrc])
     .pipe(babel().on("error", handleError))
     .pipe(gulp.dest(testDest));
-  done();
 }));
 
 // Only way to ensure both build tasks complete before running tests
 // is to add them as a dependency.
-gulp.task('runTests', gulp.series('buildTests', function (done) {
-  gulp.src(testDest + '/test.js', { read: false })
+gulp.task('runTests', gulp.series('buildTests', function () {
+  return gulp.src(testDest + '/test.js', { read: false })
     .pipe(mocha({ reporter: "nyan" })
     .on("error", handleError));
-  done();
 }));
 
 gulp.task('test', gulp.series('runTests'));
