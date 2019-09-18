@@ -22,12 +22,12 @@ export class AuthenticationController {
     );
   }
 
-  validateToken(id) {
+  validateToken(token) {
     return this.itemsenseService.makeRequest(
       this.model,
       Authentication.requestTypes.VALIDATE,
       null,
-      id
+      token
     );
   }
 

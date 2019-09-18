@@ -119,3 +119,4 @@ sample.js
 
 # MS Code
 .vs/
+.vscode/

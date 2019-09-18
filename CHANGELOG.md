@@ -1,4 +1,8 @@
 # ItemSense Node Library Changelog
+## 2.0.0
+- Upgraded all npm packages.
+- Rewrote babel scripts to take advantage of new features.
+- Rewrote tests to use the live ItemSense API, rather than mock the API
 
 ## 1.6.1
 - Updated `messageQueue.configure()` functionality to support query parameters for queues

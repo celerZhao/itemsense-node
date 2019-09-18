@@ -2,18 +2,21 @@ import chai from 'chai';
 import nock from 'nock';
 
 export function stubRequest(host) {
+
   return (request) => {
     const { method, path, body, query, header, status, responseBody } = request;
+
     const scope = nock(host);
     const stub = scope[method](path, body);
-    stub.query(query);
+
+    if (query) stub.query(query);
     // Quick fix to ensure proper authorization is used. Might wish to add
     // a .withAuth Chai property,
     // and dynamically generate auth depending on credentials
     if (header) {
       stub.matchHeader(...header);
     } else {
-      stub.matchHeader('Authorization', 'Basic c2VhbjpwYXNzd29yZA==');
+      stub.matchHeader('Authorization', 'Basic YWRtaW46YWRtaW5kZWZhdWx0');
     }
     stub.reply(status || 200, responseBody);
     return scope;

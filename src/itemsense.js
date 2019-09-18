@@ -25,6 +25,7 @@ export class ItemSense {
 
   constructor(itemSenseConfig) {
     this._itemsenseConfig = itemSenseConfig;
+
     this._itemsenseService = new ItemsenseApiService(this);
     this._wm = new Map();
     // controllers for client
@@ -61,7 +62,7 @@ export class ItemSense {
     if (authToken) {
       return `Token { "token": "${authToken}" }`;
     }
-    return `Basic ${new Buffer(`${username}:${password}`, 'utf8').toString('base64')}`;
+    return `Basic ${new Buffer.from(`${username}:${password}`, 'utf8').toString('base64')}`;
   }
 
   get authentication() {
