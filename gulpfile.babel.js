@@ -1,42 +1,46 @@
 'use strict';
 
-const gulp = require('gulp');
-const babel = require('gulp-babel');
-const mocha = require('gulp-mocha');
-const del = require('del');
+import { task, series, src, dest } from 'gulp';
+import babel from 'gulp-babel';
+import mocha from 'gulp-mocha';
+import del from 'del';
+import jest from 'gulp-jest';
 
 const scriptSrc = 'src/**/*.js';
 const scriptDest = 'dist';
-const testSrc = './test/**/*.js';
+
+const testSrc = 'test/**/*.js';
 const testDest = 'built-tests';
 
-gulp.task('clean', gulp.series(function () {
+task('clean', series(function () {
   return del([scriptDest, testDest]);
 }));
 
-gulp.task('buildSource', gulp.series('clean', function () {
-  return gulp.src([scriptSrc])
+task('buildSource', series('clean', function () {
+  return src([scriptSrc])
     .pipe(babel().on("error", handleError))
-    .pipe(gulp.dest(scriptDest));
+    .pipe(dest(scriptDest));
 }));
 
-gulp.task('buildTests', gulp.series('buildSource', function () {
-  return gulp.src([testSrc])
+task('buildTests', series('buildSource', function () {
+  return src([testSrc])
     .pipe(babel().on("error", handleError))
-    .pipe(gulp.dest(testDest));
+    .pipe(dest(testDest));
 }));
 
 // Only way to ensure both build tasks complete before running tests
 // is to add them as a dependency.
-gulp.task('runTests', gulp.series('buildTests', function () {
-  return gulp.src(testDest + '/test.js', { read: false })
-    .pipe(mocha({ reporter: "nyan" })
-    .on("error", handleError));
+task('runTests', series('buildTests', function () {
+  process.env.NODE_ENV = 'test';
+  return src(testDest + '/test.js', { read: false })
+    .pipe(jest({
+      "automock": false
+    }));
 }));
 
-gulp.task('test', gulp.series('runTests'));
+task('test', series('runTests'));
 
-gulp.task('default', gulp.series('buildSource'));
+task('default', series('buildSource'));
 
 /*
 gulp.task('default', [
@@ -48,7 +52,6 @@ gulp.task('test', [
   'runTests',
   'watchAllAndRunTests',
 ]);
-
 
 gulp.task('watchSourceAndRebuild', function () {
   gulp.watch([scriptSrc], ['buildSource']);

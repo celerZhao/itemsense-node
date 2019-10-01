@@ -3,6 +3,8 @@
 - Upgraded all npm packages.
 - Rewrote babel scripts to take advantage of new features.
 - Rewrote tests to use the live ItemSense API, rather than mock the API
+- Fixed some broken links in README
+- Fixed Issue #19: 'Validate token endpoint needs update'
 
 ## 1.6.1
 - Updated `messageQueue.configure()` functionality to support query parameters for queues

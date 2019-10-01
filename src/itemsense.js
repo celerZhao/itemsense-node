@@ -1,6 +1,7 @@
 import { ItemsenseApiService } from './services/itemsense-api.service';
 import { AuthenticationController } from './controllers/authentication.controller';
 import { CurrentZoneMapController } from './controllers/current-zone-map.controller';
+import { EventController } from './controllers/event.controller';
 import { FacilityController } from './controllers/facility.controller';
 import { JobController } from './controllers/job.controller';
 import { ReaderConfigurationController } from './controllers/reader-configuration.controller';
@@ -31,6 +32,7 @@ export class ItemSense {
     // controllers for client
     this._wm.set('authenticationController', new AuthenticationController(this._itemsenseService));
     this._wm.set('currentZoneMapController', new CurrentZoneMapController(this._itemsenseService));
+    this._wm.set('eventController', new EventController(this._itemsenseService));
     this._wm.set('facilityController', new FacilityController(this._itemsenseService));
     this._wm.set('jobController', new JobController(this._itemsenseService));
     this._wm.set('readerConfigurationController', new ReaderConfigurationController(this._itemsenseService));
@@ -71,6 +73,10 @@ export class ItemSense {
 
   get currentZoneMap() {
     return this._wm.get('currentZoneMapController');
+  }
+
+  get events() {
+    return this._wm.get('eventController');
   }
 
   get facilities() {

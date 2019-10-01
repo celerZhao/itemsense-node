@@ -19,7 +19,7 @@ export class Authentication extends ItemSenseEndpoint {
       },
       VALIDATE: {
         endpoint: 'validateToken',
-        method: 'GET'
+        method: 'POST'
       },
       LIST: {
         endpoint: 'listTokens',
