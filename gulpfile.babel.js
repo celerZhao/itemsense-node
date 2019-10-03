@@ -2,7 +2,6 @@
 
 import { task, series, src, dest } from 'gulp';
 import babel from 'gulp-babel';
-import mocha from 'gulp-mocha';
 import del from 'del';
 import jest from 'gulp-jest';
 
